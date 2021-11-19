@@ -3650,6 +3650,14 @@ node-gyp@^7.0.0, node-gyp@^7.1.0, node-gyp@^7.1.2:
     tar "^6.0.2"
     which "^2.0.2"
 
+node-superfetch@^0.1.10:
+  version "0.1.11"
+  resolved "https://registry.yarnpkg.com/node-superfetch/-/node-superfetch-0.1.11.tgz#6142465a8f12ac9409bb7145521125a877ed4336"
+  integrity sha512-984lO43EvDtjBOpVXDqnR2L5+pVt+qWfqIE6H7Sl21BoIz26OwSKxBnO9ZmJkYXAimR64MUPiz6tn5hySy1d0Q==
+  dependencies:
+    form-data "^3.0.0"
+    node-fetch "^2.6.0"
+
 node-webpmux@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/node-webpmux/-/node-webpmux-3.1.0.tgz#f8fdde2d6c55a51ffd5f91e3b0c70daae963b8d4"
