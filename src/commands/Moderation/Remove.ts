@@ -19,7 +19,7 @@ export default class Command extends BaseCommand {
     run = async (M: ISimplifiedMessage): Promise<void> => {
         let text = '*Action*\n\n'
         if (!M.groupMetadata?.admins?.includes(this.client.user.jid))
-            return void M.reply(`❌ Failed to ${this.config.command}/nMake me admin first, Baka`)
+            return void M.reply(`❌ Failed to ${this.config.command}\nMake me admin first, Baka`)
         if (M.quoted?.sender) M.mentioned.push(M.quoted.sender)
         if (!M.mentioned.length) return void M.reply(`Please tag the users you want to ${this.config.command}`)
         M.mentioned.forEach(async (user) => {
