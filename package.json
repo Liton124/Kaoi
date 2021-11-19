@@ -65,6 +65,7 @@
         "pokedex-promise-v2": "^3.3.2",
         "qr-image": "^3.2.0",
         "spotifydl-core": "^0.1.2",
+        "translate-google": "^1.5.0",
         "ultra-lyrics": "^1.0.3",
         "wa-sticker-formatter": "^4.0.14",
         "yt-search": "^2.9.0",
