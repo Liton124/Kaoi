@@ -6,7 +6,7 @@ import { ISimplifiedMessage } from '../../typings'
 export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
-            command: 'admins',
+            command: 'admin',
             description: 'Tags all Admins 🎖️',
             category: 'general',
             usage: `${client.config.prefix}admins (Message)`,
