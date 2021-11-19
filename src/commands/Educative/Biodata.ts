@@ -28,7 +28,8 @@ export default class Command extends BaseCommand {
                 M.reply(text)
             })
             .catch((err) => {
-                M.reply(`Sorry, couldn't find country *${biodata}*\n📝 *Note:* Check https://api.abirhasan.wtf/bioDataGenerator for supported countries and codes.`)
+                M.reply(`Sorry, couldn't find country *${biodata}*\n📝 *Note:* Here's the supported list of countries`
+)
             })
     }
 }
