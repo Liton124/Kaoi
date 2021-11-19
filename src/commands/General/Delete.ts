@@ -8,7 +8,7 @@ export default class Command extends BaseCommand {
         super(client, handler, {
             command: 'delete',
             description: 'Deletes the quoted Message',
-            aliases: ['del', 'dlt']
+            aliases: ['del', 'dlt'],
             category: 'general',
             usage: `${client.config.prefix}delete`,
             adminOnly: true,
