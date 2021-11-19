@@ -1,6 +1,6 @@
 /** @format */
 
 declare module "oakdex-pokedex";
-declare module "mailis
+declare module "mailist";
 declare module "pokedex-promise-v2";
 
