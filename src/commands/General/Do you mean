@@ -6,11 +6,11 @@ import { ISimplifiedMessage } from '../../typings'
 export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
-            command: ""
+            command: '',
         })
     }
 
     run = async (M: ISimplifiedMessage): Promise<void> => {
-        return void (await M.reply(`Do you mean !help`))
+        return void (await M.reply(`Do you mean ${client.config.prefix}help`))
     }
 }
