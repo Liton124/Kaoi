@@ -21,7 +21,5 @@ declare module "node-myanimelist";
 declare module "trace.moe.ts";
 declare module "anilist-node";
 declare module "pokedex-promise-v2";
-declare module 'imgbb-uploader'
-declare module 'text-from-image'
-
-
+declare module 'imgbb-uploader';
+declare module 'text-from-image';
