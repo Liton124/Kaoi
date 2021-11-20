@@ -1,6 +1,6 @@
 {
     "name": "kaoi",
-    "version": "2.0.0",
+    "version": "3.0.0",
     "description": "A fully Object Oriented WhatsApp bot built with TypeScript",
     "main": "dist/kaoi.js",
     "scripts": {
