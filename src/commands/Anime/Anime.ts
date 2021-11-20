@@ -13,7 +13,7 @@ export default class Command extends BaseCommand {
 			command: "anime",
 			description: `Gives you the data of the given anime from MyAnimeList.`,
 			aliases: ["ani", "a"],
-			category: "weeb",
+			category: "anime",
 			usage: `${client.config.prefix}anime [title]`,
 			baseXp: 50,
 		});
