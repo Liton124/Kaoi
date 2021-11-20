@@ -34,7 +34,7 @@ export default class Command extends BaseCommand {
                 quoted: M.WAMessage,
                 contextInfo: {
                     externalAdReply: {
-                        title: videos[0].title.substr(0, 40),
+                        title: videos[0].title.substr(0, 50),
                         body: `author : ${videos[0].author.name.substr(0, 30)}\nSent Via : Kaoi`,
                         mediaType: 2,
                         thumbnailUrl: `https://i.ytimg.com/vi/${audio.id}/hqdefault.jpg`,
