@@ -12,7 +12,7 @@ export default class Command extends BaseCommand {
 			command: "translate",
 			aliases: ["tr"],
 			description: "Will translate the given word to your selected language. ",
-			category: "utils",
+			category: "media",
 			usage: `${client.config.prefix}tr <word>|<language_code>\n\nExample: ${client.config.prefix}tr zh-cn|Hello`,
 			baseXp: 40,
 		});
