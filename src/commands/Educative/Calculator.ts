@@ -1,5 +1,3 @@
-/** @format */
-
 import { evaluate } from "mathjs";
 import MessageHandler from "../../Handlers/MessageHandler";
 import BaseCommand from "../../lib/BaseCommand";
