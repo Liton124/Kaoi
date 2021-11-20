@@ -19,7 +19,6 @@ declare module "node-periodic-table";
 declare module "oakdex-pokedex";
 declare module "ptable";
 declare module "node-myanimelist";
-declare module "genius-lyrics";
 declare module "trace.moe.ts";
 declare module "anilist-node";
 declare module "pokedex-promise-v2";
