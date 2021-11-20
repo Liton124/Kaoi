@@ -24,7 +24,7 @@ export default class Command extends BaseCommand {
                 (text += `#${index + 1}\n🎫 *Username: ${
                     user.notify || user.vname || user.name || 'null'
                 }*\n🍀 *Contact: https://wa.me/+${user?.jid?.split('@')[0]}*\n\n`)
-         })
+        })
 
     }
 }
