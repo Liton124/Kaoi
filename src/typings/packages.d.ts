@@ -5,7 +5,6 @@ declare module "lolis.life";
 declare module "mathjs";
 declare module "node-fetch";
 declare module "genshin-db";
-declare module "shentai";
 declare module "mywaifulist-scraper";
 declare module "mangadex-full-api";
 declare module "mal-scraper";
