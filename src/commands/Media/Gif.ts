@@ -28,7 +28,7 @@ export default class Command extends BaseCommand {
 		const search = joined.trim();
 		const gif = await axios
 			.get(
-				`https://g.tenor.com/v1/search?q=${search}&key=${8UJ3QE2AORYF}&limit=100`
+				`https://g.tenor.com/v1/search?q=${search}&key={8UJ3QE2AORYF}&limit=100`
 			)
 			.catch(() => null);
 		if (!gif)
