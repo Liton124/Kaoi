@@ -7,8 +7,8 @@ import axios from 'axios'
 export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
-            command: 'calculate',
-            aliases: ['cal'],
+            command: 'calculator',
+            aliases: ['cal', 'calculate', 'calc'],
             description: 'Will solve the given question. ',
             category: 'educative',
             usage: `${client.config.prefix}calculator [question]`,
