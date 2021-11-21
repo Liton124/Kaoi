@@ -4,6 +4,7 @@ declare module "akaneko";
 declare module "lolis.life";
 declare module "mathjs";
 declare module "node-fetch";
+declare module "genius-lyrics";
 declare module "genshin-db";
 declare module "mywaifulist-scraper";
 declare module "mangadex-full-api";
