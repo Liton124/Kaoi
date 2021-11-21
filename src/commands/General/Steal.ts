@@ -11,7 +11,7 @@ export default class Command extends BaseCommand {
 			command: "steal",
 			aliases: ["take"],
 			description: "Will format the given sticker.",
-			category: "utils",
+			category: "general",
 			usage: `${client.config.prefix}steal [tag sticker]|pack_name|author`,
 			baseXp: 30,
 		});
