@@ -5,7 +5,7 @@ const DisabledCommandSchema = new Schema({
     command: {
         type: String,
         unique: true,
-        required: true
+        required: false
     },
     reason: {
         type: String,
