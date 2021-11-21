@@ -21,3 +21,4 @@ export default class Command extends BaseCommand {
         contextInfo: { mentionedJid: online }
     })
 }
+}
