@@ -17,7 +17,7 @@ export default class Command extends BaseCommand {
     }
 
     run = async (M: ISimplifiedMessage, { joined }: IParsedArgs): Promise<void> => {
-        if (!joined) return void M.reply('*Expressions:* \n2B = Addition(+)\n- = Subtraction(-)\n/ = Divide(÷)\n* = Multiply(×)\n')
+        if (!joined) return void M.reply('*Expressions:* \n+ = Addition(+)\n- = Subtraction(-)\n/ = Divide(÷)\n* = Multiply(×)\n')
         const solve = joined.trim()
         await axios.get(`https://api.mathjs.org/v4/?expr=(${solve})`)
         .then((response) => {
