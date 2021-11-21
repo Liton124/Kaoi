@@ -9,14 +9,12 @@ export default class Command extends BaseCommand {
         command: 'online',
             description: 'Deletes the quoted Message',
             aliases: ['on'],
-            category: 'generall',
-            usage: `${client.config.prefix}delete`,
-            adminOnly: true,
-            baseXp: 0
-
-let id = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : m.chat
-  let online = [...Object.keys(conn.chats.get(id).presences), conn.user.jid]
-  conn.reply(m.chat, 'List Online:\n' + online.map(v => '- @' + v.replace(/@.+/, '')).join`\n`, m, {
-    contextInfo: { mentionedJid: online }
-  })
+            category: 'general',
+            usage: `${client.config.prefix}online`,
+            baseXp: 10
+        let id = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : m.chat
+        let online = [...Object.keys(conn.chats.get(id).presences), conn.user.jid]
+        conn.reply(m.chat, 'List Online:\n' + online.map(v => '- @' + v.replace(/@.+/, '')).join`\n`, m, {
+        contextInfo: { mentionedJid: online }
+     })
 }
