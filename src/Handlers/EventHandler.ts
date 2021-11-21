@@ -22,7 +22,6 @@ export default class EventHandler {
                   .join(', ')}*`
             : event.action === 'remove'
             ? `*@${event.participants[0].split('@')[0]}* Bye. We'll miss you 💜`
-            : `*@${event.participants[0].split('@')[0]}* Gotta see you again.`
             : `*@${event.participants[0].split('@')[0]}* got ${this.client.util.capitalize(event.action)}d${
                   event.actor ? ` by *@${event.actor.split('@')[0]}*` : ''
               }`
