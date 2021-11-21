@@ -21,11 +21,11 @@ export default class Command extends BaseCommand {
     run = async (M: ISimplifiedMessage, { joined }: IParsedArgs): Promise<void> => {
         if (!joined) return void (await M.reply(`Please provide the subreddit you want to fetch`))
         const response = await redditFetcher(joined.toLowerCase().trim())
-        if ((response as { error: string }).error) return void (await M.reply('Invalid Subreddit'))
+        if ((response as { error: string }).error) return void (await M.reply('This SubReddit is not valid/accessible.'))
         const res = response as IRedditResponse
         if (res.nsfw && !(await this.client.getGroupData(M.from)).nsfw)
             return void M.reply(
-                `Cannot Display NSFW content before enabling. Use ${this.client.config.prefix}activate nsfw to activate nsfw`
+                `Cannot Display NSFW content as nsfw is not enabled for this group.`
             )
         const notFound = this.client.assets.get('404')
         const buffer = await request.buffer(res.url).catch((e) => {
