@@ -40,7 +40,7 @@ export default class Command extends BaseCommand {
     m.reply(teks, null, {
       contextInfo: {
         mentionedJid: conn.parseMention(teks)
-      })
+      },
     }
     await conn.sendGroupV4Invite(m.chat, jid, invite_code, invite_code_exp, false, 'Invitation to join my WhatsApp group', jpegThumbnail ? {
       jpegThumbnail
