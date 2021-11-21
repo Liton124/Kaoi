@@ -25,7 +25,7 @@ export default class Command extends BaseCommand {
 		const texts = joined.trim().split(",");
 		if (texts[0] === "")
 			return void M.reply(
-				`Use ${this.client.config.prefix}tr (word_that_you_wanna_translate|language_code)`
+				`Use ${this.client.config.prefix}tr (word_that_you_wanna_translate,language_code)`
 			);
 		const word = texts[0];
 		const code = texts[1];
