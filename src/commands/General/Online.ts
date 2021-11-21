@@ -18,7 +18,7 @@ export default class Command extends BaseCommand {
         let id = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : M.chat
         let online = [...Object.keys(M.chats.get(id).presences), M.user.jid]
         M.reply(M.chat, 'List Online:\n' + online.map(v => '- @' + v.replace(/@.+/, '')).join`\n`, M, {
-          contextInfo: { mentionedJid: online }
-        }
-    }
+        contextInfo: { mentionedJid: online }
+     })
+}
 }
