@@ -6,6 +6,13 @@ import { ISimplifiedMessage } from '../../typings'
 export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
+        command: 'online',
+            description: 'Deletes the quoted Message',
+            aliases: ['on'],
+            category: 'generall',
+            usage: `${client.config.prefix}delete`,
+            adminOnly: true,
+            baseXp: 0
 
 let id = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : m.chat
   let online = [...Object.keys(conn.chats.get(id).presences), conn.user.jid]
