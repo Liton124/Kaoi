@@ -2,11 +2,23 @@ import MessageHandler from '../../Handlers/MessageHandler'
 import BaseCommand from '../../lib/BaseCommand'
 import WAClient from '../../lib/WAClient'
 import { ISimplifiedMessage } from '../../typings'
+import { MessageType } from "@adiwajshing/baileys"
+export default class Command extends BaseCommand {
 
-let handler = async (m, { conn, text, participants, usedPrefix, command }) => {
-  if (!text) throw `_Enter number!_ \nExample:\n\n${usedPrefix + command + ' ' + global.owner[0]}`
-  let _participants = participants.map(user => user.jid)
-  let users = (await Promise.all(
+    constructor(client: WAClient, handler: MessageHandler) {
+        super(client, handler, {
+           command: 'add',
+            description: 'add user in group',
+            aliases: ['add'],
+            category: 'moderation',
+            usage: `${client.config.prefix}add`,
+            adminOnly: true
+        })
+    }
+    run = async (M: ISimplifiedMessage): Promise<void> => {
+        if (!text) throw `_Enter number!_ \nExample:\n\n${usedPrefix + command + ' ' + global.owner[0]}`
+        let _participants = participants.map(user => user.jid)
+        let users = (await Promise.all(
     text.split(',')
       .map(v => v.replace(/[^0-9]/g, ''))
       .filter(v => v.length > 4 && v.length < 20 && !_participants.includes(v + '@s.whatsapp.net'))
