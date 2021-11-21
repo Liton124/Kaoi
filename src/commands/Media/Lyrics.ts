@@ -20,7 +20,7 @@ export default class Command extends BaseCommand {
     run = async (M: ISimplifiedMessage, { joined }: IParsedArgs): Promise<void> => {
         if (!joined) return void M.reply('Give me a song name to fetch the lyrics, Baka!')
         const kaoi = joined.trim()
-        const Client = new Genius.Client(g6g1Pf0u0ql1sthTwLbFWJTSv)
+        const Client = new Genius.Client(this.client.config.geniuskey)
         const search = await Client.songs.search(kaoi)
         if(search.error) return void M.reply(`Couldn't find any matching song results.`)
         const lyrics = await search[0].lyrics()
