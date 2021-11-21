@@ -13,7 +13,7 @@ export default class Command extends BaseCommand {
 			aliases: ["tr"],
 			description: "Will translate the given word to your selected language. ",
 			category: "media",
-			usage: `${client.config.prefix}tr <word>|<language_code>\n\nExample: ${client.config.prefix}tr zh-cn|Hello`,
+			usage: `${client.config.prefix}tr <word><language_code>\n\nExample: ${client.config.prefix}tr zh-cn Hello`,
 			baseXp: 40,
 		});
 	}
@@ -22,7 +22,7 @@ export default class Command extends BaseCommand {
 		M: ISimplifiedMessage,
 		{ joined }: IParsedArgs
 	): Promise<void> => {
-		const texts = joined.trim().split("|");
+		const texts = joined.trim().split(" ");
 		if (texts[0] === "")
 			return void M.reply(
 				`Use ${this.client.config.prefix}tr (word_that_you_wanna_translate|language_code)`
