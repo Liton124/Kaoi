@@ -12,8 +12,8 @@ export default class Command extends BaseCommand {
 			command: "translate",
 			aliases: ["tr"],
 			description: "Will translate the given word to your selected language. ",
-			category: "media",
-			usage: `${client.config.prefix}tr <word> <language_code>\n\nExample: ${client.config.prefix}tr zh-cn|Hello`,
+			category: "utils",
+			usage: `${client.config.prefix}tr <word>|<language_code>\n\nExample: ${client.config.prefix}tr zh-cn|Hello`,
 			baseXp: 40,
 		});
 	}
@@ -25,7 +25,7 @@ export default class Command extends BaseCommand {
 		const texts = joined.trim().split("|");
 		if (texts[0] === "")
 			return void M.reply(
-				`Use ${this.client.config.prefix}tr (word_that_you_wanna_translate language_code)`
+				`Use ${this.client.config.prefix}tr (word_that_you_wanna_translate|language_code)`
 			);
 		const word = texts[0];
 		const code = texts[1];
