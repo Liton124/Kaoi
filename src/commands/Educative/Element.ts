@@ -1,7 +1,4 @@
-/** @format */
-
-import MessageHandler from "../../Handlers/MessageHandler";
-import BaseCommand from "../../lib/BaseCommand";
+import MessageHandler from "../../Handlers/MessageHandler"import BaseCommand from "../../lib/BaseCommand";
 import WAClient from "../../lib/WAClient";
 import { IParsedArgs, ISimplifiedMessage } from "../../typings";
 import pTable from "ptable";
@@ -25,8 +22,8 @@ export default class Command extends BaseCommand {
 	): Promise<void> => {
 		if (!joined)
 			return void M.reply("Give me an element name/number/symbol, Baka!");
-		const chitoge = joined.trim();
-		const search = await pTable(chitoge);
+		const kaoi = joined.trim();
+		const search = await pTable(kaoi);
 		if (search === undefined) {
 			return void M.reply(
 				`*https://en.m.wikipedia.org/wiki/Periodic_table*\n\nI think this might help you.\n`
