@@ -16,9 +16,7 @@ export default class Command extends BaseCommand {
             baseXp: 30
         }
         const owner = this.client.contacts[metadata.owner]
-        return {
-            
-            caption: `💮 *Title:* ${metadata.subject}\n\n👑 *Created By:* ${
+        let text = `💮 *Title:* ${metadata.subject}\n\n👑 *Created By:* ${
                 owner?.notify || owner?.vname || owner?.name || metadata.owner.split('@')[0]
             }\n\n📅 *Created On:* ${moment(metadata.creation * 1000).format('DD/MM HH:mm:ss')}\n\n🔊 *Announce:* ${
                 metadata.announce || false
@@ -29,6 +27,6 @@ export default class Command extends BaseCommand {
             }\n\n🎯 *Moderation:* ${mod}\n\n🔮 *Events:* ${events}\n\n🌟 *Safe:* ${safe}\n\n🔞 *NSFW:* ${NSFW}\n\n〽 *Description:* \n${
                 metadata.desc
         
-        };
+    
 
 }
