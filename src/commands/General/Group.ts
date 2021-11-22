@@ -1,4 +1,21 @@
-const owner = this.client.contacts[metadata.owner]
+import { MessageType } from '@adiwajshing/baileys'
+import MessageHandler from '../../Handlers/MessageHandler'
+import BaseCommand from '../../lib/BaseCommand'
+import request from '../../lib/request'
+import WAClient from '../../lib/WAClient'
+import { ISimplifiedMessage } from '../../typings'
+
+export default class Command extends BaseCommand {
+    constructor(client: WAClient, handler: MessageHandler) {
+        super(client, handler, {
+            command: 'groupinfo',
+            description: 'Displays group info 📜',
+            category: 'general',
+            usage: `${client.config.prefix}groupinfo`,
+            aliases: ['grupinfo', 'grinfo'],
+            baseXp: 30
+        }
+        const owner = this.client.contacts[metadata.owner]
         return {
             body: icon ? await Utils.download(icon) : await readFile(join(this.client.assets, 'images', 'yui.jpg')),
             caption: `💮 *Title:* ${metadata.subject}\n\n👑 *Created By:* ${
@@ -11,3 +28,5 @@ const owner = this.client.contacts[metadata.owner]
                 metadata.participants.filter((participant: { isAdmin: unknown }) => participant.isAdmin).length
             }\n\n🎯 *Moderation:* ${mod}\n\n🔮 *Events:* ${events}\n\n🌟 *Safe:* ${safe}\n\n🔞 *NSFW:* ${NSFW}\n\n〽 *Description:* \n${
                 metadata.desc
+            
+
