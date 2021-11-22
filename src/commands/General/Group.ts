@@ -15,17 +15,19 @@ export default class Command extends BaseCommand {
             aliases: ['grupinfo', 'grinfo'],
             baseXp: 30
         }
-        const owner = this.client.contacts[metadata.owner]
-        let text = `💮 *Title:* ${metadata.subject}\n\n👑 *Created By:* ${
+        run = async (M: ISimplifiedMessage): Promise<void> => {
+            const owner = this.client.contacts[metadata.owner]
+            let text = `💮 *Title:* ${metadata.subject}\n\n👑 *Created By:* ${
                 owner?.notify || owner?.vname || owner?.name || metadata.owner.split('@')[0]
-            }\n\n📅 *Created On:* ${moment(metadata.creation * 1000).format('DD/MM HH:mm:ss')}\n\n🔊 *Announce:* ${
+               }\n\n📅 *Created On:* ${moment(metadata.creation * 1000).format('DD/MM HH:mm:ss')}\n\n🔊 *Announce:* ${
                 metadata.announce || false
-            }\n\n🍀 *Restricted:* ${metadata.restrict || metadata.restrict || false}\n\n🏊 *Participants:* ${
-                metadata.participants.length
-            }\n\n🏅 *Admins:* ${
+               }\n\n🍀 *Restricted:* ${metadata.restrict || metadata.restrict || false}\n\n🏊 *Participants:* ${
+                 metadata.participants.length
+               }\n\n🏅 *Admins:* ${
                 metadata.participants.filter((participant: { isAdmin: unknown }) => participant.isAdmin).length
-            }\n\n🎯 *Moderation:* ${mod}\n\n🔮 *Events:* ${events}\n\n🌟 *Safe:* ${safe}\n\n🔞 *NSFW:* ${nsfw}\n\n〽 *Description:* \n${
+               }\n\n🎯 *Moderation:* ${mod}\n\n🔮 *Events:* ${events}\n\n🌟 *Safe:* ${safe}\n\n🔞 *NSFW:* ${nsfw}\n\n〽 *Description:* \n${
                 metadata.desc
-    return void (await M.reply(text))
-    
+            return void (await M.reply(text))
+        };
+    }
 }
