@@ -28,7 +28,7 @@ export default class Command extends BaseCommand {
 		const results = await wiki.summary(query).catch((err: any) => {
 			return void M.reply(`No page with given query exist, Baka!`);
 		});
-		const text = `*🌐 URL: ${results.content_urls.mobile.page}*\n\n*🎀 Title: ${results.title}*\n *📜 Description: ${results.description}*\n\n*❄ Summary:* ${results.extract}`;
+		const text = `*🌐 URL: ${results.content_urls.mobile.page}*\n\n*Language: ${results.language}*\n*🎀 Title: ${results.title}*\n *📜 Description: ${results.description}*\n\n*❄ Summary:* ${results.extract}`;
 		await M.reply(text);
 	};
 }
