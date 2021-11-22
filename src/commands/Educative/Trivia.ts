@@ -30,7 +30,7 @@ export default class Command extends BaseCommand {
 			)
 			.then((response) => {
 				// console.log(response);
-				const text = `🎀 *Category: ${response.data.results[0].category}*\n❄ *Difficulty: ${response.data.results[0].difficulty}*\n📒 *Question:${response.data.results[0].question}*\n\n\n🎋 *Answer: ${response.data.results[0].correct_answer}*\n `;
+				const text = `🎀 *Category:* ${response.data.results[0].category}\n❄ *Difficulty:* ${response.data.results[0].difficulty}\n📒 *Question:* ${response.data.results[0].question}*\n\n\n🎋 *Answer:* ${response.data.results[0].correct_answer}\n `;
 				M.reply(text);
 			})
 			.catch((err) => {
