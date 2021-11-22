@@ -74,6 +74,7 @@ export default class MessageHandler {
         if (user.ban) return void M.reply("You're Banned from using commands.")
         const state = await this.client.DB.disabledcommands.findOne({ command: command.config.command })
         if (state) return void M.reply(`❌ Ehh, this command is disabled${state.reason ? ` for ${state.reason}` : ''}`)
+        if (!command.config?.dm && M.chat === 'dm') return void M.reply('.....')
         if (command.config?.modsOnly && !this.client.config.mods?.includes(M.sender.jid)) {
             return void M.reply(`This command is only for MODS, Baka!`)
         }
