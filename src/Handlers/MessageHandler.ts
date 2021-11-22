@@ -69,11 +69,11 @@ export default class MessageHandler {
                 sender.username
             )} in ${chalk.cyanBright(groupMetadata?.subject || 'DM')}`
         )
+        if (!command) return void M.reply('BAKA! this is unlisted command. Try using one from the helplist.')
         const user = await this.client.getUser(M.sender.jid)
         if (user.ban) return void M.reply("You're Banned from using commands.")
         const state = await this.client.DB.disabledcommands.findOne({ command: command.config.command })
-        if (state) return void M.reply(`❌ This command is disabled${state.reason ? ` for ${state.reason}` : ''}`)
-        if (!command.config?.dm && M.chat === 'dm') return void M.reply('This command can only be used in groups, Baka!')
+        if (state) return void M.reply(`❌ Ehh, this command is disabled${state.reason ? ` for ${state.reason}` : ''}`)
         if (command.config?.modsOnly && !this.client.config.mods?.includes(M.sender.jid)) {
             return void M.reply(`This command is only for MODS, Baka!`)
         }
