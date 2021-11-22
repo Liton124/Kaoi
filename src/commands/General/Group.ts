@@ -24,8 +24,8 @@ export default class Command extends BaseCommand {
                 metadata.participants.length
             }\n\n🏅 *Admins:* ${
                 metadata.participants.filter((participant: { isAdmin: unknown }) => participant.isAdmin).length
-            }\n\n🎯 *Moderation:* ${mod}\n\n🔮 *Events:* ${events}\n\n🌟 *Safe:* ${safe}\n\n🔞 *NSFW:* ${NSFW}\n\n〽 *Description:* \n${
+            }\n\n🎯 *Moderation:* ${mod}\n\n🔮 *Events:* ${events}\n\n🌟 *Safe:* ${safe}\n\n🔞 *NSFW:* ${nsfw}\n\n〽 *Description:* \n${
                 metadata.desc
-        return void (await M.reply(text)),
+    return void (await M.reply(text))
     
 }
