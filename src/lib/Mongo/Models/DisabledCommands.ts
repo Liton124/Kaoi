@@ -9,7 +9,7 @@ const DisabledCommandSchema = new Schema({
     },
     reason: {
         type: String,
-        required: false
+        required: true
     }
 })
 
