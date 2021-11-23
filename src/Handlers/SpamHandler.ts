@@ -1,21 +1,21 @@
+import MessageHandler from "../../Handlers/MessageHandler";
 import BaseCommand from '../lib/BaseCommand'
 import WAClient from '../lib/WAClient'
 import { ISimplifiedMessage } from '../typings'
-       (!m.message) return
+       if (!M.message) return
         this.spam = this.spam ? this.spam : {}
-        if (m.sender in this.spam) {
-            this.spam[m.sender].count++
-            if (m.messageTimestamp.toNumber() - this.spam[m.sender].lastspam > 10) {
-                if (this.spam[m.sender].count > 10) {
-                    //global.db.data.users[m.sender].banned = true
-                    m.reply('*Jangan Spam!!*')
+        if (M.sender in this.spam) {
+            this.spam[M.sender].count++
+            if (M.messageTimestamp.toNumber() - this.spam[M.sender].lastspam > 20) {
+                if (this.spam[M.sender].count > 10) {
+                    M.reply('*Jangan Spam!!*')
                 }
-                this.spam[m.sender].count = 0
-                this.spam[m.sender].lastspam = m.messageTimestamp.toNumber()
+                this.spam[M.sender].count = 0
+                this.spam[M.sender].lastspam = M.messageTimestamp.toNumber()
             }
         }
-        else this.spam[m.sender] = {
-            jid: m.sender,
+        else this.spam[M.sender] = {
+            jid: M.sender,
             count: 0,
             lastspam: 0
         }
