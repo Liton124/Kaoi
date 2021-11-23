@@ -5,22 +5,24 @@ import { ISimplifiedMessage } from '../typings'
 
 export default class SpamHandler {
     constructor(public client: WAClient, handler: MessageHandler) {}
-    if (!M.message) return
+    async all(m) {
+        if (!m.message) return
         this.spam = this.spam ? this.spam : {}
-        if (M.sender in this.spam) {
-            this.spam[M.sender].count++
-            if (M.messageTimestamp.toNumber() - this.spam[M.sender].lastspam > 10) {
-                if (this.spam[M.sender].count > 10) {
-                    //global.db.data.users[M.sender].banned = true
-                    M.reply('*Jangan Spam!!*')
+        if (m.sender in this.spam) {
+            this.spam[m.sender].count++
+            if (m.messageTimestamp.toNumber() - this.spam[m.sender].lastspam > 10) {
+                if (this.spam[m.sender].count > 10) {
+                    //global.db.data.users[m.sender].banned = true
+                    m.reply('*Jangan Spam!!*')
                 }
-                this.spam[M.sender].count = 0
-                this.spam[M.sender].lastspam = m.messageTimestamp.toNumber()
+                this.spam[m.sender].count = 0
+                this.spam[m.sender].lastspam = m.messageTimestamp.toNumber()
             }
         }
-        else this.spam[M.sender] = {
-            jid: M.sender,
+        else this.spam[m.sender] = {
+            jid: m.sender,
             count: 0,
             lastspam: 0
         }
     }
+}
