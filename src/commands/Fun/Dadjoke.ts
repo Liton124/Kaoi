@@ -27,7 +27,6 @@ export default class Command extends BaseCommand {
             let text = M.reply(text);
         })
         .catch((err) => {
-        M.reply(`🔍 Error: ${err}`)
-          
+        M.reply(`🔍 Error: ${err}`) 
     }
 }
