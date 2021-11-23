@@ -21,10 +21,10 @@ export default class Command extends BaseCommand {
             .get(`https://icanhazdadjoke.com/`)
             .then((response) => {
                 // console.log(response);
-                const id = `${response.data.id}
-                const joke = `${response.data.joke}
-                const status = `${response.data.status}
-            let text = M.reply(text)
+                const id = `${response.data.id}`
+                const joke = `${response.data.joke}`
+                const status = `${response.data.status}`
+            let text = M.reply(text);
         })
         .catch((err) => {
         M.reply(`🔍 Error: ${err}`)
