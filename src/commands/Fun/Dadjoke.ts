@@ -18,15 +18,14 @@ export default class Command extends BaseCommand {
 
     run = async (M: ISimplifiedMessage): Promise<void> => {
         await axios
-            .get(`https://icanhazdadjoke.com/`)
+            .get(`https://api.adviceslip.com/advice`)
             .then((response) => {
                 // console.log(response);
-                const id = `${response.data.id}`
-                const joke = `${response.data.joke}`
-                const status = `${response.data.status}`
-            let text = M.reply(text);
-        })
-        .catch((err) => {
-        M.reply(`🔍 Error: ${err}`) 
+                const text = `*ID:* ${response.data.id}\n\n*Joke:* ${response.data.joke}\n\n*Status:* ${response.data.status}`
+                M.reply(text)
+            })
+            .catch((err) => {
+                M.reply(`🔍 Error: ${err}`)
+            })
     }
 }
