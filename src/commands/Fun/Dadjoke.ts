@@ -9,7 +9,7 @@ export default class Command extends BaseCommand {
         super(client, handler, {
             command: 'dadjoke',
             description: 'Gives you random Dad Joke.',
-            aliases:'djoke',
+            aliases: ['djoke'],
             category: 'fun',
             usage: `${client.config.prefix}dadjoke`,
             baseXp: 30
