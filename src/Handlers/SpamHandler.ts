@@ -15,7 +15,8 @@ import { ISimplifiedMessage } from '../typings'; {
                 }
                 this.spam[M.sender].count = 0
                 this.spam[M.sender].lastspam = M.messageTimestamp.toNumber()
-            }        }
+            }  
+        }      
         else this.spam[M.sender] = {
             jid: M.sender,
             count: 0,
