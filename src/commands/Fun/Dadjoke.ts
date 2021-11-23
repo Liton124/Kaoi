@@ -21,7 +21,7 @@ export default class Command extends BaseCommand {
             .get(`https://icanhazdadjoke.com/`)
             .then((response) => {
                 // console.log(response);
-                const text = `Joke: ${response.data.id.joke}`
+                const text = `Joke: ${response.data.id.joke.status}`
                 M.reply(text)
             })
             .catch((err) => {
