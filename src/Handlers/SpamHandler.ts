@@ -3,7 +3,7 @@ import BaseCommand from '../lib/BaseCommand'
 import WAClient from '../lib/WAClient'
 import { ISimplifiedMessage } from '../typings'
 
-export default class EventHandler {
+export default class SpamHandler {
     constructor(public client: WAClient) {}
     if (!m.message) return
         this.spam = this.spam ? this.spam : {}
