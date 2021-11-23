@@ -1,5 +1,7 @@
-import MessageHandler from '../../lib'
-import  (!m.message) return
+import BaseCommand from '../lib/BaseCommand'
+import WAClient from '../lib/WAClient'
+import { ISimplifiedMessage } from '../typings'
+       (!m.message) return
         this.spam = this.spam ? this.spam : {}
         if (m.sender in this.spam) {
             this.spam[m.sender].count++
