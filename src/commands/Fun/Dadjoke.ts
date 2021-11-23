@@ -22,7 +22,6 @@ export default class Command extends BaseCommand {
             .then((response) => {
                 // console.log(response);
                 const text = `ID: ${response.data.id}\n\n Joke: ${response.data.joke}\n\n status: ${response.data.status}`
-`
                 M.reply(text)
             })
             .catch((err) => {
