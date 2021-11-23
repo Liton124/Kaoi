@@ -8,8 +8,8 @@ export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
             command: 'dadjoke',
-            aliases:'djoke',
             description: 'Gives you random Dad Joke.',
+            aliases:'djoke',
             category: 'fun',
             usage: `${client.config.prefix}dadjoke`,
             baseXp: 30
