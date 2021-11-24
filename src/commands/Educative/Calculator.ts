@@ -1,32 +1,30 @@
+/** @format */
+
+import { evaluate } from 'mathjs'
 import MessageHandler from '../../Handlers/MessageHandler'
 import BaseCommand from '../../lib/BaseCommand'
 import WAClient from '../../lib/WAClient'
 import { IParsedArgs, ISimplifiedMessage } from '../../typings'
-import axios from 'axios'
 
 export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
             command: 'calculator',
-            aliases: ['cal', 'calculate', 'calc'],
-            description: 'Will solve the given question. ',
+            aliases: ['calc'],
+            description: 'Calculates the given value. ',
             category: 'educative',
-            usage: `${client.config.prefix}calculator [question]`,
-            baseXp: 50
+            usage: `${client.config.prefix}calc [value]`,
+            baseXp: 20
         })
     }
 
     run = async (M: ISimplifiedMessage, { joined }: IParsedArgs): Promise<void> => {
-        if (!joined) return void M.reply('*Expressions:* \n+ = Addition(+)\n- = Subtraction(-)\n/ = Divide(÷)\n* = Multiply(×)\n')
-        const solve = joined.trim()
-        await axios.get(`https://api.mathjs.org/v4/?expr=(${solve})`)
-        .then((response) => {
-                // console.log(response);
-                const text = `「 CALCULATOR 」\n\n${solve} = ${response.data}`
-                M.reply(text);
-            }).catch(err => {
-                M.reply(`✖ Invalid Expression.\nUse ${this.client.config.prefix}calc to see the expressions.`)
-            }
-            )
-    };
+        if (!joined) return void M.reply('Provide the value to calculate, Baka!')
+        const value = joined.trim()
+        const calc = evaluate(value);
+				const text = `💡 *Solution for ${value} = ${calc}*`;
+        await M.reply(text)
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            .catch((reason: any) => M.reply(`${reason}`))
+    }
 }
