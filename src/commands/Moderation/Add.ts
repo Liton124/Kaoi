@@ -30,6 +30,8 @@ export default class Command extends BaseCommand {
               this.client.isOnWhatsApp(v + '@s.whatsapp.net')
          
 ])
+              if (this.client.user.jid === user)
+              let text+= `User has added`
             
               await this.client.groupAdd(M.from, [user])
             }
