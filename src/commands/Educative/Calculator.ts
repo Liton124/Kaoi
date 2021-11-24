@@ -22,7 +22,7 @@ export default class Command extends BaseCommand {
         if (!joined) return void M.reply('Provide the value to calculate, Baka!')
         const value = joined.trim()
         const calc = evaluate(value);
-				const text = ` 「 CALCULATOR 」\n\n *Given Value:* ${value} \n\n *Solution:* ${solution}\n`;
+				const text = ` 「 CALCULATOR 」\n\n *Given Value:* ${value} \n\n *Solution:* ${calc}\n`;
         await M.reply(text)
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             .catch((reason: any) => M.reply(`${reason}`))
