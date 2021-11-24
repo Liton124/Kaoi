@@ -57,7 +57,7 @@ export default class Command extends BaseCommand {
             role = '💎 Supreme'
         } else { 
             role = '❄️ Mystic'
-
+        }
         let level
         if (xp < 500) {
             level = '1'
@@ -85,7 +85,7 @@ export default class Command extends BaseCommand {
             level = '12' 
         } else {
             level = 'max'
-        
+        }
         await M.reply(
             await request.buffer(
                 pfp ||
