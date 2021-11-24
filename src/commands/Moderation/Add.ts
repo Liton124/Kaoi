@@ -24,20 +24,14 @@ export default class Command extends BaseCommand {
         if (!M.mentioned.length) return void M.reply(`Please enter the numbers you want to ${this.config.command}`)
         M.mentioned.forEach(async (user) => {
             .map(v => v.replace(/[^0-9]/g, ''))
-      .filter(v => v.length > 4 && v.length < 20 && !_participants.includes(v + '@s.whatsapp.net'))
-      .map(async v => [
-        v,
-        await conn.isOnWhatsApp(v + '@s.whatsapp.net')
-      ])
-            // const usr = this.client.contacts[user]
-            // const username = usr.notify || usr.vname || usr.name || user.split('@')[0]
-            }
-            // check if user is Bot
-            else if (this.client.user.jid === user) {
-                text += `*@${user.split('@')[0]}* is me, baka.\n`
-            } else {
-                text += `*@${user.split('@')[0]}* is removed 🧨\n`
-                await this.client.groupAdd(M.from, [user])
+            .filter(v => v.length > 4 && v.length < 20 && !_participants.includes(v + '@s.whatsapp.net'))
+            .map(async v => [
+              v,
+              this.client.isOnWhatsApp(v + '@s.whatsapp.net')
+         
+])
+            
+              await this.client.groupAdd(M.from, [user])
             }
         })
         await M.reply(`${text}`, undefined, undefined, [...M.mentioned, M.sender.jid])
