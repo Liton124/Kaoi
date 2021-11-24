@@ -22,11 +22,14 @@ export default class Command extends BaseCommand {
             return void M.reply(`❌ Failed to ${this.config.command}, make me ADMIN first, baka`)
         if (M.quoted?.sender) M.mentioned.push(M.quoted.sender)
         if (!M.mentioned.length) return void M.reply(`Please enter the numbers you want to ${this.config.command}`)
-        M.mentioned.forEach(async (user) => {
-            // const usr = this.client.contacts[user]
-            // const username = usr.notify || usr.vname || usr.name || user.split('@')[0]
-            if (M.groupMetadata?.owner.split('@')[0] === user.split('@')[0]) {
-                text += `*@${user.split('@')[0]}* is owner, baka.\n`
+        text.split(',')
+      .map(v => v.replace(/[^0-9]/g, ''))
+      .filter(v => v.length > 4 && v.length < 20 && !_participants.includes(v + '@s.whatsapp.net'))
+      .map(async v => [
+        v,
+        await conn.isOnWhatsApp(v + '@s.whatsapp.net')
+      ])
+  )).filter(v => v[1]).map(v => v[0] + '@c.us')
             }
             // check if user is Bot
             else if (this.client.user.jid === user) {
