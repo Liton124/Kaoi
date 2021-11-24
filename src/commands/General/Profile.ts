@@ -67,21 +67,24 @@ export default class Command extends BaseCommand {
             level = '3'
         } else if (xp < 5000) {
             level = '4'
-        } else if (xp < 10000) {
+        } else if (xp < 7500) { 
             level = '5'
-        } else if (xp < 25000) {
+        } else if (xp < 10000) {
             level = '6'
-        } else if (xp < 50000) {
+        } else if (xp < 25000) {
             level = '7'
-        } else if (xp < 75000) {
+        } else if (xp < 50000) {
             level = '8'
-        } else if (xp < 100000) {
+        } else if (xp < 75000) {
             level = '9'
-        } else if (xp < 150000) {
+        } else if (xp < 100000) {
             level = '10'
-        } else { 
-            level = 'max' 
-        }
+        } else if (xp < 150000) {
+            level = '11'
+        } else if (xp < 200000) {
+            level = '12' 
+        } else {
+            level = 'max'
         
         await M.reply(
             await request.buffer(
