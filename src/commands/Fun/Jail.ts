@@ -24,10 +24,16 @@ export default class Command extends BaseCommand {
             ? this.client.getProfilePicture(M.mentioned[0])
             : this.client.getProfilePicture(M.quoted?.sender || M.sender.jid))
 
-            await axios.get(`https://some-random-api.ml/canvas/jail?avatar=${image}`)
-            .then((response)=>{
-                M.reply(response.data)
-            })
-
-    }
-}
+            const { data } = await axios.get('https://nekos.life/api/v2/img/fox_girl')
+            const buffer = await request.buffer(data.url).catch((e) => {
+            return void M.reply(e.message)
+        })
+        while (true) {
+            try {
+                M.reply(
+                    buffer || 'Could not send the image. Please try again later',
+                    MessageType.image,
+                    undefined,
+                    undefined,
+                    `*Awoo...*\n`,
+                    undefined
