@@ -10,7 +10,7 @@ export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
             command: 'calculator',
-            aliases: ['calc'],
+            aliases: ['calc', 'cal', 'calculate'],
             description: 'Calculates the given value. ',
             category: 'educative',
             usage: `${client.config.prefix}calc [value]`,
@@ -22,7 +22,7 @@ export default class Command extends BaseCommand {
         if (!joined) return void M.reply('Provide the value to calculate, Baka!')
         const value = joined.trim()
         const calc = evaluate(value);
-				const text = `💡 *Solution for ${value} = ${calc}*`;
+				const text = `「 CALCULATOR 」\n *Solution:*${value} = ${calc}\n`;
         await M.reply(text)
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             .catch((reason: any) => M.reply(`${reason}`))
