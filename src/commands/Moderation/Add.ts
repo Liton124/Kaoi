@@ -27,14 +27,12 @@ export default class Command extends BaseCommand {
             .filter(v => v.length > 4 && v.length < 20 && !_participants.includes(v + '@s.whatsapp.net'))
             .map(async v => [
               v,
-              this.client.isOnWhatsApp(v + '@s.whatsapp.net')
-         
-])
-              if (this.client.user.jid === user)
-              let text+= `User has added`
-              await this.client.groupAdd(M.from, [user])
-            }
-        })
+              this.client.isOnWhatsApp(v + '@s.whatsapp.net')])     
+            if (this.client.user.jid === user)
+            let text += `User has added`
+            await this.client.groupAdd(M.from, [user])
+            
+        }
         await M.reply(`${text}`, undefined, undefined, [...M.mentioned, M.sender.jid])
     }
 }
