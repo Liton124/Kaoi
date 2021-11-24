@@ -80,7 +80,7 @@ export default class Command extends BaseCommand {
         } else if (xp < 150000) {
             level = '10'
         } else { 
-            level = max 
+            level = 'max' 
         }
         
         await M.reply(
