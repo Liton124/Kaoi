@@ -14,7 +14,7 @@ export default class Command extends BaseCommand {
 			command: "wallpaper",
 			description: `Will send you random anime wallpaper of the given term.`,
 			aliases: ["wpaper"],
-			category: "weeb",
+			category: "anime",
 			usage: `${client.config.prefix}wallpaper [term]`,
 			baseXp: 20,
 		});
