@@ -26,5 +26,4 @@ export default class Command extends BaseCommand {
             }\n\n🎯 *Moderation:* ${mod}\n\n🔮 *Events:* ${events}\n\n🌟 *Safe:* ${safe}\n\n🔞 *NSFW:* ${NSFW}\n\n〽 *Description:* \n${
                 metadata.desc}`)
         }
-}
-            
+}       
