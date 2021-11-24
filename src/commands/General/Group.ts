@@ -10,7 +10,7 @@ export default class Command extends BaseCommand {
             description: 'Deletes the quoted Message',
             aliases: ['group', 'grup'],
             category: 'general',
-            usage: `${client.config.prefix}delete`
+            usage: `${client.config.prefix}delete`,
             baseXp: 0
         })
     }
