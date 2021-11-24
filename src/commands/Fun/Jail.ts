@@ -24,7 +24,7 @@ export default class Command extends BaseCommand {
             : this.client.getProfilePicture(M.quoted?.sender || M.sender.jid))
         const { data } = await axios.get('https://some-random-api.ml/canvas/jail?avatar=${image}')
         const buffer = await request.buffer(data.url).catch((e) => {
-            return void M.reply(e.message)
+            return void M.reply(any.message)
         })
     }
 }
