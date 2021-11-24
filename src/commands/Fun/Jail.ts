@@ -27,8 +27,6 @@ export default class Command extends BaseCommand {
             await axios.get(`https://some-random-api.ml/canvas/jail?avatar=${image}`)
             .then((response)=>{
                 M.reply(response.data)
-            }).catch((e)=>{
-                M.reply('sorry couldn\'t send the image')
             })
 
     }
