@@ -16,7 +16,7 @@ export default class Command extends BaseCommand {
     }
     run = async (M: ISimplifiedMessage): Promise<void> => {
         return void (await M.reply(`💮 *Title:* ${M.groupMetadata.subject}\n\n👑 *Created By:* ${
-                M.groupOwner?.notify || M.groupOwner?.vname || M.groupOwner?.name || M.groupMetadata.groupOwner.split('@')[0]
+                M.owner?.notify || M.owner?.vname || M.owner?.name || M.groupMetadata.owner.split('@')[0]
             }\n\n🔊 *Announce:* ${
                 M.groupMetadata.announce || false
             }\n\n🍀 *Restricted:* ${M.groupMetadata.restrict || M.groupMetadata.restrict || false}\n\n🏊 *Participants:* ${
