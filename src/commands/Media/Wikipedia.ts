@@ -12,7 +12,7 @@ export default class Command extends BaseCommand {
 			command: "wikipedia",
 			aliases: ["wiki"],
 			description: "Will fetch the result of the given query from wikipedia. ",
-			category: "utils",
+			category: "media",
 			usage: `${client.config.prefix}wiki [query]`,
 			baseXp: 20,
 		});
