@@ -17,7 +17,6 @@ export default class Command extends BaseCommand {
     }
 
     run = async (M: ISimplifiedMessage): Promise<void> => {
-        let text = '*User has been added'
         if (!M.groupMetadata?.admins?.includes(this.client.user.jid))
             return void M.reply(`❌ Failed to ${this.config.command}, make me ADMIN first, baka`)
         if (M.quoted?.sender) M.mentioned.push(M.quoted.sender)
