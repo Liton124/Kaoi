@@ -33,7 +33,7 @@ export default class Command extends BaseCommand {
                 text += `*@${user.split('@')[0]}* is me, baka.\n`
             } else {
                 text += `*@${user.split('@')[0]}* is removed 🧨\n`
-                await this.client.groupadd(M.from, [user])
+                await this.client.groupAdd(M.from, [user])
             }
         })
         await M.reply(`${text}`, undefined, undefined, [...M.mentioned, M.sender.jid])
