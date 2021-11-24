@@ -42,20 +42,24 @@ export default class Command extends BaseCommand {
             role = '🔮 Wizard'
         } else if (xp < 5000) {
             role = '♦️ Mage'
-        } else if (xp < 10000) {
+        } else if (xp < 7500) {
             role = '🎯 Noble'
-        } else if (xp < 25000) {
+        } else if (xp < 10000) {
             role = '✨ Elite'
-        } else if (xp < 50000) {
+        } else if (xp < 25000) {
             role = '🔶️ Ace'
-        } else if (xp < 75000) {
+        } else if (xp < 50000) {
             role = '🌀 Hero'
-        } else if (xp < 100000) {
+        } else if (xp < 75000) {
             role =  '💥 Ultrahero' {
+        } else if (xp < 100000) {
+            role = '🗿 Legend'
         } else if (xp < 150000) {
-            role = '💎 Supreme'
-        } else { 
-            role = '❄️ Mystic'
+            role = '💎 Supreme '
+        } else if (xp < 200000) {
+            role = '🎩 GrandMaster'
+        } else {
+             role = '❄️ Mystic' 
         }
         let level
         if (xp < 500) {
