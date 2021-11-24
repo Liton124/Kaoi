@@ -36,7 +36,7 @@ export default class Command extends BaseCommand {
                     key
                 ]
                     .map((command) => command.config?.command)
-                    .join(', ')}\`\`\`\n\n`
+                    .join(' \n')}\`\`\`\n\n`
             return void M.reply(
                 `${text} 🗃️ *Note: Use ${this.client.config.prefix}help <command_name> to view the command info*`
             )
