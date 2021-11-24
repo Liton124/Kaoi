@@ -26,7 +26,7 @@ export default class Command extends BaseCommand {
         const { data } = await axios.get('https://some-random-api.ml/canvas/jail?avatar=${image}')
         const buffer = await request.buffer(data.url).catch((e) => {
             return void M.reply(e.message)
-        }
-    }
+        })
+    
 }
 
