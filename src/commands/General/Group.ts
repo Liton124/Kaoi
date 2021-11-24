@@ -15,15 +15,14 @@ export default class Command extends BaseCommand {
         })
     }
     run = async (M: ISimplifiedMessage): Promise<void> => {
-        return void (await M.reply(`💮 *Title:* ${metadata.subject}\n\n👑 *Created By:* ${
-                owner?.notify || owner?.vname || owner?.name || metadata.owner.split('@')[0]
-            }\n\n📅 *Created On:* ${moment(metadata.creation * 1000).format('DD/MM HH:mm:ss')}\n\n🔊 *Announce:* ${
-                metadata.announce || false
-            }\n\n🍀 *Restricted:* ${metadata.restrict || metadata.restrict || false}\n\n🏊 *Participants:* ${
-                metadata.participants.length
+        return void (await M.reply(`💮 *Title:* ${groupMetadata.subject}\n\n👑 *Created By:* ${
+                owner?.notify || groupOwner?.vname || groupOwner?.name || groupMetadata.groupOwner.split('@')[0]
+            }\n\n📅 *Created On:* ${(groupMetadata.creation * 1000).format('DD/MM HH:mm:ss')}\n\n🔊 *Announce:* ${
+                groupMetadata.announce || false
+            }\n\n🍀 *Restricted:* ${groupMetadata.restrict || groupMetadata.restrict || false}\n\n🏊 *Participants:* ${
+                groupMetadata.participants.length
             }\n\n🏅 *Admins:* ${
-                metadata.participants.filter((participant: { isAdmin: unknown }) => participant.isAdmin).length
-            }\n\n🎯 *Moderation:* ${mod}\n\n🔮 *Events:* ${events}\n\n🌟 *Safe:* ${safe}\n\n🔞 *NSFW:* ${NSFW}\n\n〽 *Description:* \n${
-                metadata.desc}`))
+                groupMetadata.participants.filter((participant: { isAdmin: unknown }) => participant.isAdmin).length
+            }`))
         }
 }       
