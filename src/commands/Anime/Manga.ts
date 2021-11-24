@@ -41,7 +41,7 @@ export default class Command extends BaseCommand {
 		text += `🎗 *Total Chapters: ${search.data.anime.results[0].chapters}*\n`;
 		text += `✨ *Published on: ${search.data.anime.results[0].startDate.day}-${search.data.anime.results[0].startDate.month}-${search.data.anime.results[0].startDate.year}*\n`;
 		text += `🚫 *Eechi: ${search.data.anime.results[0].isAdult}*\n`;
-		text += `🌟 *Score: ${search.data.anime.results[0].meanScore}\n\n`;
+		text += `🌟 *Score: ${search.data.anime.results[0].meanScore}*\n\n`;
 		text += `🌐 *URL: ${search.data.anime.results[0].siteUrl}*\n\n`;
 		text += `❄️ *Description:* ${search.data.anime.results[0].description}`;
 		//	if (!search) return void M.reply(`Couldn't find any matching manga title.`);
