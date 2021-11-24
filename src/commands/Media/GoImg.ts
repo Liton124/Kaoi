@@ -40,3 +40,4 @@ export default class Command extends BaseCommand {
 			await M.reply(`Wait..`);
 		}
 	};
+}
