@@ -38,18 +38,18 @@ export default class Command extends BaseCommand {
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		const response = await npt.getByNumber(search.number);
 		let text = "";
-		text += `🔴 *Elelment: ${response.name}*\n`;
-		text += `⬜ *Atomic Number: ${response.number}*\n`;
-		text += `🟡 *Atomic Mass: ${response.atomic_mass}*\n`;
-		text += `⬛ *Symbol: ${response.symbol}*\n`;
-		text += `❓ *Appearance: ${response.apearance}*\n`;
-		text += `🟢 *Phase: ${response.phase}*\n`;
-		text += `♨️ *Boiling Point: ${response.boil} K*\n️`;
-		text += `💧 *Melting Point: ${response.melt} K*\n`;
-		text += `🟣 *Density: ${response.density} g/mL*\n`;
-		text += `⚫ *Shells: ${response.shells.join(", ")}*\n`;
-		text += `🌐 *URL: ${response.source}*\n\n`;
-		text += `💬 *Summary: ${response.summary}*`;
+		text += `🔴 *Element:* ${response.name}\n`;
+		text += `⬜ *Atomic Number:* ${response.number}\n`;
+		text += `🟡 *Atomic Mass:* ${response.atomic_mass}\n`;
+		text += `⬛ *Symbol:* ${response.symbol}\n`;
+		text += `❓ *Appearance:* ${response.apearance}\n`;
+		text += `🟢 *Phase:* ${response.phase}\n`;
+		text += `♨️ *Boiling Point:* ${response.boil} K\n️`;
+		text += `💧 *Melting Point:* ${response.melt} K\n`;
+		text += `🟣 *Density:* ${response.density} g/mL\n`;
+		text += `⚫ *Shells:* ${response.shells.join(", ")}\n`;
+		text += `🌐 *URL:* ${response.source}*\n\n`;
+		text += `💬 *Summary:* ${response.summary}`;
 		await M.reply(text);
 	};
 }
