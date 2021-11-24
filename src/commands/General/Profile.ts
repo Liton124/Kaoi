@@ -52,7 +52,7 @@ export default class Command extends BaseCommand {
         } else if (xp < 50000) {
             role = '🌀 Hero'
         } else if (xp < 75000) {
-            role =  '💥 Ultrahero' {
+            role =  '💥 Ultrahero' 
         } else if (xp < 100000) {
             role = '🗿 Legend'
         } else if (xp < 150000) {
