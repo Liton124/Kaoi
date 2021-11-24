@@ -14,7 +14,6 @@ export default class Command extends BaseCommand {
             baseXp: 30
         })
     }
-
     run = async (M: ISimplifiedMessage, { joined }: IParsedArgs): Promise<void> => {
         const image = await (M.WAMessage?.message?.imageMessage
             ? this.client.downloadMediaMessage(M.WAMessage)
