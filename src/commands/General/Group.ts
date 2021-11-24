@@ -14,7 +14,10 @@ export default class Command extends BaseCommand {
             adminOnly: true,
             baseXp: 0
         })
-    }caption: `💮 *Title:* ${metadata.subject}\n\n👑 *Created By:* ${
+    }
+    run = async (M: ISimplifiedMessage): Promise<void> => {
+        M.reply return void 
+        caption: `💮 *Title:* ${metadata.subject}\n\n👑 *Created By:* ${
                 owner?.notify || owner?.vname || owner?.name || metadata.owner.split('@')[0]
             }\n\n📅 *Created On:* ${moment(metadata.creation * 1000).format('DD/MM HH:mm:ss')}\n\n🔊 *Announce:* ${
                 metadata.announce || false
