@@ -11,7 +11,7 @@ import { ISimplifiedMessage } from "../../typings";
 export default class Command extends BaseCommand {
 	constructor(client: WAClient, handler: MessageHandler) {
 		super(client, handler, {
-			command: "sauce",
+			command: "asource",
 			description: `Gives you the source of the given anime scene.`,
 			aliases: ["trace", "source"],
 			category: "anime",
