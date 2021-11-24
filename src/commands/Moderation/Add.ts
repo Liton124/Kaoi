@@ -27,10 +27,11 @@ export default class Command extends BaseCommand {
             .map(async v => [
               v,
               this.client.isOnWhatsApp(v + '@s.whatsapp.net')])     
-            if (this.client.user.jid === user)
-            let text += `User has added`
-            await this.client.groupAdd(M.from, [user])   
-        }
+            if (this.client.user.jid === user) {
+               let text += `User has added`
+               await this.client.groupAdd(M.from, [user])   
+            }
+        })
         await M.reply(`${text}`, undefined, undefined, [...M.mentioned, M.sender.jid])
     }
 }
