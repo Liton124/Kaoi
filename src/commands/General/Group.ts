@@ -15,14 +15,6 @@ export default class Command extends BaseCommand {
         })
     }
     run = async (M: ISimplifiedMessage): Promise<void> => {
-        return void (await M.reply(`💮 *Title:* ${M.groupMetadata.subject}\n\n👑 *Created By:* ${
-                M.owner?.notify || M.owner?.vname || M.owner?.name || M.groupMetadata.owner.split('@')[0]
-            }\n\n🔊 *Announce:* ${
-                M.groupMetadata.announce || false
-            }\n\n🍀 *Restricted:* ${M.groupMetadata.restrict || M.groupMetadata.restrict || false}\n\n🏊 *Participants:* ${
-                M.groupMetadata.participants.length
-            }\n\n🏅 *Admins:* ${
-                M.groupMetadata.participants.filter((participant: { isAdmin: unknown }) => participant.isAdmin).length
-            }`))
+        return void (await M.reply(`💮 *Title:* ${M.groupMetadata.subject}\n\n👑 *Created By:* ${M.groupMetadata.owner?.notify || M.groupMetadata.owner?.vname || M.groupMetadata.owner?.name || M.groupMetadata.owner.split('@')[0]}\n\n🔊 *Announce:* ${M.groupMetadata.announce || false}\n\n🍀 *Restricted:* ${M.groupMetadata.restrict || M.groupMetadata.restrict || false}\n\n🏊 *Participants:* ${M.groupMetadata.participants.length}\n\n🏅 *Admins:* ${M.groupMetadata.participants.filter((participant: { isAdmin: unknown }) => participant.isAdmin).length}`))
         }
 }       
