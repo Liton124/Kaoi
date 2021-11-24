@@ -52,10 +52,11 @@ export default class Command extends BaseCommand {
         } else if (xp < 75000) {
             role = '🌀 Hero'
         } else if (xp < 100000) {
+            role =  '💥 Ultrahero' {
+        } else if (xp < 150000) {
             role = '💎 Supreme'
-        } else {
+        } else { 
             role = '❄️ Mystic'
-        }
 
         let level
         if (xp < 500) {
@@ -76,8 +77,10 @@ export default class Command extends BaseCommand {
             level = '8'
         } else if (xp < 100000) {
             level = '9'
-        } else {
-            level = 'Max'
+        } else if (xp < 150000) {
+            level = '10'
+        } else { 
+            level = max 
         }
         
         await M.reply(
