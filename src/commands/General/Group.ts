@@ -15,14 +15,14 @@ export default class Command extends BaseCommand {
         })
     }
     run = async (M: ISimplifiedMessage): Promise<void> => {
-        return void (await M.reply(`💮 *Title:* ${groupMetadata.subject}\n\n👑 *Created By:* ${
-                groupOwner?.notify || groupOwner?.vname || groupOwner?.name || groupMetadata.groupOwner.split('@')[0]
-            }\n\n📅 *Created On:* ${(groupMetadata.creation * 1000).format('DD/MM HH:mm:ss')}\n\n🔊 *Announce:* ${
-                groupMetadata.announce || false
-            }\n\n🍀 *Restricted:* ${groupMetadata.restrict || groupMetadata.restrict || false}\n\n🏊 *Participants:* ${
-                groupMetadata.participants.length
+        return void (await M.reply(`💮 *Title:* ${M.groupMetadata.subject}\n\n👑 *Created By:* ${
+                M.groupOwner?.notify || M.groupOwner?.vname || M.groupOwner?.name || M.groupMetadata.groupOwner.split('@')[0]
+            }\n\n🔊 *Announce:* ${
+                M.groupMetadata.announce || false
+            }\n\n🍀 *Restricted:* ${M.groupMetadata.restrict || M.groupMetadata.restrict || false}\n\n🏊 *Participants:* ${
+                M.groupMetadata.participants.length
             }\n\n🏅 *Admins:* ${
-                groupMetadata.participants.filter((participant: { isAdmin: unknown }) => participant.isAdmin).length
+                M.groupMetadata.participants.filter((participant: { isAdmin: unknown }) => participant.isAdmin).length
             }`))
         }
 }       
