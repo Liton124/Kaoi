@@ -12,7 +12,7 @@ export default class Command extends BaseCommand {
 			command: "wikipedia",
 			aliases: ["wiki"],
 			description: "Will fetch the result of the given query from wikipedia. ",
-			category: "media",
+			category: "utils",
 			usage: `${client.config.prefix}wiki [query]`,
 			baseXp: 20,
 		});
@@ -25,10 +25,8 @@ export default class Command extends BaseCommand {
 		if (!joined) return void M.reply("Provide a query, Baka!");
 		const query = joined.trim();
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		const results = await wiki.summary(query).catch((err: any) => {
-			return void M.reply(`No page with given query exist, Baka!`);
-		});
-		const text = `*🌐 URL:* ${results.content_urls.mobile.page}\n\n*🎋 Language:* en\n*🎀 Title:* ${results.title}\n*📜 Description:* ${results.description}\n\n*❄ Summary:* ${results.extract}`;
+		const results = await wiki.summary(query);
+		const text = `*🌐 URL: ${results.content_urls.mobile.page}*\n\n*🎀 Title: ${results.title}*\n *📜 Description: ${results.description}*\n\n*❄ Summary:* ${results.extract}`;
 		await M.reply(text);
 	};
 }
