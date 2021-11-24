@@ -27,8 +27,8 @@ export default class Command extends BaseCommand {
 		if (!joined)
 			return void (await M.reply(`Give me a wallpaper term to search, Baka!`));
 		const chitoge: any = joined.trim().split(",");
-		const term: string = kaoi[0];
-		const amount: number = kaoi[1];
+		const term: string = chitoge[0];
+		const amount: number = chitoge[1];
 		if (!amount)
 			return void M.reply(
 				`Give me the number of wallpapers to send, Baka!\n\nExample: *${this.client.config.prefix}wallpaper BTS,5*`
