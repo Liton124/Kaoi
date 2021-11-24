@@ -32,7 +32,6 @@ export default class Command extends BaseCommand {
 ])
               if (this.client.user.jid === user)
               let text+= `User has added`
-            
               await this.client.groupAdd(M.from, [user])
             }
         })
