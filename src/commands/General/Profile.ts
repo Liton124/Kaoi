@@ -59,7 +59,7 @@ export default class Command extends BaseCommand {
         } else if (xp < 200000) {
             role = '🎩 GrandMaster'
         } else {
-             role = '❄️ Mystic' 
+            role = '❄️ Mystic' 
         }
         let level
         if (xp < 500) {
