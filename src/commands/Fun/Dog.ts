@@ -21,7 +21,7 @@ export default class Command extends BaseCommand {
             .get(`https://some-random-api.ml/animal/dog`)
             .then((response) => {
                 // console.log(response);
-                const text = `image: ${image}, fact: ${fact}`
+                const text = `${image} fact: ${fact}`
                 M.reply(text)
             })
             .catch((err) => {
