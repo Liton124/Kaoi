@@ -21,7 +21,7 @@ export default class Command extends BaseCommand {
             .get(`https://icanhazdadjoke.com/slack`)
             .then((response) => {
                 // console.log(response);
-                const text = `*First person:* ${response.data.fallback}\n\n*Second person:* ${response.data.text}`
+                const text = `*First person:* ${response.data.attachments}\n\n*Second person:* ${response.data.fallback}`
                 M.reply(text)
             })
             .catch((err) => {
