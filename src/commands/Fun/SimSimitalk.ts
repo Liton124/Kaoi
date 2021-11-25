@@ -18,10 +18,7 @@ export default class Command extends BaseCommand {
 
     run = async (M: ISimplifiedMessage): Promise<void> => {
         await axios
-                .get(`${encodeURI(https://api.simsimi.net/v2/?text=${M.args.slice(1)}&lc=en
-                        
-                    )}`
-                )
+                .get(`${encodeURI(https://api.simsimi.net/v2/?text=${M.args.slice(1)}&lc=en&cf=false`))
                 .then((res) => {
                     if (res.status !== 200) return void M.reply(`🔍 Error: ${res.status}`)
                     return void M.reply(res.data.cnt)
