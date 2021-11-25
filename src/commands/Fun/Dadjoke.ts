@@ -19,8 +19,8 @@ export default class Command extends BaseCommand {
     run = async (M: ISimplifiedMessage): Promise<void> => {
         await axios
             .get(`https://icanhazdadjoke.com/slack`)
-            .then((response.json()) => {
-                // console.log(response);
+            .then(response.json()) => {
+                // console.log(response.json());
                 const text = `*dadjoke:* ${response.data.attachments[0].fallback}`
                 M.reply(text)
             })
