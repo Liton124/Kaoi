@@ -20,7 +20,7 @@ export default class Command extends BaseCommand {
         await axios
             .get(`https://icanhazdadjoke.com/slack`)
             .then(response.json()) => {
-                // console.log(response.json());
+                // console.log(response);
                 const text = `*dadjoke:* ${response.data.attachments[0].fallback}`
                 M.reply(text)
             })
