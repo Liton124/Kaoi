@@ -20,9 +20,8 @@ export default class Command extends BaseCommand {
         await axios
             .get(`https://some-random-api.ml/animal/dog`)
             .then((response) => {
-                // console.log(response);
-                const image = 
-                const text = `*Advice for you ${M.sender.username}:* ${response.data.slip.advice}`
+                // console.log(response); 
+                const text = `*🐶Fact:* ${response.data.fact} `
                 M.reply(text)
             })
             .catch((err) => {
