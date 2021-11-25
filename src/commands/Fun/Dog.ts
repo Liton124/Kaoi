@@ -9,9 +9,9 @@ export default class Command extends BaseCommand {
         super(client, handler, {
             command: 'dog',
             aliases: ['doggy'],
-            description: 'Gives you random advice.\nDisclaimer: We do not hold responsibility of consequences of your actions based on the advice.',
+            description: 'Gives you dog fact',
             category: 'fun',
-            usage: `${client.config.prefix}advice`,
+            usage: `${client.config.prefix}dog`,
             baseXp: 30
         })
     }
