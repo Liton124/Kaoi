@@ -22,4 +22,8 @@ export default class Command extends BaseCommand {
             return void M.reply(`❌ Failed to ${this.config.command}\nMake me admin first, Baka`)
         if (M.quoted?.sender) M.mentioned.push(M.quoted.sender)
         if (!M.mentioned.length) return void M.reply(`please enter the numbers you want to add`)
-        M.mentioned.forEach(async (user) => {
+        const num = `${args[0].replace(/ /g, '')}@s.whatsapp.net`
+            client.groupAdd(client.from, [num])
+        }
+    }
+ 
