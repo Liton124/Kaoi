@@ -18,11 +18,8 @@ export default class Command extends BaseCommand {
 
     run = async (M: ISimplifiedMessage): Promise<void> => {
         await axios
-                .get(
-                    `${encodeURI(
-                        `&uid=${
-                            M.from
-                        }&msg=${M.args.slice(1)}`
+                .get(`${encodeURI(https://api.simsimi.net/v2/?text=${M.args.slice(1)}&lc=en
+                        
                     )}`
                 )
                 .then((res) => {
