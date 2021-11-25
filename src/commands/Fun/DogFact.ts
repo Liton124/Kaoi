@@ -7,18 +7,18 @@ import axios from 'axios'
 export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
-            command: 'dog',
-            aliases: ['doggy'],
-            description: 'Gives you dog fact',
+            command: 'dogfact',
+            aliases: ['dogfact'],
+            description: 'Gives you a random dog fact',
             category: 'fun',
-            usage: `${client.config.prefix}dog`,
-            baseXp: 30
+            usage: `${client.config.prefix}dogfact`,
+            baseXp: 10
         })
     }
 
         run = async (M: ISimplifiedMessage): Promise<void> => {
         await axios
-            .get(`https://some-random-api.ml/animal/dog`)
+            .get(`https://some-random-api.ml/facts/dog`)
             .then((response) => {
                 // console.log(response); 
                 const text = `*🐶Fact:* ${response.data.fact} `
