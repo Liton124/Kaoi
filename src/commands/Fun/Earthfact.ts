@@ -7,7 +7,7 @@ import axios from 'axios'
 export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
-            command: 'advice',
+            command: 'earthfact',
             aliases: ['adv'],
             description: 'Gives you random advice.\nDisclaimer: We do not hold responsibility of consequences of your actions based on the advice.',
             category: 'fun',
