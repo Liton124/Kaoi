@@ -17,15 +17,22 @@ export default class Command extends BaseCommand {
     }
 
     run = async (M: ISimplifiedMessage): Promise<void> => {
-        await axios
-            .get(`https://some-random-api.ml/animal/dog`)
-            .then((response) => {
-                // console.log(response);
-                const text = `${response.data.image}, fact: ${response.data.fact}`
-                M.reply(text)
-            })
-            .catch((err) => {
-                M.reply(`🔍 Error: ${err}`)
-            })
-    }
-}
+        // fetch result of https://some-random-api.ml/animal/dog from the API using axios
+        const { data } = await axios.get('https://some-random-api.ml/animal/dog')
+        const buffer = await request.buffer(data.url).catch((e) => {
+            return void M.reply(e.message)
+        })
+        while (true) {
+            try {
+                M.reply(
+                    buffer || 'Could not fetch image. Please try again later',
+                    MessageType.image,
+                    undefined,
+                    undefined,
+                    `fact: ${response.data.fact}\n`,
+                    undefined
+                ).catch((e) => {
+                    console.log(`This Error occurs when an image is sent via M.reply()\n Child Catch Block : \n${e}`)
+                    // console.log('Failed')
+                    M.reply(`Could not fetch image. Here's the URL: ${data.url}`)
+                })
