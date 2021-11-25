@@ -36,3 +36,4 @@ export default class Command extends BaseCommand {
                     // console.log('Failed')
                     M.reply(`Could not fetch image. Here's the URL: ${data.url}`)
                 })
+}
