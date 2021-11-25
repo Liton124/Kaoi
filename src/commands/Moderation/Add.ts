@@ -23,7 +23,7 @@ export default class Command extends BaseCommand {
         if (M.quoted?.sender) M.mentioned.push(M.quoted.sender)
         if (!M.mentioned.length) return void M.reply(`please enter the numbers you want to add`)
         const num = `${args[0].replace(/ /g, '')}@s.whatsapp.net`
-            client.groupAdd(this.client.from, [num])
+        Await this.client.groupAdd(this.client.from, [num])
         }
     
 }
