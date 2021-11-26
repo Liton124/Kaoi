@@ -22,7 +22,7 @@ export default class Command extends BaseCommand {
             .get(`https://newton.now.sh/api/v2/factor/${value}`)
             .then((response) => {
                 // console.log(response);
-                const text = `*Value:* ${response.data.value}, result: ${response.data.resul} `
+                const text = `*Value:* ${value}, result: ${response.data.resul} `
                 M.reply(text)
             })
             .catch((err) => {
