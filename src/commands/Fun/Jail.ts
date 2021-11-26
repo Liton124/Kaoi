@@ -25,7 +25,7 @@ export default class Command extends BaseCommand {
             : this.client.getProfilePicture(M.quoted?.sender || M.sender.jid))
 
         await M.reply(
-            await request.buffer('https://some-random-api.ml/canvas/jail?avatar=${image}'),   
+            await Request.buffer('https://some-random-api.ml/canvas/jail?avatar=${image}'),   
             MessageType.image,
             undefined,
             undefined,
