@@ -29,8 +29,7 @@ export default class Command extends BaseCommand {
                 const text = `「 NCALCULATOR 」\n\n${value}= ${response.data.result} `
                 M.reply(text)
             })
-            .catch((err) => {
-                M.reply(`🔍 Error: ${err}`)
-            })
-    }
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            .catch((reason: any) => M.reply(`${reason}`) }
+        }
 }
