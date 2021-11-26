@@ -20,8 +20,8 @@ export default class Command extends BaseCommand {
 
     run = async (M: ISimplifiedMessage, { joined }: IParsedArgs): Promise<void> => {
         if (!joined) return void M.reply('Please provide me your name.')
-        const name = joined.trim()
-        await axios.get(`https://api.genderize.io/?name=${name}`)
+        const place = joined.trim()
+        await axios.get(`https://api.genderize.io/?name=${place}`)
 /* Note
   If you want to add some response, we'd recommend you to explore the json itself which provided link returns.
   This stability of the url and API KEY is not guaranteed.
@@ -29,7 +29,7 @@ export default class Command extends BaseCommand {
  */
         .then((response) => {
                 // console.log(response);
-                const text = ` 🛑 GENDER SEARCH....\n\n*🍁 NAME:* ${name}\n*🌠 GENDER:* ${response.data.gender}\n`
+                const text = ` 🛑 GENDER SEARCH....\n\n*🍁 NAME:* ${response.data.name}\n*🌠 GENDER:* ${response.data.gender}\n`
                 M.reply(text);
             }).catch(err => {
                 M.reply(`Sorry, couldn't find any data related to *${place}*.`)
