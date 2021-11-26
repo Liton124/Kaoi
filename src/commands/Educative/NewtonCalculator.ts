@@ -12,7 +12,7 @@ export default class Command extends BaseCommand {
         super(client, handler, {
             command: 'newtoncalculator',
             aliases: ['ncal', 'newtoncal', 'ncalc', 'newtoncalc'],
-            description: 'Calculates the given value. ',
+            description: 'calculates the symbolic and arithmetic value. ',
             category: 'educative',
             usage: `${client.config.prefix}ncal [value]`,
             baseXp: 20
@@ -20,7 +20,7 @@ export default class Command extends BaseCommand {
     }
 
     run = async (M: ISimplifiedMessage, { joined }: IParsedArgs): Promise<void> => {
-        if (!joined) return void M.reply('Provide the value to calculate, Baka!')
+        if (!joined) return void M.reply('Provide the arithmetic or symbolic value to calculate, Baka!')
         const value = joined.trim()
         await axios
             .get(`https://newton.now.sh/api/v2/factor/${value}`)
