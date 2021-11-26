@@ -29,7 +29,7 @@ export default class Command extends BaseCommand {
             MessageType.image,
             undefined,
             undefined,
-             `you have Been in Jailed 😁`)
+            `you have Been in Jailed 😁`)
     }
 }
     
