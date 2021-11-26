@@ -24,11 +24,15 @@ export default class Command extends BaseCommand {
             ? this.client.getProfilePicture(M.mentioned[0])
             : this.client.getProfilePicture(M.quoted?.sender || M.sender.jid))
 
-            await axios.get(
-            await request.buffer('https://some-random-api.ml/canvas/jail?avatar=${image}')
-    await M.reply('
-            ),
+        await M.reply(
+            await request.buffer('https://some-random-api.ml/canvas/jail?avatar=${image}'   
             MessageType.image,
             undefined,
             undefined,
+              `you have Been in Jailed,`
+    }
+}
+    
+
+           
         
