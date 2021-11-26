@@ -7,7 +7,7 @@ export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
             command: 'ncalculator',
-            aliases: ['ncal'],
+            aliases: ['ncal', 'ncalculate'],
             description: 'Calculates the given value. ',
             category: 'educative',
             usage: `${client.config.prefix}ncal [value]`,
