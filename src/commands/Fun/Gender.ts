@@ -12,7 +12,7 @@ export default class Command extends BaseCommand {
             command: 'gender',
             aliases: ['Gender'],
             description: 'I can tell your gender. ',
-            category: 'misc',
+            category: 'fun',
             usage: `${client.config.prefix}gender [Your_name]`,
             baseXp: 50
         })
