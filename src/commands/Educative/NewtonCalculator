@@ -18,10 +18,15 @@ export default class Command extends BaseCommand {
     run = async (M: ISimplifiedMessage, { joined }: IParsedArgs): Promise<void> => {
         if (!joined) return void M.reply('Provide the value to calculate, Baka!')
         const value = joined.trim()
-        const calc = evaluate(value);
-				const text = `💡 *Solution for ${value} = ${calc}*`;
-        await M.reply(text)
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            .catch((reason: any) => M.reply(`${reason}`))
+        await axios
+            .get(`https://api.adviceslip.com/advice`)
+            .then((response) => {
+                // console.log(response);
+                const text = `*Advice for you ${M.sender.username}:* ${response.data.slip.advice}`
+                M.reply(text)
+            })
+            .catch((err) => {
+                M.reply(`🔍 Error: ${err}`)
+            })
     }
 }
