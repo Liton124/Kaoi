@@ -28,15 +28,6 @@ export default class EventHandler {
         const contextInfo = {
             mentionedJid: event.actor ? [...event.participants, event.actor] : event.participants
         }
-        if (add) {
-            let image = (await this.client.getProfilePicture(event.jid)) || this.client.assets.get('404.png')
-            if (typeof image === 'string') image = await request.buffer(image)
-            if (image)
-                return void (await this.client.sendMessage(event.jid, image, MessageType.image, {
-                    caption: text,
-                    contextInfo
-                }))
-        }
         return void this.client.sendMessage(event.jid, text, MessageType.extendedText, { contextInfo })
     }
 }
