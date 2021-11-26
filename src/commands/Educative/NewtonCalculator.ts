@@ -26,10 +26,11 @@ export default class Command extends BaseCommand {
             .get(`https://newton.now.sh/api/v2/factor/${value}`)
             .then((response) => {
                 // console.log(response);
-                const text = `「 NEWTONCALCULATOR 」\n\n*${value}* = *${response.data.result}* `
+                const text = `「 NEWTONCALCULATOR 」\n\n*${value}* = *${response.data.result}*\n `
                 M.reply(text)
             })
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            .catch((reason: any) => M.reply(`${reason}`) }
-        }
+            .catch((err) => {
+                M.reply(`🔍 Error: ${err}`)
+            })
+    }
 }
