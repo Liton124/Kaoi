@@ -26,7 +26,7 @@ export default class Command extends BaseCommand {
             .get(`https://newton.now.sh/api/v2/factor/${value}`)
             .then((response) => {
                 // console.log(response);
-                const text = `「 NEWTONCALCULATOR 」\n\n📝 *Given Value:* ${value}\n\n💡 *Solution:* ${response.data.result}\n  `
+                const text = `「 NEWTONCALCULATOR 」\n\n📝 *_Given Value:_* _${value}_\n\n💡 *_Solution:_* _${response.data.result}_\n  `
                 M.reply(text)
             })
             .catch((err) => {
