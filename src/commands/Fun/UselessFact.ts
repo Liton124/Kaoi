@@ -21,7 +21,7 @@ export default class Command extends BaseCommand {
             .get(`https://uselessfacts.jsph.pl/random.json?language=en`)
             .then((response) => {
                 // console.log(response);
-                const text = `*Advice for you ${M.sender.username}:* ${response.data.slip.advice}`
+                const text = `*FACT:* ${M.responce.text}`
                 M.reply(text)
             })
             .catch((err) => {
