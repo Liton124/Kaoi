@@ -7,18 +7,18 @@ import axios from 'axios'
 export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
-            command: 'randomfact',
-            aliases: ['rndmfact'],
-            description: 'Gives you random advice.\nDisclaimer: We do not hold responsibility of consequences of your actions based on the advice.',
+            command: 'uselessfact',
+            aliases: ['uselessfact'],
+            description: 'Gives you a useless but true fact.',
             category: 'fun',
-            usage: `${client.config.prefix}advice`,
-            baseXp: 30
+            usage: `${client.config.prefix}uselessfact`,
+            baseXp: 20
         })
     }
 
     run = async (M: ISimplifiedMessage): Promise<void> => {
         await axios
-            .get(`https://api.adviceslip.com/advice`)
+            .get(`https://uselessfacts.jsph.pl/random.json?language=en`)
             .then((response) => {
                 // console.log(response);
                 const text = `*Advice for you ${M.sender.username}:* ${response.data.slip.advice}`
