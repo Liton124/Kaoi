@@ -10,7 +10,7 @@ export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
             command: 'gender',
-            aliases: ['Gender'],
+            aliases: ['guessgender'],
             description: 'I can tell your gender. ',
             category: 'fun',
             usage: `${client.config.prefix}gender [Your_name]`,
@@ -29,7 +29,7 @@ export default class Command extends BaseCommand {
  */
         .then((response) => {
                 // console.log(response);
-                const text = `🍁 *Name:* ${response.data.name}\n*🌠 Gender:* ${response.data.gender}\n`
+                const text = ` GENDER SEARCH....\n\n*🍁 NAME:* ${name}\n*🌠 GENDER:* ${response.data.gender}\n`
                 M.reply(text);
             }).catch(err => {
                 M.reply(`Sorry, couldn't find any data related to *${place}*.`)
