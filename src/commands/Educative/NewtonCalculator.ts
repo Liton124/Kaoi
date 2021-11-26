@@ -10,8 +10,8 @@ import { MessageType, Mimetype } from '@adiwajshing/baileys'
 export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
-            command: 'ncalculator',
-            aliases: ['ncal', 'ncalculate'],
+            command: 'newtoncalculator',
+            aliases: ['ncal', 'newtoncal', 'ncalc', 'newtoncalc'],
             description: 'Calculates the given value. ',
             category: 'educative',
             usage: `${client.config.prefix}ncal [value]`,
