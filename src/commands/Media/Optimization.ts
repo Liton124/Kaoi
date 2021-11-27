@@ -7,7 +7,7 @@ import axios from 'axios'
 export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
-            command: 'jail',
+            command: 'optimization',
             description: 'to send people to jail who are horny',
             category: 'fun',
             usage: `${client.config.prefix}jail [(as caption | quote)[image] | @mention]`,
@@ -21,7 +21,7 @@ export default class Command extends BaseCommand {
             : M.quoted?.message?.message?.imageMessage
             ? this.client.downloadMediaMessage(M.quoted.message)
             : M.mentioned[0]
-            await axios.get(`https://some-random-api.ml/canvas/jail?avatar=${image}`)
+            await axios.get(`http://api.resmush.it/ws.php?img=${image}&qlty=95`)
             .then((response)=>{
                 M.reply(response.data)
             }).catch((e)=>{
