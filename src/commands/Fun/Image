@@ -19,6 +19,8 @@ export default class Command extends BaseCommand {
 
     run = async (M: ISimplifiedMessage): Promise<void> => {
         // fetch result of https://zxbott.herokuapp.com/husbu from the API using axios
+        const search: any = joined.trim();
+        const term: string = search;
         const { data } = await axios.get('https://some-random-api.ml/meme')
         const buffer = await request.buffer(data.image).catch((e) => {
             return void M.reply(e.message)
