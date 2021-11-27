@@ -21,9 +21,9 @@ export default class Command extends BaseCommand {
         if (!joined) return void (await M.reply(`Please provide the subreddit you want to fetch`)) 
         const search: any = joined.trim();
         const term: string = search;
-        const { data } = await axios.get('https://imsea.herokuapp.com/api/1?q=${term}')
+        const { data } = await axios.get('https://imsea.herokuapp.com/api/1?q=${term}');
         const buffer = await request.buffer(data.results).catch((e) => {
-            return void M.reply(e.message)
+            return void M.reply(e.message);
         })
         while (true) {
             try {
