@@ -22,7 +22,7 @@ export default class Command extends BaseCommand {
 		M: ISimplifiedMessage,
 		{ joined }: IParsedArgs
 	): Promise<void> => {
-                if (!joined) return void M.reply(`Give a search term,baka!`)
+                if (!joined) return void M.reply('Give a search term,baka!')
 		const search: any = joined.trim().split("|");
 		const term: string = search[0];
 		const amount: number = search[1];
