@@ -4,6 +4,7 @@ import BaseCommand from '../../lib/BaseCommand'
 import WAClient from '../../lib/WAClient'
 import { IParsedArgs, ISimplifiedMessage } from '../../typings'
 import axios from 'axios'
+
 export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
@@ -11,7 +12,7 @@ export default class Command extends BaseCommand {
             description: 'to send people to jail who are horny',
             category: 'fun',
             usage: `${client.config.prefix}jail [(as caption | quote)[image] | @mention]`,
-            baseXp: 30
+            baseXp: 20
         })
     }
 
@@ -25,7 +26,7 @@ export default class Command extends BaseCommand {
             : this.client.getProfilePicture(M.quoted?.sender || M.sender.jid))
 
         const { data } = await axios.get('https://some-random-api.ml/canvas/jail?avatar=${image}')
-        return void M.reply(`${data}`) 
+        return void M.reply(${data}) 
     }
 }
     
