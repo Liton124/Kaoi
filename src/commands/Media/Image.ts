@@ -14,7 +14,7 @@ export default class Command extends BaseCommand {
 			category: "utils",
 			usage: `${client.config.prefix}img [term]`,
 			baseXp: 30,
-		})
+		});
 	}
 
 	run = async (
@@ -31,5 +31,5 @@ export default class Command extends BaseCommand {
                         mimetype: Mimetype.png,
 			caption: `${res}`,
 		}
-	}
+	};
 }
