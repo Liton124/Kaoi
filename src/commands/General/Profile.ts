@@ -43,21 +43,21 @@ export default class Command extends BaseCommand {
             role = '🔮 Wizard'
         } else if (xp < 5000) {
             role = '♦️ Mage'
-        } else if (xp < 7500) {
-            role = '🎯 Noble'
         } else if (xp < 10000) {
-            role = '✨ Elite'
+            role = '🎯 Noble'
         } else if (xp < 25000) {
-            role = '🔶️ Ace'
+            role = '✨ Elite'
         } else if (xp < 50000) {
-            role = '🌀 Hero'
+            role = '🔶️ Ace'
         } else if (xp < 75000) {
-            role =  '💥 Ultrahero' 
+            role = '🌀 Hero'
         } else if (xp < 100000) {
-            role = '🗿 Legend'
+            role =  '💥 Ultrahero' 
         } else if (xp < 150000) {
-            role = '💎 Supreme'
+            role = '🗿 Legend'
         } else if (xp < 200000) {
+            role = '💎 Supreme'
+        } else if (xp < 275000) {
             role = '🎩 GrandMaster'
         } else {
             role = '❄️ Mystic' 
@@ -72,25 +72,24 @@ export default class Command extends BaseCommand {
             level = '3'
         } else if (xp < 5000) {
             level = '4'
-        } else if (xp < 7500) { 
-            level = '5'
         } else if (xp < 10000) {
-            level = '6'
+            level = '5'
         } else if (xp < 25000) {
-            level = '7'
+            level = '6'
         } else if (xp < 50000) {
-            level = '8'
+            level = '7'
         } else if (xp < 75000) {
-            level = '9'
+            level = '8'
         } else if (xp < 100000) {
-            level = '10'
+            level = '9'
         } else if (xp < 150000) {
-            level = '11'
+            level = '10'
         } else if (xp < 200000) {
-            level = '12' 
+            level = '11' 
+        } else if (xp < 275000) {
+            level = '12'
         } else {
             level = 'max'
-        }
 
         await M.reply(
             await request.buffer(
