@@ -9,7 +9,7 @@ import { MessageType } from '@adiwajshing/baileys'
 export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
-            command: 'caffact',
+            command: 'catfact',
             description: 'Sends you a fact about cat with an image.',
             aliases: ['cat'],
             category: 'fun',
@@ -19,7 +19,7 @@ export default class Command extends BaseCommand {
 
     run = async (M: ISimplifiedMessage): Promise<void> => {
         // fetch result of https://zxbott.herokuapp.com/husbu from the API using axios
-        const { data } = await axios.get('https://some-random-api.ml/animal/dog')
+        const { data } = await axios.get('https://some-random-api.ml/animal/cat')
         let text = `${data.fact}`
         const buffer = await request.buffer(data.image).catch((e) => {
             return void M.reply(e.message)
