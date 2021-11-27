@@ -9,18 +9,18 @@ import { MessageType } from '@adiwajshing/baileys'
 export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
-            command: 'dog',
-            description: 'Will send you a Meme.',
-            aliases: ['LOL'],
+            command: 'dogfact',
+            description: 'Sends you a fact about dog with a image.',
+            aliases: ['dog'],
             category: 'fun',
-            usage: `${client.config.prefix}meme`
+            usage: `${client.config.prefix}dogfact`
         })
     }
 
     run = async (M: ISimplifiedMessage): Promise<void> => {
         // fetch result of https://zxbott.herokuapp.com/husbu from the API using axios
         const { data } = await axios.get('https://some-random-api.ml/facts/dog')
-        const text = ${data.fact}
+        let text = `${data.fact}`
         const buffer = await request.buffer(data.image).catch((e) => {
             return void M.reply(e.message)
         })
