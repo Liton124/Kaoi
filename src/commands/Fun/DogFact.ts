@@ -10,7 +10,7 @@ export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
             command: 'dogfact',
-            description: 'Sends you a fact about dog with a image.',
+            description: 'Sends you a fact about dog with an image.',
             aliases: ['dog'],
             category: 'fun',
             usage: `${client.config.prefix}dogfact`
