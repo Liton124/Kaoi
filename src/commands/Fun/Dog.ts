@@ -19,7 +19,7 @@ export default class Command extends BaseCommand {
 
     run = async (M: ISimplifiedMessage): Promise<void> => {
         // fetch result of https://zxbott.herokuapp.com/husbu from the API using axios
-        const { data } = await axios.get('https://some-random-api.ml/facts/dog')
+        const { data } = await axios.get('https://some-random-api.ml/animal/dog')
         let text = `${data.fact}`
         const buffer = await request.buffer(data.image).catch((e) => {
             return void M.reply(e.message)
