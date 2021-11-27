@@ -14,7 +14,7 @@ export default class Command extends BaseCommand {
 			category: "utils",
 			usage: `${client.config.prefix}img [term]`,
 			baseXp: 30,
-		});
+		})
 	}
 
 	run = async (
@@ -23,7 +23,7 @@ export default class Command extends BaseCommand {
 	): Promise<void> => {
 		const search: any = joined.trim();
 		const term: string = search[0];
-		const img = await axios(`https://imsea.herokuapp.com/api/1?q=${term}`)
+		const img = await axios(`https://imsea.herokuapp.com/api/1?q=${term}`);
 
 		const res = `*🌟 Here you go.*`;
 		this.client.sendMessage(M.from, { url: img[i].url }, MessageType.image, {
@@ -31,5 +31,5 @@ export default class Command extends BaseCommand {
                         mimetype: Mimetype.png,
 			caption: `${res}`,
 		}
-	};
+	}
 }
