@@ -90,7 +90,7 @@ export default class Command extends BaseCommand {
             level = '12'
         } else {
             level = 'max'
-
+        }
         await M.reply(
             await request.buffer(
                 pfp ||
