@@ -32,14 +32,20 @@ export default class Command extends BaseCommand {
                     MessageType.image,
                     undefined,
                     undefined,
-                    `Here you go`,
+                    `HERE YOU GO ✨`,
                     undefined
                 ).catch((e) => {
                     console.log(`This error occurs when an image is sent via M.reply()\n Child Catch Block : \n${e}`)
                     // console.log('Failed')
                     M.reply(`Try again or use the link. Here's the URL: ${data.results}`)
-                }
+                })
+                break
+            } catch (e) {
+                // console.log('Failed2')
+                M.reply(`Try again or use the link. Here's the URL : ${data.results}`)
+                console.log(`This error occurs when an image is sent via M.reply()\n Parent Catch Block : \n${e}`)
             }
         }
+        return void null
     }
-}
+} 
