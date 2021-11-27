@@ -27,9 +27,9 @@ export default class Command extends BaseCommand {
 
 		const res = `*🌟 Here you go.*`;
 		this.client.sendMessage(M.from, { url: img[i].url }, MessageType.image, {
-	            quoted: M.WAMessage,	
-                    mimetype: Mimetype.png,
-	            caption: `${res}`,
+	                quoted: M.WAMessage,	
+                        mimetype: Mimetype.png,
+	                caption: `${res}`,
 		});
-	};
+	}
 }
