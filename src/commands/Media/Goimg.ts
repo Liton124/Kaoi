@@ -12,7 +12,7 @@ export default class Command extends BaseCommand {
 			command: "goimage",
 			description: `Will search the given image from google.`,
 			aliases: ["goimg", "googleimg", "googleimage"],
-			category: "utils",
+			category: "media",
 			usage: `${client.config.prefix}goimg [term|amount]`,
 			baseXp: 50,
 		});
