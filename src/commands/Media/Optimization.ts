@@ -21,7 +21,7 @@ export default class Command extends BaseCommand {
             : M.quoted?.message?.message?.imageMessage
             ? this.client.downloadMediaMessage(M.quoted.message)
             : M.mentioned[0]
-            await axios.get(`http://api.resmush.it/ws.php?img=${image}&qlty=95`)
+            await axios.get(`http://api.resmush.it/ws.php?img=${image}&qlty=95`))
             .then((response)=>{
                 M.reply(response.data)
             }).catch((e)=>{
