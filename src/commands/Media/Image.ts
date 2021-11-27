@@ -11,7 +11,7 @@ export default class Command extends BaseCommand {
 			command: "image",
 			description: `Will search the given image from google.`,
 			aliases: ["img"],
-			category: "utils",
+			category: "media",
 			usage: `${client.config.prefix}img [term]`,
 			baseXp: 30,
 		});
