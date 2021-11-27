@@ -31,5 +31,5 @@ export default class Command extends BaseCommand {
                     mimetype: Mimetype.png,
 	            caption: `${res}`,
 		});
-	}
+	};
 }
