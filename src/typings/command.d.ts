@@ -29,6 +29,6 @@ export type TCategory =
     | 'educative'
     | 'general'
     | 'media'
+    | 'weeb'
     | 'moderation'
     | 'category'
-    | 'weeb'
