@@ -23,10 +23,10 @@ export default class Command extends BaseCommand {
 	): Promise<void> => {
 		const search: any = joined.trim();
 		const term: string = search[0];
-		const img = await axios(`https://imsea.herokuapp.com/api/1?q=${term}`);
+		const img = await (`https://imsea.herokuapp.com/api/1?q=${term}`);
 
 		const res = `*🌟 Here you go.*`;
-		this.client.sendMessage(M.from, { url: img[i].url }, MessageType.image, {
+		this.client.sendMessage(M.from, { url: img[0].url }, MessageType.image, {
 	                quoted: M.WAMessage,	
                         mimetype: Mimetype.png,
 	                caption: `${res}`,
