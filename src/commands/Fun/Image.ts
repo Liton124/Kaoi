@@ -37,7 +37,7 @@ export default class Command extends BaseCommand {
                 ).catch((e) => {
                     console.log(`This error occurs when an image is sent via M.reply()\n Child Catch Block : \n${e}`)
                     // console.log('Failed')
-                    M.reply(`Try again or use the link. Here's the URL: $`{data.results}`)
+                    M.reply(`Try again or use the link. Here's the URL: ${data.results}`)
                 })
         }
 }
