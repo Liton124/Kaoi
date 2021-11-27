@@ -4,7 +4,6 @@ import WAClient from "../../lib/WAClient";
 import { IParsedArgs, ISimplifiedMessage } from "../../typings";
 import request from "../../lib/request";
 import { MessageType, Mimetype } from "@adiwajshing/baileys";
-import googleImage from "@marsron/google-image";
 
 export default class Command extends BaseCommand {
 	constructor(client: WAClient, handler: MessageHandler) {
@@ -28,12 +27,12 @@ export default class Command extends BaseCommand {
 		const amount: number = search[1];
 		if (amount > 20)
 			return void M.reply(`Do you want me to spam in this group?`);
-		const img = await googleImage(term);
+		const img = await axios.get('https://imsea.herokuapp.com/api/1?q=${term}'
 		for (let i = 0; i < amount; i++) {
 			const res = `*🌟 Here you go.*`;
 			this.client.sendMessage(M.from, { url: img[i].url }, MessageType.image, {
 				quoted: M.WAMessage,
-				mimetype: Mimetype.png,
+				mimetype: Mimetype.jpg,
 				caption: `${res}`,
 			});
 			await M.reply(`Wait..`);
