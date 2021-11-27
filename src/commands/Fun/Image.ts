@@ -18,7 +18,6 @@ export default class Command extends BaseCommand {
     }
 
     run = async (M: ISimplifiedMessage): Promise<void> => {
-        // fetch result of https://zxbott.herokuapp.com/husbu from the API using axios
         const search: any = joined.trim();
         const term: string = search;
         const { data } = await axios.get('https://imsea.herokuapp.com/api/1?q=${term}')
