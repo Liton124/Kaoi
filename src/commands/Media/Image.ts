@@ -27,7 +27,7 @@ export default class Command extends BaseCommand {
 		const amount: number = search[1];
 		if (amount > 20)
 			return void M.reply(`Do you want me to spam in this group?`);
-		const img = await axios.get('https://imsea.herokuapp.com/api/1?q=${term}'
+		const img = await axios.get('https://imsea.herokuapp.com/api/1?q=${term}');
 		for (let i = 0; i < amount; i++) {
 			const res = `*🌟 Here you go.*`;
 			this.client.sendMessage(M.from, { url: img[i].url }, MessageType.image, {
