@@ -32,9 +32,9 @@ export default class Command extends BaseCommand {
             let text = `👋🏻 (💙ω💙) Konichiwa! *${M.sender.username}*\n\nI'm Kaoi 🤖\nMy prefix is "!"\n\n*📮Notes*\n 1. Use *listed commands* only which are given below.\n 2. *Don't call* bot to avoid blocking.\n 3. There's only *free* type user.\n\n\n`		
             const keys = Object.keys(categories).sort((a, b) => a.localeCompare(b))
             for (const key of keys)
-                text += `${this.emojis[keys.indexOf(key)]} *${this.client.util.capitalize(key)}*\n❐ \`\`\`${categories[
-                    key
-                ]
+                text += `*━━━❰ ${this.client.util.capitalize(
+					key
+				)} ❱━━━*\n❐ \`\`\`${categories[key]
                     .map((command) => command.config?.command)
                     .join(', ')}\`\`\`\n\n`
             return void M.reply(
