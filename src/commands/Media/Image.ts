@@ -31,9 +31,9 @@ export default class Command extends BaseCommand {
 		    for (let i = 0; i < amount; i++) {
                         const res = `*🌟 Here you go.*`;
 		        this.client.sendMessage(M.from, { url: img[i].url }, MessageType.image, {
-				quoted: M.WAMessage,
-				mimetype: Mimetype.jpg,
-				caption: `${res}`,
+		            quoted: M.WAMessage,
+		            mimetype: Mimetype.jpg,
+		            caption: `${res}`,
 			});
 			await M.reply(`Wait..`);
 		    }
