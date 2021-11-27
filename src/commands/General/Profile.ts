@@ -56,9 +56,9 @@ export default class Command extends BaseCommand {
         } else if (xp < 150000) {
             role = '🗿 Legend'
         } else if (xp < 200000) {
-            role = '💎 Supreme'
-        } else if (xp < 275000) {
             role = '🎩 GrandMaster'
+        } else if (xp < 275000) {
+            role = '💎 Supreme'
         } else {
             role = '❄️ Mystic' 
         }
