@@ -18,8 +18,8 @@ export default class Command extends BaseCommand {
     }
 
     run = async (M: ISimplifiedMessage): Promise<void> => {
-        // fetch result of https://zxbott.herokuapp.com/husbu from the API using axios
-        const { data } = await axios.get('https://some-random-api.ml/meme')
+        const name = joined.trim()
+        const { data } = await axios.get('https://imsea.herokuapp.com/api/1?q=${term}')
         const buffer = await request.buffer(data.image).catch((e) => {
             return void M.reply(e.message)
         })
@@ -30,19 +30,13 @@ export default class Command extends BaseCommand {
                     MessageType.image,
                     undefined,
                     undefined,
-                    `LOL  😂\n`,
+                    `Here you go ✨`,
                     undefined
                 ).catch((e) => {
                     console.log(`This error occurs when an image is sent via M.reply()\n Child Catch Block : \n${e}`)
                     // console.log('Failed')
                     M.reply(`Try again or use the link. Here's the URL: ${data.image}`)
                 })
-                break
-            } catch (e) {
-                // console.log('Failed2')
-                M.reply(`Try again or use the link. Here's the URL : ${data.image}`)
-                console.log(`This error occurs when an image is sent via M.reply()\n Parent Catch Block : \n${e}`)
-            }
-        }
-        return void null
+        
     }
+}
