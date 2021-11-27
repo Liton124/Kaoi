@@ -29,22 +29,7 @@ export default class Command extends BaseCommand {
                     categories[info.config.category].push(info)
                 }
             }
-            const chats: any = this.client.chats
-			.all()
-			.filter((v) => !v.read_only && !v.archive)
-			.map((v) => v.jid)
-			.map((jids) => (jids.includes("g.us") ? jids : null))
-			.filter((v) => v);
-		const pad = (s: any) => (s < 10 ? "0" : "") + s;
-		const formatTime = (seconds: any) => {
-			const hours = Math.floor(seconds / (60 * 60));
-			const minutes = Math.floor((seconds % (60 * 60)) / 60);
-			const secs = Math.floor(seconds % 60);
-			return `${pad(hours)}:${pad(minutes)}:${pad(secs)}`;
-		};
-		const uptime = () => formatTime(process.uptime());
-            }
-            let text = `👋🏻 (💙ω💙) Konichiwa! *${M.sender.username}*\n\nI'm Kaoi 🤖\nMy prefix is "!"\n\n*📮Notes*\n 1. Use *listed commands* only which are given below.\n 2. *Don't call* bot to avoid blocking.\n 3. There's only *free* type user.\n\n*Groups: ${chats.length}*\n\n🚦 *Uptime: ${uptime()}\n`		
+            let text = `👋🏻 (💙ω💙) Konichiwa! *${M.sender.username}*\n\nI'm Kaoi 🤖\nMy prefix is "!"\n\n*📮Notes*\n 1. Use *listed commands* only which are given below.\n 2. *Don't call* bot to avoid blocking.\n 3. There's only *free* type user.\n\n\n`		
             const keys = Object.keys(categories).sort((a, b) => a.localeCompare(b))
             for (const key of keys)
                 text += `${this.emojis[keys.indexOf(key)]} *${this.client.util.capitalize(key)}*\n❐ \`\`\`${categories[
