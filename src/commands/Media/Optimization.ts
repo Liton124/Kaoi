@@ -4,13 +4,12 @@ import BaseCommand from '../../lib/BaseCommand'
 import WAClient from '../../lib/WAClient'
 import { IParsedArgs, ISimplifiedMessage } from '../../typings'
 import axios from 'axios'
-
 export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
             command: 'optimization',
             description: 'to send people to jail who are horny',
-            category: 'media',
+            category: 'fun',
             usage: `${client.config.prefix}jail [(as caption | quote)[image] | @mention]`,
             baseXp: 30
         })
@@ -22,12 +21,15 @@ export default class Command extends BaseCommand {
             : M.quoted?.message?.message?.imageMessage
             ? this.client.downloadMediaMessage(M.quoted.message)
             : M.mentioned[0]
-        await axios.get(`http://api.resmush.it/ws.php?img=${image}&qlty=95`)
-        .then((response)=>{
-        M.reply(response.data)
-        }).catch((e)=>{
-            M.reply('sorry couldn\'t send the image')
-        })
+            ? this.client.getProfilePicture(M.mentioned[0])
+            : this.client.getProfilePicture(M.quoted?.sender || M.sender.jid))
+
+            await axios.get(`https://some-random-api.ml/canvas/jail?avatar=${image}`)
+            .then((response)=>{
+                M.reply(response.data)
+            }).catch((e)=>{
+                M.reply('sorry couldn\'t send the image')
+            })
 
     }
 }
