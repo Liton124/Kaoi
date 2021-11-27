@@ -22,10 +22,10 @@ export default class Command extends BaseCommand {
 		{ joined }: IParsedArgs
 	): Promise<void> => {
 		if (!joined)
-			return void (await M.reply(`Give me a search term, Baka!`));
-                const search: any = joined.trim();
-                const term: string = search;
-                const { data } = await axios.get('https://imsea.herokuapp.com/api/1?q=${term}');
+			return void (await M.reply(`Give me a search term, Baka!`))
+                const search: any = joined.trim()
+                const term: string = search
+                const { data } = await axios.get('https://imsea.herokuapp.com/api/1?q=${term}')
                 const buffer = await request.buffer(data.results).catch((e) => {
                     return void M.reply(e.message)
                 })
