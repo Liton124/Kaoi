@@ -33,7 +33,7 @@ export default class Command extends BaseCommand {
             const keys = Object.keys(categories).sort((a, b) => a.localeCompare(b))
             for (const key of keys)
                 text += `*━━━❰ • ${this.client.util.capitalize(key
-				)} ${this.emojis[keys.indexOf(key)]} Side • ❱━━━*\n❐ \`\`\`${categories[key]		
+				)} ${this.emojis[keys.indexOf(key)]} Side • ❱━━━*\n\n❐ \`\`\`${categories[key]		
                     .map((command) => command.config?.command)
                     .join(', ')}\`\`\`\n\n`
             return void M.reply(
