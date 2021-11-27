@@ -30,6 +30,6 @@ export default class Command extends BaseCommand {
 	            quoted: M.WAMessage,	
                     mimetype: Mimetype.png,
 	            caption: `${res}`,
-		}
-	};
+		};
+	}
 }
