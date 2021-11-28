@@ -7,7 +7,7 @@ export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
             command: 'admins',
-            aliases: ['admin'],
+            aliases: ['admin', 'tagadmins'],
             description: 'Tags all Admins 🎖️',
             category: 'general',
             usage: `${client.config.prefix}admins (Message)`,
