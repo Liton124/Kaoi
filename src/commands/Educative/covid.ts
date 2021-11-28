@@ -22,7 +22,7 @@ export default class Command extends BaseCommand {
         await axios.get(`https://api.abirhasan.wtf/covid19/v1?country=${term}`)
         .then((response) => {
                 // console.log(response);
-                const text = `🦠 Covid Information of the place *${term}* is \n\n 🧪 *TotalTests:* ${response.data.TotalTests} \n 🎗 *ActiveCases:* ${response.data.ActiveCases} \n 🏥 *Confirmed:* ${response.data.Confirmed} \n 😳 *Critical:* ${response.data.Critical} \n ☘ *Recovered:* ${response.data.Recovered} \n 🧫 *NewCases:* ${response.data.NewCases} \n 💀 *NewDeaths:* ${response.data.NewDeaths} \n ✏ *TotalCases:* ${response.data.TotalCases} \n 🚩 *Country:* ${response.data.Country} `
+                const text = `🦠 Covid Information of the place *${term}* is \n\n 🧪 *Total Tests:* ${response.data.TotalTests} \n 🎗 *Active Cases:* ${response.data.ActiveCases} \n 🏥 *Confirmed:* ${response.data.Confirmed} \n 😳 *Critical:* ${response.data.Critical} \n ☘ *Recovered:* ${response.data.Recovered} \n 🧫 *New Cases:* ${response.data.NewCases} \n 💀 *New Deaths:* ${response.data.NewDeaths} \n ✏ *Total Cases:* ${response.data.TotalCases} \n 🚩 *Country:* ${response.data.Country} `
                 M.reply(text);
             })
             .catch(err => {
