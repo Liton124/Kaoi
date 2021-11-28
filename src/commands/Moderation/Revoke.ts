@@ -8,7 +8,7 @@ export default class Command extends BaseCommand {
         super(client, handler, {
             adminOnly: true,
             command: 'revoke',
-            aliases: 'reset'
+            aliases: ['reset'],
             description: 'Revokes the group link.',
             category: 'moderation',
             usage: `${client.config.prefix}revoke`,
