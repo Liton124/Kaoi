@@ -24,3 +24,4 @@ declare module "anilist-node";
 declare module "pokedex-promise-v2";
 declare module "imgbb-uploader";
 declare module "lolis.life";
+declare module "better-tord";
