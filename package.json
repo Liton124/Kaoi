@@ -12,7 +12,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/ShineiIchijo/Chitoge.git"
+        "url": "git+https://github.com/Liton124/Kaoi.git"
     },
     "keywords": [
         "bot",
@@ -23,9 +23,9 @@
     "author": "Synthesized Infinity & Shinei Ichijo",
     "license": "AGPL-3.0",
     "bugs": {
-        "url": "https://github.com/ShineiIchijo/Chitoge/issues"
+        "url": "https://github.com/Liton124/Kaoi/issues"
     },
-    "homepage": "https://github.com/ShineiIchijo/Chitoge#readme",
+    "homepage": "https://github.com/Liton124/Kaoi#readme",
     "devDependencies": {
         "@types/express": "^4.17.12",
         "@types/fs-extra": "^9.0.11",
