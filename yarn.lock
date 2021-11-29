@@ -6559,14 +6559,6 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-vtuber-wiki@^1.1.5:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/vtuber-wiki/-/vtuber-wiki-1.1.5.tgz#87467c07be84ee6746d94c13007f89aa61b22e46"
-  integrity sha512-oIYI8bmFO/4tZpzk0guBUP1y7cGTSrkssilq1LPMmp+VgTrl2DXpvg/n+Z7il8CJLjCmG6wgoupvgnJ13yUnZw==
-  dependencies:
-    axios "^0.21.1"
-    hermitpurple "^0.2.0"
-
 w3c-hr-time@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/w3c-hr-time/-/w3c-hr-time-1.0.2.tgz#0a89cdf5cc15822df9c360543676963e0cc308cd"
