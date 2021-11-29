@@ -10,7 +10,7 @@ export default class Command extends BaseCommand {
 		super(client, handler, {
 			command: "wallpaper",
 			description: `Will send you random anime wallpaper of the given term.`,
-			aliases: ["wpaper"],
+			aliases: ["wpaper", "wp"],
 			category: "media",
 			usage: `${client.config.prefix}wallpaper [term]`,
 			baseXp: 20,
