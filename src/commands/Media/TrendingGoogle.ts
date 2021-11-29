@@ -9,7 +9,7 @@ import axios from 'axios'
 export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
-            command: 'trandinggoogle',
+            command: 'trendinggoogle',
             aliases: ['tg', 'tgg'],
             description: 'Gives you the trending list of google ',
             category: 'media',
