@@ -20,6 +20,6 @@ export default class Command extends BaseCommand {
     
     run = async (M: ISimplifiedMessage): Promise<void> => {
 const dare = r.get_dare();
-		await M.reply(dare);
+		await M.reply(`*Dare for ${M.sender.jid}:* ${dare}\n\nDon't be a skipper, Complete the dare hehe :-)`);
 	};
 }
