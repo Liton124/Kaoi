@@ -9,7 +9,7 @@ export default class Command extends BaseCommand {
             command: 'add',
             description: 'adds participant to group chats',
             category: 'moderation',
-            usage: `${client.config.prefix}add [@mention | tag]`,
+            usage: `${client.config.prefix}add [numbers/ jid]`,
             aliases: ['add'],
             baseXp: 10
         })
@@ -18,14 +18,13 @@ export default class Command extends BaseCommand {
     run = async (M: ISimplifiedMessage,parsedArgs: IParsedArgs): Promise<void> => {
         const number = parsedArgs.joined.replace(/\D+/g,'').replace(/\s+/g,'').toString();
 console.log(number) ;
-        // let text = '*Action*\n\n'
         try{
         if (!M.groupMetadata?.admins?.includes(this.client.user.jid))
-            return void M.reply(`❌ Failed to ${this.config.command} as I'm not an admin`)
+            return void M.reply(`❌ Failed to ${this.config.command} Make me admin first, baka!`)
         if (!number.length) return void M.reply(`Please write the user's number you want to ${this.config.command}`)
         this.client.isOnWhatsApp(`${number}@s.whatsapp.net`)
         if(!this.client.groupAdd(M.from,[`${number}@s.whatsapp.net`])) return void M.reply(`the person you are trying to add is not on whatsapp`)
-        await M.reply(`successfully added the person`, undefined, undefined, [...M.mentioned, M.sender.jid])
+        await M.reply(`${number} has been added successfully.`, undefined, undefined, [...M.mentioned, M.sender.jid])
         }catch{
             M.reply(`something went wrong`)
         }
