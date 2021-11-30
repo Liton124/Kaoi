@@ -7,9 +7,9 @@ import axios from 'axios'
 export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
-            command: 'tada',
+            command: 'simsimi',
             description: 'Chat with bot.',
-            aliases: ['tadashi'],
+            aliases: ['tada', 'tadashi'],
             category: 'fun',
             usage: `${client.config.prefix}tada [city or state name]`
         })
