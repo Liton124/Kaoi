@@ -14,13 +14,13 @@ export default class Command extends BaseCommand {
             description: 'Download video from Instagram ',
             category: 'media',
             dm: true,
-            usage: `${client.config.prefix}ig [name]`
+            usage: `${client.config.prefix}ig [url]`
         })
     }
     // static count = 0
     run = async (M: ISimplifiedMessage, { joined }: IParsedArgs): Promise<void> => {
         
-        if (!joined) return void M.reply('Provide the keywords you wanna search, Baka!')
+        if (!joined) return void M.reply('Provide the url of the video you want to download, Baka!')
         const chitoge = joined.trim()
         console.log(chitoge)
         const { data } = await axios.get(`https://api.zekais.com/igdl2?url=${chitoge}&apikey=CnXf9Ojs`)
@@ -35,7 +35,7 @@ export default class Command extends BaseCommand {
                     MessageType.video,
                     undefined,
                     undefined,
-                    `💐 *Result: ${chitoge} has been found*\n`,
+                    ` Here you go ⭐\n`,
                     undefined
                 ).catch((e) => {
                     console.log(`This error occurs when an image is sent via M.reply()\n Child Catch Block : \n${e}`)
