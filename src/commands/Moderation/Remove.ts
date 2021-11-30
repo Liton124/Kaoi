@@ -31,8 +31,6 @@ export default class Command extends BaseCommand {
             // check if user is Bot
             else if (this.client.user.jid === user) {
                 text += `❌ Skipped *@${user.split('@')[0]}* is me, Baka`
-            } else {
-                text += `*@${user.split('@')[0]}* has been removed 🧨`
                 await this.client.groupRemove(M.from, [user])
             }
         })
