@@ -20,6 +20,6 @@ export default class Command extends BaseCommand {
     
     run = async (M: ISimplifiedMessage): Promise<void> => {
 const dare = r.get_truth();
-		await M.reply(`*🍀Truth for ${M.sender.username}:* ${truth}`);
+		await M.reply(`*🍂 Truth for ${M.sender.username}:* ${truth}`);
 	};
 }
