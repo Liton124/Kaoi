@@ -17,7 +17,7 @@ export default class Command extends BaseCommand {
     }
 
     run = async (M: ISimplifiedMessage): Promise<void> => {
-        let text = '*Action*\n\n'
+        let text = '*Action*\n'
         if (!M.groupMetadata?.admins?.includes(this.client.user.jid))
             return void M.reply(`❌ Failed to ${this.config.command}\nMake me admin first, Baka`)
         if (M.quoted?.sender) M.mentioned.push(M.quoted.sender)
