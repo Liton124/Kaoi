@@ -7,7 +7,7 @@ export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
             adminOnly: true,
-            aliases: ['boom', 'kickout'],
+            aliases: ['boom', 'kick'],
             command: 'remove',
             description: 'removes the mentioned users',
             category: 'moderation',
@@ -19,21 +19,23 @@ export default class Command extends BaseCommand {
     run = async (M: ISimplifiedMessage): Promise<void> => {
         let text = '*Action*\n'
         if (!M.groupMetadata?.admins?.includes(this.client.user.jid))
-            return void M.reply(`❌ Failed to ${this.config.command}\nMake me admin first, Baka`)
+            return void M.reply(`How can I remove someone without being an admin?`)
         if (M.quoted?.sender) M.mentioned.push(M.quoted.sender)
-        if (!M.mentioned.length) return void M.reply(`Please tag the users you want to ${this.config.command}`)
+        if (!M.mentioned.length) return void M.reply(`Tag the users you want to ${this.config.command}`)
         M.mentioned.forEach(async (user) => {
             // const usr = this.client.contacts[user]
             // const username = usr.notify || usr.vname || usr.name || user.split('@')[0]
             if (M.groupMetadata?.owner.split('@')[0] === user.split('@')[0]) {
-                text += `❌ Skipped *@${user.split('@')[0]}* is owner, can't be removed, Baka`
+                text += `✖ Skipped *@${user.split('@')[0]}* is owner, can't be removed, Baka!.\n`
             }
             // check if user is Bot
-            if (this.client.user.jid === user) {
-                text += `❌ Skipped *@${user.split('@')[0]}* is me, Baka`
+            else if (this.client.user.jid === user) {
+                text += `✖ Skipped *@${user.split('@')[0]}* is me, Baka!.\n`
+            } else {
+                text += `.....`
                 await this.client.groupRemove(M.from, [user])
             }
         })
-        await M.reply(`${text}`, undefined, undefined, [...M.mentioned, M.sender.jid])   
+        await M.reply(`${text}`, undefined, undefined, [...M.mentioned, M.sender.jid])
     }
 }
