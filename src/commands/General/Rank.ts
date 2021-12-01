@@ -93,7 +93,7 @@ export default class Command extends BaseCommand {
                         level = 13;
                 }
 		let required: number;
-		if (exp < 500) {
+		if (xp < 500) {
 			required = 500;
 		} else if (xp < 1000) {
 			required = 1000;
