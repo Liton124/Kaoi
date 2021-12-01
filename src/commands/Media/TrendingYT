@@ -12,7 +12,7 @@ export default class Command extends BaseCommand {
             command: 'trendingyt',
             aliases: ['tgyt', 'tyt'],
             description: 'Gives you the trending list of yt ',
-            category: 'utils',
+            category: 'media',
             
             usage: `${client.config.prefix}trandingyt [title]`
         })
