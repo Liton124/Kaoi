@@ -2,18 +2,16 @@ import MessageHandler from "../../Handlers/MessageHandler";
 import BaseCommand from "../../lib/BaseCommand";
 import WAClient from "../../lib/WAClient";
 import { IParsedArgs, ISimplifiedMessage } from "../../typings";
-import { Anime } from "mailist";
 import request from "../../lib/request";
 import { MessageType } from "@adiwajshing/baileys";
-import malScraper from "mal-scraper";
-
+import { Mal } from "node-myanimelist";
 export default class Command extends BaseCommand {
 	constructor(client: WAClient, handler: MessageHandler) {
 		super(client, handler, {
 			command: "anime",
 			description: `Gives you the data of the given anime from MyAnimeList.`,
 			aliases: ["ani", "a"],
-			category: "anime",
+			category: "weeb",
 			usage: `${client.config.prefix}anime [title]`,
 			baseXp: 50,
 		});
@@ -23,42 +21,55 @@ export default class Command extends BaseCommand {
 		M: ISimplifiedMessage,
 		{ joined }: IParsedArgs
 	): Promise<void> => {
+		/*eslint-disable @typescript-eslint/no-explicit-any*/
+        /*eslint-disable @typescript-eslint/no-unused-vars*/
+		if (!this.client.config.malUsername)
+			return void M.reply(`Username not set for myanimelist.net.`);
+		if (!this.client.config.malPassword)
+			return void M.reply(`Password not set for myanimelist.net.`);
 		if (!joined)
 			return void (await M.reply(`Give me an anime title to search, Baka!`));
-		const chitoge = joined.trim();
-		const anime = await malScraper
-			.getInfoFromName(chitoge)
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		const chitoge: any = joined.trim();
+		const auth = Mal.auth("6114d00ca681b7701d1e15fe11a4987e");
+		const logIn = await auth.Unstable.login(
+			this.client.config.malUsername,
+			this.client.config.malPassword
+		);
+		const anime = await logIn.anime
+			.search(chitoge, Mal.Anime.fields().all())
+			.call()
 			.catch((err: any) => {
 				return void M.reply(`Couldn't find any matching anime.`);
 			});
-		const client = new Anime();
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		const ani = await client.anime(chitoge).catch((err: any) => {
-			return void M.reply(`Couldn't find any matching anime.`);
-		});
 		let text = "";
-		text += `🎀 *Title: ${ani.data.anime.results[0].title.romaji}*\n`;
-		text += `🎋 *Format: ${ani.data.anime.results[0].format}*\n`;
-		text += `📈 *Status: ${ani.data.anime.results[0].status}*\n`;
-		text += `💮 *Genres: ${ani.data.anime.results[0].genres.join(", ")}*\n`;
-		text += `✨ *Based on: ${anime.source}*\n`;
-		text += `📍 *Studios: ${anime.studios.join(", ")}*\n`;
-		text += `🍥 *Producers: ${anime.producers.join(", ")}*\n`;
-		text += `🔅 *Premiered on: ${ani.data.anime.results[0].startDate.day}-${ani.data.anime.results[0].startDate.month}-${ani.data.anime.results[0].startDate.year}*\n`;
-		text += `🎐 *Season: ${ani.data.anime.results[0].season}*\n`;
-		text += `🌟 *Score: ${anime.score}*\n`;
-		text += `💎 *Rating: ${anime.rating}*\n`;
-		text += `🏅 *Rank: ${anime.ranked}*\n`;
-		text += `💫 *Popularity: ${anime.popularity}*\n`;
-		text += `🎗 *Duration: ${ani.data.anime.results[0].duration}/episode*\n`;
-		text += `🚫 *Eechi: ${ani.data.anime.results[0].isAdult}*\n\n`;
-		text += `♦️ *Trailer: ${anime.trailer}*\n\n`;
-		text += `🌐 *URL: ${anime.url}*\n\n`;
-		text += `❄ *Description:* ${anime.synopsis}`;
-		const buffer = await request.buffer(ani.data.anime.results[0].coverImage.large).catch((e) => {
-			return void M.reply(e.message);
-		});
+		const result = anime.data[0].node;
+		text += `🎀 *Title: ${result.title}*\n`;
+		text += `🎋 *Format: ${result.media_type.toUpperCase()}*\n`;
+		text += `📈 *Status: ${result.status.toUpperCase().replace(/\_/g, " ")}*\n`;
+		text += `🍥 *Total episodes: ${result.num_episodes}*\n`;
+		text += `🧧 *Genres:*\n`;
+		for (let i = 0; i < result.genres.length; i++) {
+			text += `*${result.genres[i].name}*\n`;
+		}
+		text += `✨ *Based on: ${result.source.toUpperCase()}*\n`;
+		text += `📍 *Studios:*\n`;
+		for (let i = 0; i < result.studios.length; i++) {
+			text += `*${result.studios[i].name}*\n`;
+		}
+		text += `💫 *Premiered on: ${result.start_date}*\n`;
+		text += `🎗 *Ended on: ${result.end_date}*\n`;
+		text += `🎐 *Popularity:* ${result.popularity}*\n`;
+		text += `🏅 *Rank: ${result.rank}*\n\n`;
+		text += `🌐 *URL: https://myanimelist.net/anime/${result.id}*\n\n`;
+		text += `❄ *Description:* ${result.synopsis.replace(
+			/\[Written by MAL Rewrite]/g,
+			""
+		)}`;
+		const buffer = await request
+			.buffer(result.main_picture.large)
+			.catch((e) => {
+				return void M.reply(e.message);
+			});
 		while (true) {
 			try {
 				M.reply(
