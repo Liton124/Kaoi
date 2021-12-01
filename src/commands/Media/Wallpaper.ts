@@ -32,20 +32,33 @@ export default class Command extends BaseCommand {
 			return void M.reply(
 				`Give me the wallpaper term and page to search, Baka!`
 			);
-                if (!term)
+		if (!amount)
+			return void M.reply(
+				`Give me the number of wallpapers to send, Baka!\n\nExample: *${this.client.config.prefix}wallpaper chitoge|5*`
+			);
+		if (amount > 20)
+			return void M.reply(`Do you want me to spam in this group?`);
+		
+                const wall = new AnimeWallpaper();
+		const random = pages[Math.floor(Math.random() * pages.length)];
+		const wallpaper = await wall
+                const pages = [1, 2, 3, 4, 5];
+			.getAnimeWall4({ title: term, type: "sfw", page: random })
+			.catch(() => null);
+
+		if (!wallpaper)
 			return void (await M.reply(
 				`Couldn't find any matching term of wallpaper.`
-			));
-                
+			
 		
-		if (amount > 10)
+		if (amount > wallpaper.length) return void (await M.reply(`*Try again.*`));
                 return void M.reply(`Do you want me to spam in this group?`);
 		 
 		for (let i = 0; i < amount; i++) {
 			const res = `*🌟 Here you go.*`;
 			this.client.sendMessage(
 				M.from,
-				{ url: term[i].image },
+				{ url: wallpaper[i].image },
 				MessageType.image,
 				{
 					quoted: M.WAMessage,
