@@ -90,7 +90,7 @@ export default class Command extends BaseCommand {
 		} else if (xp < 275000) {
 			level = 12;
 		} else {
-                        level = max;
+                        level = 13;
                 }
 		let required: number;
 		if (exp < 500) {
