@@ -12,6 +12,8 @@ export interface IConfig {
     gkey: string
     chatBotUrl: string
     geniuskey: string
+    malUsername: string
+    malPassword: string
 }
 
 export interface IParsedArgs {
