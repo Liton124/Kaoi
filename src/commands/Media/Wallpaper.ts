@@ -24,14 +24,14 @@ export default class Command extends BaseCommand {
 	): Promise<void> => {
 		if (!joined)
 			return void (await M.reply(`Give me a wallpaper term to search, Baka!`));
-		const chitoge: any = joined.trim().split("|");
+		const chitoge: any = joined.trim().split(",");
 		const term: string = chitoge[0];
 		const amount: number = chitoge[1];
 		if (!amount)
 			return void M.reply(
-				`Give me the number of wallpapers to send, Baka!\n\nExample: *${this.client.config.prefix}wallpaper chitoge|5*`
+				`Give me the number of wallpapers to send, Baka!\n\nExample: *${this.client.config.prefix}wallpaper Naruto,5*`
 			);
-		if (amount > 20)
+		if (amount > 10)
 			return void M.reply(`Do you want me to spam in this group?`);
 		const wall = new AnimeWallpaper();
 		const wallpaper = await wall.getAnimeWall2(term).catch(() => null);
