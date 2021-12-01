@@ -11,7 +11,7 @@ export default class Command extends BaseCommand {
 		super(client, handler, {
 			command: "characterid",
 			description: `Gives you the data of the given character id.`,
-			aliases: ["charid", "cid"],
+			aliases: ["charaid", "caid"],
 			category: "anime",
 			usage: `${client.config.prefix}charaid [id]`,
 			baseXp: 50,
