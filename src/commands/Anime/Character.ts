@@ -13,7 +13,7 @@ export default class Command extends BaseCommand {
 		super(client, handler, {
 			command: "character",
 			description: `Searches the given character.`,
-			aliases: ["char"],
+			aliases: ["chara", "achar", "char"],
 			category: "anime",
 			usage: `${client.config.prefix}chara [name]`,
 			baseXp: 50,
