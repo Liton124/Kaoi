@@ -32,8 +32,10 @@ export default class Command extends BaseCommand {
 		if (!joined) return void (await M.reply(`Give me a manga title, Baka!`));
 		const chitoge = joined.trim();
 		const auth = Mal.auth("6114d00ca681b7701d1e15fe11a4987e");
-		const logIn = await auth.Unstable.login(Raj44,#Khairul44);
-			
+		const logIn = await auth.Unstable.login(
+			Raj44,
+			#Khairul44
+		);	
 		const search = await logIn.manga
 			.search(chitoge, Mal.Manga.fields().all())
 			.call()
