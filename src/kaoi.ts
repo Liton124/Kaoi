@@ -20,7 +20,9 @@ const client = new WAClient({
     mods: (process.env.MODS || '').split(',').map((number) => `${number}@s.whatsapp.net`),
     gkey: process.env.GOOGLE_API_KEY || '',
     chatBotUrl: process.env.CHAT_BOT_URL || '',
-    geniuskey: process.env.GENIUS_KEY || ""
+    geniuskey: process.env.GENIUS_KEY || "",
+    malUsername: process.env.MAL_USERNAME || "",
+    malPassword: process.env.MAL_PASSWORD || ""
 })
 client.log('Starting...')
 
