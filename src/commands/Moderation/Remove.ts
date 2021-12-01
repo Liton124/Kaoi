@@ -33,4 +33,5 @@ export default class Command extends BaseCommand {
                 await this.client.groupRemove(M.from, [user])
             }
         })
+    }
 }
