@@ -32,20 +32,20 @@ export default class Command extends BaseCommand {
 			return void M.reply(
 				`Give me the wallpaper term and page to search, Baka!`
 			);
-                if (!wallpaper)
+                if (!term)
 			return void (await M.reply(
 				`Couldn't find any matching term of wallpaper.`
 			));
                 
 		
-		if (amount > 20)
+		if (amount > 10)
                 return void M.reply(`Do you want me to spam in this group?`);
 		 
 		for (let i = 0; i < amount; i++) {
 			const res = `*🌟 Here you go.*`;
 			this.client.sendMessage(
 				M.from,
-				{ url: wallpaper[i].image },
+				{ url: term[i].image },
 				MessageType.image,
 				{
 					quoted: M.WAMessage,
