@@ -65,7 +65,7 @@ export default class Command extends BaseCommand {
                 }
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		let level: number;
-		if (exp < 500) {
+		if (xp < 500) {
 			level = 1;
 		} else if (xp < 1000) {
 			level = 2;
