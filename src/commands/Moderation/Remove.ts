@@ -33,6 +33,4 @@ export default class Command extends BaseCommand {
                 await this.client.groupRemove(M.from, [user])
             }
         })
-        await M.reply(`${text}`, undefined, undefined, [...M.mentioned, M.sender.jid])
-    }
 }
