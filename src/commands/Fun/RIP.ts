@@ -25,7 +25,7 @@ export default class Command extends BaseCommand {
 			? this.client.getProfilePicture(M.mentioned[0])
 			: this.client.getProfilePicture(M.quoted?.sender || M.sender.jid));
 		if (!image) return void M.reply(`Couldn't fetch the required Image`);
-		const result = await new DIG.Rip().getimage(image);
+		const result = await new DIG.Rip().getImage(image);
 		await M.reply(
 			result,
 			MessageType.image,
