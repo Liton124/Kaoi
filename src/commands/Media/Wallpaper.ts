@@ -1,5 +1,3 @@
-/** @format */
-
 import { AnimeWallpaper } from "anime-wallpapers";
 import MessageHandler from "../../Handlers/MessageHandler";
 import BaseCommand from "../../lib/BaseCommand";
@@ -13,8 +11,8 @@ export default class Command extends BaseCommand {
 		super(client, handler, {
 			command: "wallpaper",
 			description: `Will send you random anime wallpaper of the given term.`,
-			aliases: ["wpaper"],
-			category: "weeb",
+			aliases: ["wpaper", "wp"],
+			category: "media",
 			usage: `${client.config.prefix}wallpaper [term]`,
 			baseXp: 20,
 		});
@@ -24,36 +22,23 @@ export default class Command extends BaseCommand {
 		M: ISimplifiedMessage,
 		{ joined }: IParsedArgs
 	): Promise<void> => {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		if (!joined)
+			return void (await M.reply(`Give me a wallpaper term to search, Baka!`));
 		const chitoge: any = joined.trim().split("|");
 		const term: string = chitoge[0];
 		const amount: number = chitoge[1];
-		if (term === "")
-			return void M.reply(
-				`Give me the wallpaper term and page to search, Baka!`
-			);
 		if (!amount)
 			return void M.reply(
 				`Give me the number of wallpapers to send, Baka!\n\nExample: *${this.client.config.prefix}wallpaper chitoge|5*`
 			);
 		if (amount > 20)
 			return void M.reply(`Do you want me to spam in this group?`);
-		
-                const wall = new AnimeWallpaper();
-		const random = pages[Math.floor(Math.random() * pages.length)];
-		const wallpaper = await wall
-                const pages = [1, 2, 3, 4, 5];
-			.getAnimeWall4({ title: term, type: "sfw", page: random })
-			.catch(() => null);
-
+		const wall = new AnimeWallpaper();
+		const wallpaper = await wall.getAnimeWall2(term).catch(() => null);
 		if (!wallpaper)
 			return void (await M.reply(
 				`Couldn't find any matching term of wallpaper.`
-			
-		
-		if (amount > wallpaper.length) return void (await M.reply(`*Try again.*`));
-                return void M.reply(`Do you want me to spam in this group?`);
-		 
+			));
 		for (let i = 0; i < amount; i++) {
 			const res = `*🌟 Here you go.*`;
 			this.client.sendMessage(
@@ -65,7 +50,7 @@ export default class Command extends BaseCommand {
 					caption: `${res}`,
 				}
 			);
-                };
-        }
+		}
+	};
 }
-		
+	
