@@ -35,7 +35,8 @@ export default class Command extends BaseCommand {
 		if (!joined)
 			return void (await M.reply(
 				`${
-					M.groupMetadata?.subject || CHECK THE TAGGED MESSAGE OR MEDIA`,
+					M.groupMetadata?.subject || "*EVERYONE*"
+				}\nCHECK THE TAGGED MESSAGE OR MEDIA`,
 				undefined,
 				undefined,
 				M.groupMetadata?.participants.map((user) => user.jid)
@@ -48,7 +49,7 @@ export default class Command extends BaseCommand {
 			return void (await M.reply(
 				`${
 					M.groupMetadata?.subject || "*EVERYONE*"
-				}\n*READ QUOTED MESSAGE*\n*[TAGGED MAGICALLY]*`,
+				}\nCHECK THE TAGGED MESSAGE OR MEDIA`,
 				undefined,
 				undefined,
 				M.groupMetadata?.participants.map((user) => user.jid)
@@ -57,7 +58,7 @@ export default class Command extends BaseCommand {
 				M.reply(`✖️ An error occurred, Reason: ${reason}`)
 			));
 		const sticker: any = await new Sticker(random, {
-			pack: "READ TAGGED MESSAGE OR MEDIA",
+			pack: "CHECK TAGGED MESSAGE OR MEDIA",
 			author: "🌟 Kaoi 🌟",
 			quality: 90,
 			type: "full",
