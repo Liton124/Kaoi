@@ -1,7 +1,6 @@
 /** @format */
 
 declare module "akaneko";
-declare module "lolis.life";
 declare module "mathjs";
 declare module "node-fetch";
 declare module "genius-lyrics";
@@ -25,3 +24,4 @@ declare module "pokedex-promise-v2";
 declare module "imgbb-uploader";
 declare module "lolis.life";
 declare module "better-tord";
+declare module "lolis.life";
