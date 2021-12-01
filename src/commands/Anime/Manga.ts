@@ -33,8 +33,8 @@ export default class Command extends BaseCommand {
 		const chitoge = joined.trim();
 		const auth = Mal.auth("6114d00ca681b7701d1e15fe11a4987e");
 		const logIn = await auth.Unstable.login(
-			Raj44,
-			#Khairul44
+			this.client.config.malUsername,
+			this.client.config.malPassword
 		);	
 		const search = await logIn.manga
 			.search(chitoge, Mal.Manga.fields().all())
