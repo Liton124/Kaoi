@@ -58,7 +58,7 @@ export default class Command extends BaseCommand {
 				M.reply(`✖️ An error occurred, Reason: ${reason}`)
 			));
 		const sticker: any = await new Sticker(random, {
-			pack: "CHECK TAGGED MESSAGE OR MEDIA",
+			pack: "CHECK TAGGED MESSAGE",
 			author: "🌟 Kaoi 🌟",
 			quality: 90,
 			type: "full",
