@@ -122,7 +122,7 @@ export default class Command extends BaseCommand {
 		}
 		const rank = new Canvacord.Rank()
 			.setAvatar(pfp)
-			.setCurrentXP(exp || 0)
+			.setCurrentXP(xp || 0)
 			.setRequiredXP(required)
 			.setStatus("online", true)
 			.setLevel(level, "Level:", true)
@@ -133,8 +133,8 @@ export default class Command extends BaseCommand {
 			.setDiscriminator("0007")
 			.setBackground("COLOR", "#FFC0CB");
 		rank.build({}).then((rankcard) => {
-			const text = `🏮 *Username: ${username}*\n\n〽️ *Level: ${level}*\n\n⭐ *Exp: ${
-				exp || 0
+			const text = `🏮 *Username: ${username}*\n\n〽️ *Level: ${level}*\n\n⭐ *Xp: ${
+				xp || 0
 			} / ${required}*\n\n💫 *Role: ${role}*\n\n`;
 			M.reply(
 				rankcard,
