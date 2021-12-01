@@ -1,17 +1,20 @@
-import { AnimeWallpaper } from "anime-wallpaper";
+/** @format */
+
+import { AnimeWallpaper } from "anime-wallpapers";
 import MessageHandler from "../../Handlers/MessageHandler";
 import BaseCommand from "../../lib/BaseCommand";
 import WAClient from "../../lib/WAClient";
 import { IParsedArgs, ISimplifiedMessage } from "../../typings";
 import request from "../../lib/request";
 import { MessageType } from "@adiwajshing/baileys";
+
 export default class Command extends BaseCommand {
 	constructor(client: WAClient, handler: MessageHandler) {
 		super(client, handler, {
 			command: "wallpaper",
 			description: `Will send you random anime wallpaper of the given term.`,
-			aliases: ["wpaper", "wp"],
-			category: "media",
+			aliases: ["wpaper"],
+			category: "weeb",
 			usage: `${client.config.prefix}wallpaper [term]`,
 			baseXp: 20,
 		});
@@ -24,7 +27,7 @@ export default class Command extends BaseCommand {
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		if (!joined)
 			return void (await M.reply(`Give me a wallpaper term to search, Baka!`));
-		const chitoge = joined.trim();
+	const chitoge = joined.trim().split(,);
 		const wall = new AnimeWallpaper();
 		const pages = [1, 2, 3, 4];
 		const random = pages[Math.floor(Math.random() * pages.length)];
