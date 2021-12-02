@@ -57,11 +57,11 @@ export default class EventHandler {
 					title: "Annyeonghaseyo",
 					text: username,
 					subtitle: `This is ${group.subject}`,
-					color: `#FFFFFF`,
+					color: `#8800FF`,
 				},
 				avatar: {
 					image: pfp,
-					outlineWidth: 5,
+					outlineWidth: 6,
 				},
 				background:
 					"https://images.unsplash.com/photo-1554050857-c84a8abdb5e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
