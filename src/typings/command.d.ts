@@ -30,5 +30,6 @@ export type TCategory =
     | 'general'
     | 'media'
     | 'weeb'
+    | 'nsfw'
     | 'moderation'
     | 'category'
