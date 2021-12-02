@@ -54,9 +54,9 @@ export default class EventHandler {
 			const welcome = await drawCard({
 				theme: "circuit",
 				text: {
-					title: "Hello",
+					title: "Annyeonghaseyo",
 					text: username,
-					subtitle: `Welcome to ${group.subject}`,
+					subtitle: `This is ${group.subject}`,
 					color: `#FFFFFF`,
 				},
 				avatar: {
