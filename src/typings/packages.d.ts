@@ -26,3 +26,4 @@ declare module "lolis.life";
 declare module "lolis.life";
 declare module "anime-wallpapers";
 declare module "discord-image-generation";
+declare module "shentai";
