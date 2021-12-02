@@ -21,7 +21,7 @@ export default class EventHandler {
 		const user = event.participants[0];
 		const contact = this.client.getContact(user);
 		const username =
-		        contact.notify || contact.vname || contact.name || user.split("@")[0];
+		                contact.notify || contact.vname || contact.name || user.split("@")[0];
 		let pfp: string;
 		try {
 			pfp = await this.client.getProfilePicture(user);
