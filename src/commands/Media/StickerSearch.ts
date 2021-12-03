@@ -28,8 +28,8 @@ export default class Command extends BaseCommand {
         const { data } = await axios.get(`http://zekais-api.herokuapp.com/stickerwa?query=${cara}&apikey=nE2Oyg9M`)
         
 if ((data as { error: string }).error) return void (await M.reply('Sorry, couldn\'t find'))
-        const i = Math.floor(Math.random() * data.result.length)
-const b = `${data.result[i]}`
+        const i = Math.floor(Math.random() * data.data[0].id.images.fixed_height.length)
+const b = `${data.data[0].id.images.fixed_height[i].url}`
 
         const sticker: any = await new Sticker(b, {
 			pack: "sticker",
