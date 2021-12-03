@@ -24,7 +24,7 @@ export default class Command extends BaseCommand {
 		{ joined }: IParsedArgs
 	): Promise<void> => {
 		// consider neko and kitsune in furry
-		const animal = ["bird", "cat", "dog", "fox", "kangaroo", "koala", panda", "raccoon", "red panda"];
+		const animal = ["bird", "cat", "dog", "fox", "kangaroo", "koala", panda", "raccoon", "red_panda"];
 		const chitoge = joined.trim().split(" ")[0].toLowerCase();
                 
 		if (!chitoge)
