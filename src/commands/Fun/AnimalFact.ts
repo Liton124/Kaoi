@@ -33,7 +33,7 @@ export default class Command extends BaseCommand {
 			);
 		if (!animal.includes(chitoge))
 			return void M.reply(
-				`✖️ Invalid option! 🪧\nUse ${this.client.config.prefix}animalfact to see all available options`
+				`✖️ Invalid option! 🪧\nUse ${this.client.config.prefix}animal to see all available options`
 			);
 
 		const { data } = await axios.get(
