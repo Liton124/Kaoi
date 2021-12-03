@@ -26,14 +26,10 @@ export default class Command extends BaseCommand {
 		// consider neko and kitsune in furry
 		const animal = ["cat", "dog", "bird", "panda"];
 		const chitoge = joined.trim().split(" ")[0].toLowerCase();
-                let text = "";
-		char.map((c) => {
-			text += `📍${c.charAt(0).toUpperCase() + c.slice(1)}\n`;
-			// index % 4 === 3 ? (text += '\n') : (text += ' '.repeat(10 - c.length))
-		});
+                
 		if (!chitoge)
 			return void M.reply(
-				`🪧 *OPTIONS:*\n${text}Use ${this.client.config.prefix}animalfact (option) to get animals\nExample: ${this.client.config.prefix}animalfact cat`
+				`🪧 *OPTIONS:*\nUse ${this.client.config.prefix}animalfact (option) to get animals\nExample: ${this.client.config.prefix}animalfact cat`
 			);
 		if (!animal.includes(chitoge))
 			return void M.reply(
@@ -45,7 +41,7 @@ export default class Command extends BaseCommand {
 		);
 
                 let text = `${data.fact}`;
-		const buffer = await request.buffer(data.url).catch((e) => {
+		const buffer = await request.buffer(data.image).catch((e) => {
 			return void M.reply(e.message);
 		});
 		while (true) {
