@@ -25,7 +25,7 @@ export default class Command extends BaseCommand {
         const cara = joined.trim()
         console.log(cara)
         
-        const { data } = await axios.get(`http://zekais-api.herokuapp.com/stickerwa?query=${cara}&apikey=nE2Oyg9M`)
+        const { data } = await axios.get(`https://api.xteam.xyz/sticker/stickerly?q=${cara}&APIKEY=80ff35f542ee4149`)
         
 if ((data as { error: string }).error) return void (await M.reply('Sorry, couldn\'t find'))
         const i = Math.floor(Math.random() * data.result.stickerlist.length)
