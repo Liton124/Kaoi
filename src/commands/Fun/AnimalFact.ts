@@ -12,7 +12,7 @@ export default class Command extends BaseCommand {
 		super(client, handler, {
 			command: "animalfact",
 			description: `Animal facts ;)\nType ${client.config.prefix}animalfact to check all available options`,
-			aliases: ["animalfact"],
+			aliases: ["animalfact", "fact", "animal"],
 			category: "fun",
 			usage: `${client.config.prefix}animalfact [option]`,
 			baseXp: 20,
@@ -24,16 +24,16 @@ export default class Command extends BaseCommand {
 		{ joined }: IParsedArgs
 	): Promise<void> => {
 		// consider neko and kitsune in furry
-		const animal = ["cat", "dog", "bird", "panda"];
+		const animal = ["bird", "cat", "dog", "fox", "kangaroo", "koala", panda", "raccoon", "red panda"];
 		const chitoge = joined.trim().split(" ")[0].toLowerCase();
                 
 		if (!chitoge)
 			return void M.reply(
-				`🪧 *OPTIONS:*\nUse ${this.client.config.prefix}animalfact (option) to get animals\nExample: ${this.client.config.prefix}animalfact cat`
+				`🐯 The available options are:\n\n🕊️ *Bird*\n🐱 *Cat*\n🐶 *Dog*\n🦊 *Fox*\n🦘 *Kangaroo*\n🐨 *Koala*\n🐼 *Panda*\n🦝 *Raccoon*\n🐼 *Red panda*`
 			);
 		if (!animal.includes(chitoge))
 			return void M.reply(
-				`✖️ Invalid option! 🧧\nUse ${this.client.config.prefix}animalfact to see all available options`
+				`✖️ Invalid option! 🐯\nUse ${this.client.config.prefix}animalfact to see all available options`
 			);
 
 		const { data } = await axios.get(
