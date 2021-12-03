@@ -29,7 +29,7 @@ export default class Command extends BaseCommand {
                 
 		if (!chitoge)
 			return void M.reply(
-				`🪧 These options are available\n\n🕊️ *Bird*\n🐱 *Cat*\n🐶 *Dog*\n🦊 *Fox*\n🦘 *Kangaroo*\n🐨 *Koala*\n🐼 *Panda*\n🦝 *Raccoon*\n🐼 *Red panda*\n\n  *Example:* !animal dog [or any option   from above]`
+				`🪧 These options are available\n\n🕊️ *Bird*\n🐱 *Cat*\n🐶 *Dog*\n🦊 *Fox*\n🦘 *Kangaroo*\n🐨 *Koala*\n🐼 *Panda*\n🦝 *Raccoon*\n🐼 *Red panda*\n\n*Example:* !animal dog [or any option from above]`
 			);
 		if (!animal.includes(chitoge))
 			return void M.reply(
