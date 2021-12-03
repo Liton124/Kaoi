@@ -11,7 +11,7 @@ export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
             command: 'stickersearch',
-            aliases: ['ssearch', 'ssch', 'ssh'],
+            aliases: ['ssh', 'ssearch', 'ssch'],
             description: 'Search sticker. ',
             category: 'media',
             dm: true,
@@ -25,17 +25,17 @@ export default class Command extends BaseCommand {
         const cara = joined.trim()
         console.log(cara)
         
-        const { data } = await axios.get(`https://api.xteam.xyz/sticker/stickerly?q=${cara}&APIKEY=80ff35f542ee4149`)
+        const { data } = await axios.get(`https://g.tenor.com/v1/search?q=${cara}&key=LIVDSRZULELA&limit=8`)
         
 if ((data as { error: string }).error) return void (await M.reply('Sorry, couldn\'t find'))
-        const i = Math.floor(Math.random() * data.result.stickerlist.length)
-const b = `${data.result.stickerlist[i]}`
+        //const i = Math.floor(Math.random() * data.result.length)
+const b = `${data.results?.[Math.floor(Math.random() * data.results.length)]?.media[0]?.mp4?.url}`
 
         const sticker: any = await new Sticker(b, {
 			pack: "sticker",
 			author: "BY Kaoi",
 			quality: 90,
-			type: "full",
+			type: "crop",
 			categories: ["🎊"],
 		});
 
