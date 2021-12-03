@@ -29,11 +29,11 @@ export default class Command extends BaseCommand {
                 
 		if (!chitoge)
 			return void M.reply(
-				`🐯 The available options are:\n\n🕊️ *Bird*\n🐱 *Cat*\n🐶 *Dog*\n🦊 *Fox*\n🦘 *Kangaroo*\n🐨 *Koala*\n🐼 *Panda*\n🦝 *Raccoon*\n🐼 *Red panda*`
+				`🪧 These options are available\n\n🕊️ *Bird*\n🐱 *Cat*\n🐶 *Dog*\n🦊 *Fox*\n🦘 *Kangaroo*\n🐨 *Koala*\n🐼 *Panda*\n🦝 *Raccoon*\n🐼 *Red panda*\n\n  *Example:* !animal dog [or any option from above]`
 			);
 		if (!animal.includes(chitoge))
 			return void M.reply(
-				`✖️ Invalid option! 🐯\nUse ${this.client.config.prefix}animalfact to see all available options`
+				`✖️ Invalid option! 🪧\nUse ${this.client.config.prefix}animalfact to see all available options`
 			);
 
 		const { data } = await axios.get(
