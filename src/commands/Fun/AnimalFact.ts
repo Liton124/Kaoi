@@ -38,13 +38,13 @@ export default class Command extends BaseCommand {
 		if (!animal.includes(chitoge))
 			return void M.reply(
 				`✖️ Invalid option! 🧧\nUse ${this.client.config.prefix}animalfact to see all available options`
-			
+			);
 
 		const { data } = await axios.get(
 			`https://some-random-api.ml/animal/${chitoge}`
 		);
 
-                let text = `${data.fact}`
+                let text = `${data.fact}`;
 		const buffer = await request.buffer(data.url).catch((e) => {
 			return void M.reply(e.message);
 		});
