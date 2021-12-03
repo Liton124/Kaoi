@@ -18,20 +18,21 @@ export default class Command extends BaseCommand {
 		});
 	}
 
-	run = async (M: ISimplifiedMessage): Promise<void> => {
-		const image = await (M.WAMessage?.message?.imageMessage
-			? this.client.downloadMediaMessage(M.WAMessage)
-			: M.quoted?.message?.message?.imageMessage
-			? this.client.downloadMediaMessage(M.quoted.message)
-			: M.mentioned[0])
-                const result = await Canvacord.Canvacord.affect(image);
-		await M.reply(
-			result,
-			MessageType.image,
-			undefined,
-			undefined,
-			undefined,
-			undefined
-		);
+	run = async (M: ISimplifiedMessage, { joined }: IParsedArgs): Promise<void> => {
+            if (!joined) return void (await M.reply(`Please tag or quote anyone`));
+            const image = await (M.WAMessage?.message?.imageMessage
+		? this.client.downloadMediaMessage(M.WAMessage)
+		: M.quoted?.message?.message?.imageMessage
+	        ? this.client.downloadMediaMessage(M.quoted.message)
+		: M.mentioned[0])
+            const result = await Canvacord.Canvacord.affect(image);
+	    await M.reply(
+	        result,
+	        MessageType.image,
+	        undefined,
+		undefined,
+		undefined,
+		undefined
+	    );
 	};
 }
