@@ -18,9 +18,7 @@ export default class Command extends BaseCommand {
 		});
 	}
 
-	run = async (M: ISimplifiedMessage, { joined }: IParsedArgs): Promise<void> => {
-            if (!joined) return void (await M.reply(`Please tag or quote anyone`));
-            const image = joined.trim()
+	run = async (M: ISimplifiedMessage): Promise<void> => {
             await (M.WAMessage?.message?.imageMessage
 		? this.client.downloadMediaMessage(M.WAMessage)
 		: M.quoted?.message?.message?.imageMessage
