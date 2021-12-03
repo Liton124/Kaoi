@@ -5,7 +5,7 @@ import { MessageType } from "@adiwajshing/baileys";
 import MessageHandler from "../../Handlers/MessageHandler";
 import BaseCommand from "../../lib/BaseCommand";
 import WAClient from "../../lib/WAClient";
-import { ISimplifiedMessage } from "../../typings";
+import { IParsedArgs, ISimplifiedMessage } from "../../typings";
 
 export default class Command extends BaseCommand {
 	constructor(client: WAClient, handler: MessageHandler) {
