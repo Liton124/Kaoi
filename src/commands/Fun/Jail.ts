@@ -22,7 +22,8 @@ export default class Command extends BaseCommand {
 			: M.quoted?.message?.message?.imageMessage
 			? this.client.downloadMediaMessage(M.quoted.message)
 			: M.mentioned[0])
-         	await M.reply(
+			const result = await Canvacord.Canvacord.jail(image);
+		await M.reply(
 			result,
 			MessageType.image,
 			undefined,
