@@ -24,8 +24,7 @@ export default class Command extends BaseCommand {
 			: M.quoted?.message?.message?.imageMessage
 			? this.client.downloadMediaMessage(M.quoted.message)
 			: M.mentioned[0])
-			if (!image) return void M.reply(`Couldn't fetch the required Image`);
-		const result = await Canvacord.Canvacord.affect(image);
+                const result = await Canvacord.Canvacord.affect(image);
 		await M.reply(
 			result,
 			MessageType.image,
