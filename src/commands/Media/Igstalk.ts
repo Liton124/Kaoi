@@ -29,22 +29,22 @@ export default class Command extends BaseCommand {
                           cookie: igCookie,
                           'user-agent':
                           'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.190 Safari/537.36',
-                    },
-                })
-                .then(({data}) => {
-                     const main = data.graphql.user;
-                     return void (await M.reply({
-                                  username: main.username,
-                                  fullname: main.full_name,
-                                  biography: main.biography,
-                                  private: main.is_private,
-                                  imageurl: main.profile_pic_url_hd,
-                                  followers: main.edge_followed_by.count,
-                                  followed: main.edge_follow.count,
-                                  post: main.edge_owner_to_timeline_media.count,
-                                  highlight: main.highlight_reel_count,
-                     });
-                }
+                },
+            })
+           .then(({data}) => {
+               const main = data.graphql.user;
+               return void (await M.reply({
+                      username: main.username,
+                      fullname: main.full_name,
+                      biography: main.biography,
+                      private: main.is_private,
+                      imageurl: main.profile_pic_url_hd,
+                      followers: main.edge_followed_by.count,
+                      followed: main.edge_follow.count,
+                      post: main.edge_owner_to_timeline_media.count,
+                      highlight: main.highlight_reel_count,
+               }));
+           })
        
         }
     }
