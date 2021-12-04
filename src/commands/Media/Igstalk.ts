@@ -45,7 +45,6 @@ export default class Command extends BaseCommand {
                       highlight: main.highlight_reel_count,
                }));
            })
-       
         }
     }
 }
