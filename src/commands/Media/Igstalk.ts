@@ -44,8 +44,8 @@ export default class Command extends BaseCommand {
                                   post: main.edge_owner_to_timeline_media.count,
                                   highlight: main.highlight_reel_count,
                      });
-                })
+                }
        
-        })
+        }
     }
 }
