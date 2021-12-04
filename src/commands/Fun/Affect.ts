@@ -25,7 +25,7 @@ export default class Command extends BaseCommand {
 			? this.client.downloadMediaMessage(M.quoted.message)
 			: M.mentioned[0])
                         ? this.client.getProfilePicture(M.mentioned[0]))
-                        :: this.client.getProfilePicture(M.quoted?.sender));
+                        : this.client.getProfilePicture(M.quoted?.sender));
 		const result = await Canvacord.Canvacord.affect(image);
 		await M.reply(
 			result,
