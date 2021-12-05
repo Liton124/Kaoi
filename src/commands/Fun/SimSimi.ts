@@ -11,7 +11,7 @@ export default class Command extends BaseCommand {
             description: 'Chat with bot.',
             aliases: ['tada'],
             category: 'fun',
-            usage: `${client.config.prefix}tada [city or state name]`
+            usage: `${client.config.prefix}tada [your text or message]`
         })
     }
 
