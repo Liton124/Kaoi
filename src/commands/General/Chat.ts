@@ -1,44 +1,31 @@
-/** @format */
-
 import MessageHandler from '../../Handlers/MessageHandler'
 import BaseCommand from '../../lib/BaseCommand'
 import WAClient from '../../lib/WAClient'
-import { ISimplifiedMessage } from '../../typings'
+import { IParsedArgs, ISimplifiedMessage } from '../../typings'
 import axios from 'axios'
 
 export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
             command: 'chat',
-            description: 'Chat with the Bot in group',
-            aliases: ['bot', 'kaoi'],
-            category: 'general',
-            usage: `${client.config.prefix}bot (text)`,
-            baseXp: 30
+            description: 'Chat with bot.',
+            aliases: ['tada', 'bot', 'simsimi'],
+            category: 'fun',
+            usage: `${client.config.prefix}tada [city or state name]`
         })
     }
 
-    run = async (M: ISimplifiedMessage): Promise<void> => {
-        if (this.client.config.chatBotUrl) {
-            const myUrl = new URL(this.client.config.chatBotUrl)
-            const params = myUrl.searchParams
-            await axios
-                .get(
-                    `${encodeURI(
-                        `http://api.brainshop.ai/get?bid=${params.get('bid')}&key=${params.get('key')}&uid=${
-                            M.from
-                        }&msg=${M.args.slice(1)}`
-                    )}`
-                )
-                .then((res) => {
-                    if (res.status !== 200) return void M.reply(`🔍 Error: ${res.status}`)
-                    return void M.reply(res.data.cnt)
-                })
-                .catch(() => {
-                    M.reply(`Intriguing...`)
-                })
-        } else {
-            M.reply(`Chat Bot Url not set.`)
-        }
-    }
+    run = async (M: ISimplifiedMessage, { joined }: IParsedArgs): Promise<void> => {
+        if (!joined) return void M.reply(' *Baka!* ')
+        const chitoge = joined.trim()
+        await axios.get(`https://api.simsimi.net/v2/?text=${chitoge}&lc=en&name=SimSimi`)
+        .then((response) => {
+                // console.log(response);
+                const text = ` ${response.data.success}`
+                M.reply(text);
+            }).catch(err => {
+                M.reply(` *Annyeong!* `)
+            }
+            )
+    };
 }
