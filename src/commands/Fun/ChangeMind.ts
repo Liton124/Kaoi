@@ -10,7 +10,7 @@ import { MessageType } from '@adiwajshing/baileys'
 export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
-            command: 'mind',
+            command: 'changemind',
             description: `Change his mind`,
             aliases: ['mind', 'change'],
             category: 'fun',
