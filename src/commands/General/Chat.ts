@@ -10,7 +10,7 @@ export default class Command extends BaseCommand {
             command: 'chat',
             description: 'Chat with bot.',
             aliases: ['tada', 'bot', 'simsimi'],
-            category: 'fun',
+            category: 'general',
             usage: `${client.config.prefix}tada [city or state name]`
         })
     }
