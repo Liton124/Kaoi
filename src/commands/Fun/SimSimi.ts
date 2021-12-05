@@ -9,14 +9,14 @@ export default class Command extends BaseCommand {
         super(client, handler, {
             command: 'simsimi',
             description: 'Chat with bot.',
-            aliases: ['tada', 'tadashi'],
+            aliases: ['tada'],
             category: 'fun',
             usage: `${client.config.prefix}tada [city or state name]`
         })
     }
 
     run = async (M: ISimplifiedMessage, { joined }: IParsedArgs): Promise<void> => {
-        if (!joined) return void M.reply(' *Baka!* ')
+        if (!joined) return void M.reply(' *Annyeong!* ')
         const chitoge = joined.trim()
         await axios.get(`https://api.simsimi.net/v2/?text=${chitoge}&lc=en&name=SimSimi`)
         .then((response) => {
@@ -24,7 +24,7 @@ export default class Command extends BaseCommand {
                 const text = ` ${response.data.success}`
                 M.reply(text);
             }).catch(err => {
-                M.reply(` *Annyeong!* `)
+                M.reply(` *Sorry!* `)
             }
             )
     };
