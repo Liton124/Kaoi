@@ -24,7 +24,7 @@ export default class Command extends BaseCommand {
                 const text = ` ${response.data.success}`
                 M.reply(text);
             }).catch(err => {
-                M.reply(` *Annyeong!* `)
+                M.reply(` *Sorry!* `)
             }
             )
     };
