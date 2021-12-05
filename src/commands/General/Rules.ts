@@ -25,7 +25,7 @@ export default class Command extends BaseCommand {
         MessageType.image,
                     undefined,
                     undefined,
-                    `_*----🎀[Rule]🎀----*_\n\n❌ *DONT ASK FOR THE SCRIPT* 🚫\n*--->*  If you want to chat with kaoi/bot you can use *!tada/ bot (your text)* both are different ai chat bots\n*--->* If you want to add kaoi in your group the contact the owner by *!owner/ !mods* \n*--->* Don't use wrong command, use the command given in the *help list* \n*--->* Dont spam the bot with commands if the bot is not responding, it means the bot maybe offline or facing internet issue. \n*--->* Dont Dm the bot\n*--->* Don't call the to avoid *blocking*\n\n*IF YOU DON'T FOLLOW THE RULES THEN YOU WILL BE BAN SOON* 🚫  `,
+                    `_*----🎀[Rule]🎀----*_\n\n❌ *DONT ASK FOR THE SCRIPT* 🚫\n*--->*  If you want to chat with kaoi/bot you can use *!tada/ bot (your text)* both are different ai chat bots\n*--->* If you want to add kaoi in your group the contact the owner by *!owner/ !mods* \n*--->* Don't use wrong command, use the command given in the *help list* \n*--->* Don't spam the bot with commands if the bot is not responding, it means the bot maybe offline or facing internet issue. \n*--->* Don't Dm the bot\n*--->* Don't call the to avoid *blocking*\n\n*IF YOU DON'T FOLLOW THE RULES THEN YOU WILL BE BAN SOON* 🚫  `,
                     undefined
                 ).catch((reason: any) =>
             M.reply(`✖ An error occurred. Please try again later.`))
