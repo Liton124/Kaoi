@@ -10,10 +10,10 @@ export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
             command: 'video',
-            description: '🎵 play a song with just search term!',
+            description: 'get video from yt',
             category: 'media',
             aliases: ['playv'],
-            usage: `${client.config.prefix}playv [term]`,
+            usage: `${client.config.prefix}video [term]`,
             dm: true,
             baseXp: 30
         })
@@ -26,7 +26,7 @@ export default class Command extends BaseCommand {
         if (!videos || videos.length <= 0) return void M.reply(`⚓ No Matching videos found for the term : *${term}*`)
         const video = new YT(videos[0].url, 'video')
         if (!video.url) return
-        M.reply('👾 Sending your video...Please hold on')
+        M.reply('👾 Sending your video, Please hold on. It may takes some times.')
         this.client
             .sendMessage(M.from, await video.getBuffer(), MessageType.video, {
                 quoted: M.WAMessage,
