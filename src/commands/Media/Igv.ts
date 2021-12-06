@@ -10,7 +10,7 @@ export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
             command: 'igv',
-            aliases: ['ig', 'igdl'],
+            aliases: ['igvdl', 'igdl'],
             description: 'Download video from Instagram ',
             category: 'media',
             dm: true,
