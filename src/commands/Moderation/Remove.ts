@@ -25,13 +25,13 @@ export default class Command extends BaseCommand {
             // const usr = this.client.contacts[user]
             // const username = usr.notify || usr.vname || usr.name || user.split('@')[0]
             if (M.groupMetadata?.owner.split('@')[0] === user.split('@')[0]) {
-                text = `✖ Skipped *@${user.split('@')[0]}* is owner, can't be removed, Baka!\n`
+                let text = `✖ Skipped *@${user.split('@')[0]}* is owner, can't be removed, Baka!\n`
             }
             // check if user is Bot
             else if (this.client.user.jid === user) {
-                text = `✖ Skipped whom you trying to remove, *@${user.split('@')[0]}* is me, Baka!\n`
+                 let text = `✖ Skipped whom you trying to remove, *@${user.split('@')[0]}* is me, Baka!\n`
             } else {
-                text = `User has been removed 🌸`
+                let text = `User has been removed 🌸`
                 await this.client.groupRemove(M.from, [user])
             }
         })
