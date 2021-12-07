@@ -13,7 +13,7 @@ export default class Command extends BaseCommand {
 			command: "loli",
 			description: `Will send you random loli image.`,
 			aliases: ["loli"],
-			category: "anime",
+			category: "weeb",
 			usage: `${client.config.prefix}loli `,
 			baseXp: 50,
 		});
