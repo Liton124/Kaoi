@@ -17,7 +17,7 @@ export default class Command extends BaseCommand {
     }
 
     run = async (M: ISimplifiedMessage): Promise<void> => {
-        let text = `Action\n\n`
+        let text = 'Action\n\n'
         if (!M.groupMetadata?.admins?.includes(this.client.user.jid))
             return void M.reply(`How can I remove someone without being an admin?`)
         if (M.quoted?.sender) M.mentioned.push(M.quoted.sender)
@@ -32,7 +32,7 @@ export default class Command extends BaseCommand {
             else if (this.client.user.jid === user) {
                 text += `✖ Skipped whom you trying to remove, *@${user.split('@')[0]}* is me, Baka!\n`
             } else {
-                text += `User has been removed 🌸`
+                text += `@${user.split('@')[0]} has been removed 🌸`
                 await this.client.groupRemove(M.from, [user])
             }
         })
