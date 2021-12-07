@@ -13,7 +13,7 @@ export default class Command extends BaseCommand {
             command: 'animememe',
             description: 'Will send you random anime meme.',
             aliases: ['ameme'],
-            category: 'anime',
+            category: 'weeb',
             usage: `${client.config.prefix}ameme`
         })
     }
