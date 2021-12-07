@@ -12,7 +12,7 @@ export default class Command extends BaseCommand {
 			command: "haigusha",
 			description: `Will send you random anime character with info.`,
 			aliases: ["hg"],
-			category: "anime",
+			category: "weeb",
 			usage: `${client.config.prefix}haigusha`,
 			baseXp: 50,
 		});
