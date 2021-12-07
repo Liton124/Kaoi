@@ -13,7 +13,7 @@ export default class Command extends BaseCommand {
             command: 'shinobu',
             description: 'sends you a shinobu',
             aliases: ['shinobu'],
-            category: 'anime',
+            category: 'weeb',
             usage: `${client.config.prefix}shinobu`
         })
     }
