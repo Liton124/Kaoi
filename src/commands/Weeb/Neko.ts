@@ -14,7 +14,7 @@
  ​            ​command​: ​'neko'​, 
  ​            ​description​: ​`Will send you random neko image.`​, 
  ​            ​aliases​: ​[​'catgirl'​]​, 
- ​            ​category​: ​'anime'​, 
+ ​            ​category​: ​'weeb'​, 
  ​            ​usage​: ​`​${​client​.​config​.​prefix​}​waifu`​, 
  ​            ​baseXp​: ​50 
  ​        ​}​) 
