@@ -32,10 +32,10 @@ export default class Command extends BaseCommand {
 			buffer = await this.client.downloadMediaMessage(M.quoted.message);
 		if (!buffer)
 			return void M.reply(`Provide a sticker to format, Baka!`);
-			const pack = parsedArgs.joined.split(",");
+			const pack = parsedArgs.joined.split("|");
 			if (!pack[1])
 				return void M.reply(
-					`Give me the new name and author of the sticker, Baka!\nExample: ${this.client.config.prefix}steal , By , Kaoi`
+					`Give me the new name and author of the sticker, Baka!\nExample: ${this.client.config.prefix}steal|<name>|<author name>`
 				);
 			const filename = `${tmpdir()}/${Math.random().toString(36)}`;
 			const getQuality = (): number => {
