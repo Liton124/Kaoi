@@ -14,7 +14,7 @@ export default class Command extends BaseCommand {
 			command: "character",
 			description: `Searches the given character.`,
 			aliases: ["chara", "achar", "char"],
-			category: "anime",
+			category: "weeb",
 			usage: `${client.config.prefix}chara [name]`,
 			baseXp: 50,
 		});
