@@ -12,7 +12,7 @@ export default class Command extends BaseCommand {
 			command: "characterid",
 			description: `Gives you the data of the given character id.`,
 			aliases: ["charaid", "charid"],
-			category: "anime",
+			category: "weeb",
 			usage: `${client.config.prefix}charaid [id]`,
 			baseXp: 50,
 		});
