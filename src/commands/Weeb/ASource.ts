@@ -14,7 +14,7 @@ export default class Command extends BaseCommand {
 			command: "asource",
 			description: `Gives you the source of the given anime scene.`,
 			aliases: ["trace", "source"],
-			category: "anime",
+			category: "weeb",
 			usage: `${client.config.prefix}sauce [tag_image]`,
 			baseXp: 50,
 		});
