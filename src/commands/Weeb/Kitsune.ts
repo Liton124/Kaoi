@@ -13,7 +13,7 @@ export default class Command extends BaseCommand {
             command: 'kitsune',
             description: `Will send you random kitsune image.`,
             aliases: ['foxgirl'],
-            category: 'anime',
+            category: 'weeb',
             usage: `${client.config.prefix}kitsune `,
             baseXp: 50
         })
