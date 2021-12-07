@@ -13,7 +13,7 @@ export default class Command extends BaseCommand {
 			command: "animewp",
 			description: `Will send you random anime wallpaper.`,
 			aliases: ["apaper", "awp", "rpaper"],
-			category: "anime",
+			category: "weeb",
 			usage: `${client.config.prefix}rpaper`,
 			baseXp: 50,
 		});
