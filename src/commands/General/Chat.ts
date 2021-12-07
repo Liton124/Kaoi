@@ -33,7 +33,7 @@ export default class Command extends BaseCommand {
                     return void M.reply(res.data.cnt)
                 })
                 .catch(() => {
-                    M.reply(`Intriguing...`)
+                    M.reply(`Hey there!`)
                 })
         } else {
             M.reply(`Chat Bot Url not set\nRefer to ${this.client.config.prefix}guide to get Chat Bot Url`)
