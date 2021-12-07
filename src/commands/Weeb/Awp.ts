@@ -10,9 +10,9 @@ import { MessageType } from "@adiwajshing/baileys";
 export default class Command extends BaseCommand {
 	constructor(client: WAClient, handler: MessageHandler) {
 		super(client, handler, {
-			command: "awp",
+			command: "aniwp",
 			description: `Will send you random anime wallpaper of the given term.`,
-			aliases: ["awp"],
+			aliases: ["aniwp"],
 			category: "weeb",
 			usage: `${client.config.prefix}wallpaper [term]`,
 			baseXp: 20,
