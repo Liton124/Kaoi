@@ -9,7 +9,7 @@ export default class Command extends BaseCommand {
         super(client, handler, {
             command: 'simsimi',
             description: 'Chat with bot.',
-            aliases: ['tada'],
+            aliases: ['tada', 'bot'],
             category: 'fun',
             usage: `${client.config.prefix}tada [your text or message]`
         })
