@@ -11,6 +11,6 @@ export default class Command extends BaseCommand {
     }
 
     run = async (M: ISimplifiedMessage): Promise<void> => {
-        return void (await M.reply(`Do you mean *${this.client.config.prefix}help?*`))
+        return void (await M.reply(`Do you mean *${this.client.config.prefix}help*?`))
     }
 }
