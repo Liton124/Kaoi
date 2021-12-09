@@ -20,7 +20,7 @@ export default class Command extends BaseCommand {
 console.log(number) ;
         try{
         if (!M.groupMetadata?.admins?.includes(this.client.user.jid))
-            return void M.reply(`❌ Failed to ${this.config.command} Make me admin first, baka!`)
+            return void M.reply(`For adding users, Make me admin first, baka!`)
         if (!number.length) return void M.reply(`Please write the user's number you want to ${this.config.command}`)
         this.client.isOnWhatsApp(`${number}@s.whatsapp.net`)
         if(!this.client.groupAdd(M.from,[`${number}@s.whatsapp.net`])) return void M.reply(`the person you are trying to add is not on whatsapp`)
