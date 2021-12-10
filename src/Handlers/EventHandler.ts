@@ -39,7 +39,7 @@ export default class EventHandler {
 			: event.action === "remove"
 			? `*@${
 					event.participants[0].split("@")[0]
-			  }* Bye Bye 👋`
+			  }* Bye bye 👋`
 			: `*@${
 					event.participants[0].split("@")[0]
 			  }* got ${this.client.util.capitalize(event.action)}d${
