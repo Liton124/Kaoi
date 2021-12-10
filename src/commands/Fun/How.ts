@@ -15,6 +15,6 @@ export default class Command extends BaseCommand {
     }
 
     run = async (M: ISimplifiedMessage): Promise<void> => {
-        return void (await M.reply(`how is ${M.mentioned[0]}\n\n${M.mentioned[0]?.quoted?.sender}is ${Math.floor(Math.random() * 101)}%`))
+        return void (await M.reply(`how is ${M.mentioned[0]}\n\n${M.mentioned[0]}is ${Math.floor(Math.random() * 101)}%`))
     }
 }
