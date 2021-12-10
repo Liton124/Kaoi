@@ -19,8 +19,10 @@ export default class Command extends BaseCommand {
     }
 
     run = async (M: ISimplifiedMessage): Promise<void> => {
-        // fetch result of https://api.waifu.pics/sfw/waifu from the API using axios
-        const { data } = await axios.get('https://meme-api.herokuapp.com/gimme/wholesomeanimemes')
+
+        const rnekol = ["wholesomeanimemes", "Animemes", "animememes", "goodanimemes"];
+        const rnekolc = rnekol[Math.floor(Math.random() * rnekol.length)];
+        const { data } = await axios.get('https://meme-api.herokuapp.com/gimme/' + rnekolc)
         const buffer = await request.buffer(data.url).catch((e) => {
             return void M.reply(e.message)
         })
@@ -31,7 +33,7 @@ export default class Command extends BaseCommand {
                     MessageType.image,
                     undefined,
                     undefined,
-                    `Anime meme 🌟\n`,
+                    `Here you go ✨\n`,
                     undefined
                 ).catch((e) => {
                     console.log(`This error occurs when an image is sent via M.reply()\n Child Catch Block : \n${e}`)
