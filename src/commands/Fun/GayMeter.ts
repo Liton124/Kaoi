@@ -21,9 +21,9 @@ export default class Command extends BaseCommand {
         M.mentioned.forEach(async (user) => {
             // const usr = this.client.contacts[user]
             // const username = usr.notify || usr.vname || usr.name || user.split('@')[0]
-           
        
             let text = `How _Gay_ *@${user.split('@')[0]}* ❓\n\n*@${user.split('@')[0]}* is *${Math.floor(Math.random() * 101)}%* _Gay_ 👽`             
         })
+        await M.reply(${text})
     }
 }
