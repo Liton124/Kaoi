@@ -6,9 +6,10 @@ import { ISimplifiedMessage } from '../../typings'
 export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
-            command: 'how',
+            command: 'gaycheck',
             description: 'Generally used to check if bot is Up',
             category: 'general',
+            aliases: ['gaymeter', 'howgay'],
             usage: `${client.config.prefix}hi`,
             baseXp: 0
         })
@@ -22,7 +23,7 @@ export default class Command extends BaseCommand {
             const username = usr.notify || usr.vname || usr.name || user.split('@')[0]
           
        
-            await M.reply(`how is ${username}\n\n${username}is ${Math.floor(Math.random() * 101)}%`)
+            await M.reply(`how gay is ${username} ❓\n\n${username}is ${Math.floor(Math.random() * 101)}% gay 👽`)
         })
     }
 }
