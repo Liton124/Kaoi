@@ -19,7 +19,10 @@ export default class Command extends BaseCommand {
         if (!M.mentioned.length) return void M.reply(`Please tag the users you want to ${this.config.command}`)
         M.mentioned.forEach(async (user) => {
             const usr = this.client.contacts[user]
+            const username = usr.notify || usr.vname || usr.name || user.split('@')[0]
+          
        
-        return void (await M.reply(`how is ${M.mentioned.length}\n\n${M.mentioned.length}is ${Math.floor(Math.random() * 101)}%`))
+            await M.reply(`how is ${username}\n\n${username}is ${Math.floor(Math.random() * 101)}%`)
+        }
     }
 }
