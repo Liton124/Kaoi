@@ -24,6 +24,6 @@ export default class Command extends BaseCommand {
        
             let text = `How _Gay_ *@${user.split('@')[0]}* ❓\n\n*@${user.split('@')[0]}* is *${Math.floor(Math.random() * 101)}%* _Gay_ 👽`             
         })
-        await M.reply(`${text}`,)
+        await M.reply(`${text}`, undefined, undefined, [...M.mentioned, M.sender.jid])
     }
 }
