@@ -10,7 +10,7 @@ export default class Command extends BaseCommand {
             description: 'Generally used to check if bot is Up',
             category: 'general',
             aliases: ['lesbimeter', 'howlesbi', 'howlesbian', 'lesbiancheck'],
-            usage: `${client.config.prefix}gaycheck [tag or quote] `,
+            usage: `${client.config.prefix}lesbicheck [tag or quote] `,
             baseXp: 0
         })
     }
@@ -18,7 +18,7 @@ export default class Command extends BaseCommand {
     run = async (M: ISimplifiedMessage): Promise<void> => {
         let text = '_LESBIANMETER_\n\n'
         if (M.quoted?.sender) M.mentioned.push(M.quoted.sender)
-        if (!M.mentioned.length) return void M.reply(`Please tag *user* or *user message* for checking gayness`)
+        if (!M.mentioned.length) return void M.reply(`Please tag *user* or *user message* for checking lesbiness`)
         M.mentioned.forEach(async (user) => {
             // const usr = this.client.contacts[user]
             // const username = usr.notify || usr.vname || usr.name || user.split('@')[0]
