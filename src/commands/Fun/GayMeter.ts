@@ -23,7 +23,7 @@ export default class Command extends BaseCommand {
             // const username = usr.notify || usr.vname || usr.name || user.split('@')[0]
            
        
-            await M.reply(`How _Gay_ *${user.split('@')[0]}* ❓\n\n*${user.split('@')[0]}* is *${Math.floor(Math.random() * 101)}%* _Gay_ 👽`)              
+            await M.reply(`How _Gay_ *@${user.split('@')[0]}* ❓\n\n*@${user.split('@')[0]}* is *${Math.floor(Math.random() * 101)}%* _Gay_ 👽`)              
         })
     }
 }
