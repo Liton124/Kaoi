@@ -22,9 +22,9 @@ export default class Command extends BaseCommand {
           
        
         await M.reply(`How Gay ${M.mentioned
-                                 .map((user) => (user === M.sender.jid : `@${user.split('@')[0]}`))}
+                                  .map((user) => (user === M.sender.jid : `@${user.split('@')[0]}`))}
                       ❓\n\n${M.mentioned
-                                 .map((user) => (user === M.sender.jid : `@${user.split('@')[0]}`))}
+                               .map((user) => (user === M.sender.jid : `@${user.split('@')[0]}`))}
                        is *${Math.floor(Math.random() * 101)}%* Gay 👽`)
         }
     }
