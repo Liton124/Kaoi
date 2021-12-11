@@ -23,6 +23,6 @@ export default class Command extends BaseCommand {
           
        
             await M.reply(`how is ${username}\n\n${username}is ${Math.floor(Math.random() * 101)}%`)
-        }
+        })
     }
 }
