@@ -15,6 +15,11 @@ export default class Command extends BaseCommand {
     }
 
     run = async (M: ISimplifiedMessage): Promise<void> => {
+        if (M.quoted?.sender) M.mentioned.push(M.quoted.sender)
+        if (!M.mentioned.length) return void M.reply(`Please tag the users you want to ${this.config.command}`)
+        M.mentioned.forEach(async (user) => {
+            const usr = this.client.contacts[user]
+       
         return void (await M.reply(`how is ${M.mentioned.length}\n\n${M.mentioned.length}is ${Math.floor(Math.random() * 101)}%`))
     }
 }
