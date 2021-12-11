@@ -10,7 +10,7 @@ export default class Command extends BaseCommand {
             description: 'Generally used to check if bot is Up',
             category: 'general',
             aliases: ['gaymeter', 'howgay'],
-            usage: `${client.config.prefix}hi`,
+            usage: `${client.config.prefix}gaycheck [tag or quote] `,
             baseXp: 0
         })
     }
@@ -23,7 +23,7 @@ export default class Command extends BaseCommand {
             const username = usr.notify || usr.vname || usr.name || user.split('@')[0]
           
        
-            await M.reply(`how gay is ${username} ❓\n\n${username}is ${Math.floor(Math.random() * 101)}% gay 👽`)
+            await M.reply(`How Gay *${username}* ❓\n\n*${username}* is *${Math.floor(Math.random() * 101)}%* Gay 👽`)
         })
     }
 }
