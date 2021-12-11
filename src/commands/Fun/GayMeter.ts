@@ -8,7 +8,7 @@ export default class Command extends BaseCommand {
         super(client, handler, {
             command: 'gaycheck',
             description: 'Generally used to check if bot is Up',
-            category: 'general',
+            category: 'fun',
             aliases: ['gaymeter', 'howgay'],
             usage: `${client.config.prefix}gaycheck [tag or quote] `,
             baseXp: 0
@@ -16,14 +16,14 @@ export default class Command extends BaseCommand {
     }
 
     run = async (M: ISimplifiedMessage): Promise<void> => {
-        let text = '_GAYNESS_ check for'
+        let text = '_GAY CHECK_ '
         if (M.quoted?.sender) M.mentioned.push(M.quoted.sender)
         if (!M.mentioned.length) return void M.reply(`Please tag *user* or *user message* for checking gayness`)
         M.mentioned.forEach(async (user) => {
             // const usr = this.client.contacts[user]
             // const username = usr.notify || usr.vname || usr.name || user.split('@')[0]
        
-            text += `*@${user.split('@')[0]}*\n\n*@${user.split('@')[0]}* is *${Math.floor(Math.random() * 101)}%* _Gay_ 👽`             
+            text += `for *@${user.split('@')[0]}*\n\n*@${user.split('@')[0]}* is *${Math.floor(Math.random() * 101)}%* _Gay_ 👽`             
         })
         await M.reply(`${text}`, undefined, undefined, [...M.mentioned, M.sender.jid])
     }
