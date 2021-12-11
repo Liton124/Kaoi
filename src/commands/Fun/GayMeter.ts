@@ -19,11 +19,11 @@ export default class Command extends BaseCommand {
         if (M.quoted?.sender) M.mentioned.push(M.quoted.sender)
         if (!M.mentioned.length) return void M.reply(`Please tag the user for checking gayness`)
         M.mentioned.forEach(async (user) => {
-            const usr = this.client.sender.jid
-            const username = user.split('@')[0] 
+            // usr = this.client.sender.contacts[user]
+            // username = user.split('@')[0] 
           
        
-            await M.reply(`How _Gay_ *${username}*\n\n*${username} is is *${Math.floor(Math.random() * 101)}%* _Gay_ 👽`)              
+            await M.reply(`How _Gay_ *${user.split('@')}* ❓\n\n*${user.split('@')}* is *${Math.floor(Math.random() * 101)}%* _Gay_ 👽`)              
         })
     }
 }
