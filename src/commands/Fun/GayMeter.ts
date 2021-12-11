@@ -6,7 +6,7 @@ import { ISimplifiedMessage } from '../../typings'
 export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
-            command: '(gay|smart|beautiful|handsome|mc|crazy|lesbian|pagal|simp|bhadwa|chutiya)check',
+            command: 'how(gay|smart|beautiful|handsome|mc|crazy|lesbian|pagal|simp|bhadwa|chutiya)',
             description: 'Generally used to check if bot is Up',
             category: 'fun',
             aliases: ['gaymeter', 'howgay'],
@@ -16,7 +16,7 @@ export default class Command extends BaseCommand {
     }
 
     run = async (M: ISimplifiedMessage): Promise<void> => {
-        let text = '_GAY CHECK_ ${this.config.command.replace('how', '').toUpperCase()} '
+        let text = `_GAY CHECK_ ${this.config.command.replace('how', '').toUpperCase()}`
         if (M.quoted?.sender) M.mentioned.push(M.quoted.sender)
         if (!M.mentioned.length) return void M.reply(`Please tag *user* or *user message* for checking gayness`)
         M.mentioned.forEach(async (user) => {
