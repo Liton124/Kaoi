@@ -16,7 +16,7 @@ export default class Command extends BaseCommand {
     }
 
     run = async (M: ISimplifiedMessage): Promise<void> => {
-        let text = '_GAY CHECK_ ${this.client.config.command.replace('how', '').toUpperCase()} '
+        let text = '_GAY CHECK_ ${this.config.command.replace('how', '').toUpperCase()} '
         if (M.quoted?.sender) M.mentioned.push(M.quoted.sender)
         if (!M.mentioned.length) return void M.reply(`Please tag *user* or *user message* for checking gayness`)
         M.mentioned.forEach(async (user) => {
