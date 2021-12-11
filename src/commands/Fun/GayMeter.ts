@@ -18,12 +18,14 @@ export default class Command extends BaseCommand {
     run = async (M: ISimplifiedMessage): Promise<void> => {
         if (M.quoted?.sender) M.mentioned.push(M.quoted.sender)
         if (!M.mentioned.length) return void M.reply(`Please tag the user for checking gayness`)
-        M.mentioned.forEach(async (user) => {
-            const usr = this.client.contacts[user]
-            const username = user.split('@')[0]
+        
           
        
-            await M.reply(`How Gay *${username}* ❓\n\n*${username}* is *${Math.floor(Math.random() * 101)}%* Gay 👽`)
-        })
+        await M.reply(`How Gay ${M.mentioned
+                                 .map((user) => (user === M.sender.jid : `@${user.split('@')[0]}`))}
+                      ❓\n\n${M.mentioned
+                                 .map((user) => (user === M.sender.jid : `@${user.split('@')[0]}`))}
+                       is *${Math.floor(Math.random() * 101)}%* Gay 👽`)
+        }
     }
 }
