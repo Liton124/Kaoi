@@ -20,7 +20,7 @@ export default class Command extends BaseCommand {
         if (!M.mentioned.length) return void M.reply(`Please tag the user for checking gayness`)
         M.mentioned.forEach(async (user) => {
             const usr = this.client.contacts[user]
-            const username = usr.notify || usr.vname || usr.name || user.split('@')[0]
+            const username = user.split('@')[0]
           
        
             await M.reply(`How Gay *${username}* ❓\n\n*${username}* is *${Math.floor(Math.random() * 101)}%* Gay 👽`)
