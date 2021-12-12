@@ -35,7 +35,7 @@ export default class Command extends BaseCommand {
                     MessageType.image,
                     undefined,
                     undefined,
-                    `Title: ${data.Title}\nYear: ${data.Year}\nRated: ${data.Rated}\nReleased: ${data.Released}\nRuntime: ${data.Runtime}\nGenre: ${data.Genre}\nDirector: ${data.Director}\nWriter: ${data.Writer}\nActors: ${data.Actors}\nPlot: ${data.Plot}\nLanguage: ${data.Language}\nCountry: ${data.Country}\nAwards: ${data.Awards}\nMetascore: ${data.Metascore}\nimdbRating: ${data.imdbRating}\nimdbVotes: ${data.imdbVotes}\nimdbID: ${data.imdbID}\nType: ${data.Type}\nDVD: ${data.DVD}\nBoxOffice: ${data.BoxOffice}\nProduction: ${data.Production}\nWebsite: ${data.Website}\nResponce: ${data.Responce} `,
+                    `*Title:* ${data.Title}\n*Year:* ${data.Year}\n*Rated:* ${data.Rated}\n*Released in:* ${data.Released}\n*Runtime:* ${data.Runtime}\n*Genre:* ${data.Genre}\n*Director:* ${data.Director}\n*Writer:* ${data.Writer}\n\n*Actors:* ${data.Actors}\n\n*Plot:* ${data.Plot}\n\n*Language:* ${data.Language}\n*Country:* ${data.Country}\n*Awards:* ${data.Awards}\n*Metascore:* ${data.Metascore}\n*Imdb Rating:* ${data.imdbRating}\n*Imdb Votes:* ${data.imdbVotes}\n*Imdb ID:* ${data.imdbID}\n*Type:* ${data.Type}\n*DVD:* ${data.DVD}\n*Box Office:* ${data.BoxOffice}\n*Production:* ${data.Production}\n*Website:* ${data.Website}\n `,
                     undefined
                 ).catch((e) => {
                     console.log(`This error occurs when an image is sent via M.reply()\n Child Catch Block : \n${e}`)
