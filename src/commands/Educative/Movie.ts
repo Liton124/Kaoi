@@ -22,7 +22,7 @@ export default class Command extends BaseCommand {
         if (!joined) return void M.reply('Please provide me a movie name')
         const name = joined.trim()
         await axios
-            .get(`http://www.omdbapi.com/?apikey=742b2d09&t=${name}`) 
+            .get(``) 
             /* Note
   If you want to add some response, we'd recommend you to explore the json itself which provided link returns.
   This stability of the url and API KEY is not guaranteed.
@@ -31,11 +31,41 @@ export default class Command extends BaseCommand {
             .then((response) => {
                 // console.log(response);
   
-                const text = `Title: ${response.data.Title}\nYear: ${response.data.Year}\nRated: ${response.data.Rated}\nReleased: ${response.data.Released}\nRuntime: ${response.data.Runtime}\nGenre: ${response.data.Genre}\nDirector: ${response.data.Director}\nWriter: ${response.data.Writer}\nActors: ${response.data.Actors}\nPlot: ${response.data.Plot}\nLanguage: ${response.data.Language}\nCountry: ${response.data.Country}\nAwards: ${response.data.Awards}\nPoster: ${response.data.Poster}\nMetascore: ${response.data.Metascore}\nimdbRating: ${response.data.imdbRating}\nimdbVotes: ${response.data.imdbVotes}\nimdbID: ${response.data.imdbID}\nType: ${response.data.Type}\nDVD: ${response.data.DVD}\nBoxOffice: ${response.data.BoxOffice}\nProduction: ${response.data.Production}\nWebsite: ${response.data.Website}\nResponce: ${response.data.Responce} `
-                M.reply(text)
+                const text =   M.reply(text)
             })
             .catch((err) => {
                 M.reply(`Sorry, couldn't find any information.`)
             })
+    }
+}
+        const name = joined.trim()
+        console.log(name)
+        const { data } = await axios.get(`http://www.omdbapi.com/?apikey=742b2d09&t=${name}`)
+        if ((data as { error: string }).error) return void (await M.reply('Sorry, couldn\'t find'))
+        const buffer = await request.buffer(data.Poster).catch((e) => {
+            return void M.reply(e.message)
+        })
+        while (true) {
+            try {
+                M.reply(
+                    buffer || '🌟 An error occurred. Please try again later',
+                    MessageType.image,
+                    undefined,
+                    undefined,
+                    `Title: ${response.data.Title}\nYear: ${response.data.Year}\nRated: ${response.data.Rated}\nReleased: ${response.data.Released}\nRuntime: ${response.data.Runtime}\nGenre: ${response.data.Genre}\nDirector: ${response.data.Director}\nWriter: ${response.data.Writer}\nActors: ${response.data.Actors}\nPlot: ${response.data.Plot}\nLanguage: ${response.data.Language}\nCountry: ${response.data.Country}\nAwards: ${response.data.Awards}\nMetascore: ${response.data.Metascore}\nimdbRating: ${response.data.imdbRating}\nimdbVotes: ${response.data.imdbVotes}\nimdbID: ${response.data.imdbID}\nType: ${response.data.Type}\nDVD: ${response.data.DVD}\nBoxOffice: ${response.data.BoxOffice}\nProduction: ${response.data.Production}\nWebsite: ${response.data.Website}\nResponce: ${response.data.Responce} `
+                    undefined
+                ).catch((e) => {
+                    console.log(`This error occurs when an image is sent via M.reply()\n Child Catch Block : \n${e}`)
+                    // console.log('Failed')
+                    M.reply(`🌟An error occurred. Please try again later.`)
+                })
+                break
+            } catch (e) {
+                // console.log('Failed2')
+                M.reply(`An error occurred. Please try again later.`)
+                console.log(`This error occurs when an image is sent via M.reply()\n Parent Catch Block : \n${e}`)
+            }
+        }
+        return void null
     }
 }
