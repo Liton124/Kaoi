@@ -12,7 +12,7 @@ export default class Command extends BaseCommand {
         super(client, handler, {
             command: 'changemind',
             description: `Change his mind`,
-            aliases: ['mind', 'change'],
+            aliases: ['mind'],
             category: 'fun',
             usage: `${client.config.prefix}mind words`,
             baseXp: 20
