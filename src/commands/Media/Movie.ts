@@ -11,7 +11,7 @@ export default class Command extends BaseCommand {
         super(client, handler, {
             command: 'movie',
             aliases: ['movieinfo'],
-            description: 'Gives you the info of the given movie name',
+            description: 'Gives you the info of the given movie',
             category: 'media',
             usage: `${client.config.prefix}movie name`,
             baseXp: 50
