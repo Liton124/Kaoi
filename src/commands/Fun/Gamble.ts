@@ -79,3 +79,4 @@ M.reply(`you lost ${value}`);
     M.reply('sorry you dont have sufficient coins');
     break;
 }
+}
