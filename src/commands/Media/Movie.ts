@@ -35,7 +35,7 @@ export default class Command extends BaseCommand {
                     MessageType.image,
                     undefined,
                     undefined,
-                    `*Title:* ${data.Title}\n*Year:* ${data.Year}\n*Rated:* ${data.Rated}\n*Released in:* ${data.Released}\n*Runtime:* ${data.Runtime}\n*Genre:* ${data.Genre}\n*Director:* ${data.Director}\n*Writer:* ${data.Writer}\n\n*Actors:* ${data.Actors}\n\n*Plot:* ${data.Plot}\n\n*Language:* ${data.Language}\n*Country:* ${data.Country}\n*Awards:* ${data.Awards}\n*Metascore:* ${data.Metascore}\n*Imdb Rating:* ${data.imdbRating}\n*Imdb Votes:* ${data.imdbVotes}\n*Imdb ID:* ${data.imdbID}\n*Type:* ${data.Type}\n*DVD:* ${data.DVD}\n*Box Office:* ${data.BoxOffice}\n*Production:* ${data.Production}\n*Website:* ${data.Website}\n `,
+                    `*Title:* ${data.Title}\n*Year:* ${data.Year}\n*Rated:* ${data.Rated}\n*Released in:* ${data.Released}\n*Runtime:* ${data.Runtime}\n*Genre:* ${data.Genre}\n*Director:* ${data.Director}\n*Writer:* ${data.Writer}\n\n*Actors:* ${data.Actors}\n\n*Plot:* ${data.Plot}\n\n*Language:* ${data.Language}\n*Country:* ${data.Country}\n*Awards:* ${data.Awards}\n\n*RATINGS*\n*Source:* ${data.Ratings[1].Source}\n*Value:* ${data.Ratings[1].Value}\n\n*Source:* ${data.Ratings[2].Source}\n*Value:* ${data.Ratings[2].Value}\n\n*Metascore:* ${data.Metascore}\n*Imdb Rating:* ${data.imdbRating}\n*Imdb Votes:* ${data.imdbVotes}\n*Imdb ID:* ${data.imdbID}\n*Type:* ${data.Type}\n*DVD:* ${data.DVD}\n*Box Office:* ${data.BoxOffice}\n*Production:* ${data.Production}\n*Website:* ${data.Website}\n `,
                     undefined
                 ).catch((e) => {
                     // console.log('Failed')
