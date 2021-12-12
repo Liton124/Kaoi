@@ -19,7 +19,7 @@ export default class Command extends BaseCommand {
     }
 
     run = async (M: ISimplifiedMessage, { joined }: IParsedArgs): Promise<void> => {
-        if (!joined) return void M.reply('Please provide me the question')
+        if (!joined) return void M.reply('Please provide me a movie name')
         const name = joined.trim()
         await axios
             .get(`http://www.omdbapi.com/?apikey=742b2d09&t=${name}`) 
