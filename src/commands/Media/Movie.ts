@@ -35,7 +35,7 @@ export default class Command extends BaseCommand {
                     MessageType.image,
                     undefined,
                     undefined,
-                    `Title: ${response.data.Title}\nYear: ${response.data.Year}\nRated: ${response.data.Rated}\nReleased: ${response.data.Released}\nRuntime: ${response.data.Runtime}\nGenre: ${response.data.Genre}\nDirector: ${response.data.Director}\nWriter: ${response.data.Writer}\nActors: ${response.data.Actors}\nPlot: ${response.data.Plot}\nLanguage: ${response.data.Language}\nCountry: ${response.data.Country}\nAwards: ${response.data.Awards}\nMetascore: ${response.data.Metascore}\nimdbRating: ${response.data.imdbRating}\nimdbVotes: ${response.data.imdbVotes}\nimdbID: ${response.data.imdbID}\nType: ${response.data.Type}\nDVD: ${response.data.DVD}\nBoxOffice: ${response.data.BoxOffice}\nProduction: ${response.data.Production}\nWebsite: ${response.data.Website}\nResponce: ${response.data.Responce} `,
+                    `Title: ${data.Title}\nYear: ${data.Year}\nRated: ${data.Rated}\nReleased: ${data.Released}\nRuntime: ${data.Runtime}\nGenre: ${data.Genre}\nDirector: ${data.Director}\nWriter: ${data.Writer}\nActors: ${data.Actors}\nPlot: ${data.Plot}\nLanguage: ${data.Language}\nCountry: ${data.Country}\nAwards: ${data.Awards}\nMetascore: ${data.Metascore}\nimdbRating: ${data.imdbRating}\nimdbVotes: ${data.imdbVotes}\nimdbID: ${data.imdbID}\nType: ${data.Type}\nDVD: ${data.DVD}\nBoxOffice: ${data.BoxOffice}\nProduction: ${data.Production}\nWebsite: ${data.Website}\nResponce: ${data.Responce} `,
                     undefined
                 ).catch((e) => {
                     console.log(`This error occurs when an image is sent via M.reply()\n Child Catch Block : \n${e}`)
