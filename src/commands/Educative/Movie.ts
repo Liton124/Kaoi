@@ -38,3 +38,4 @@ export default class Command extends BaseCommand {
                 M.reply(`Sorry, couldn't find any information.`)
             })
     }
+}
