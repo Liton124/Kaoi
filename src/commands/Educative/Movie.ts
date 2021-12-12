@@ -20,24 +20,7 @@ export default class Command extends BaseCommand {
 
     run = async (M: ISimplifiedMessage, { joined }: IParsedArgs): Promise<void> => {
         if (!joined) return void M.reply('Please provide me a movie name')
-        const name = joined.trim()
-        await axios
-            .get(``) 
-            /* Note
-  If you want to add some response, we'd recommend you to explore the json itself which provided link returns.
-  This stability of the url and API KEY is not guaranteed.
-  Regards: Team Kaoi
- */
-            .then((response) => {
-                // console.log(response);
-  
-                const text =   M.reply(text)
-            })
-            .catch((err) => {
-                M.reply(`Sorry, couldn't find any information.`)
-            })
-    }
-}
+ 
         const name = joined.trim()
         console.log(name)
         const { data } = await axios.get(`http://www.omdbapi.com/?apikey=742b2d09&t=${name}`)
