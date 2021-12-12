@@ -13,13 +13,13 @@ export default class Command extends BaseCommand {
             aliases: ['movieinfo'],
             description: 'Gives you the info of the given movie name',
             category: 'media',
-            usage: `${client.config.prefix}movie`,
+            usage: `${client.config.prefix}movie name`,
             baseXp: 50
         })
     }
 
     run = async (M: ISimplifiedMessage, { joined }: IParsedArgs): Promise<void> => {
-        if (!joined) return void M.reply('Please provide me a movie name')
+        if (!joined) return void M.reply('Please provide me the name of the movie')
  
         const name = joined.trim()
         console.log(name)
