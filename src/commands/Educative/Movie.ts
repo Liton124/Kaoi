@@ -36,7 +36,7 @@ export default class Command extends BaseCommand {
                     undefined,
                     undefined,
                     `Title: ${response.data.Title}\nYear: ${response.data.Year}\nRated: ${response.data.Rated}\nReleased: ${response.data.Released}\nRuntime: ${response.data.Runtime}\nGenre: ${response.data.Genre}\nDirector: ${response.data.Director}\nWriter: ${response.data.Writer}\nActors: ${response.data.Actors}\nPlot: ${response.data.Plot}\nLanguage: ${response.data.Language}\nCountry: ${response.data.Country}\nAwards: ${response.data.Awards}\nMetascore: ${response.data.Metascore}\nimdbRating: ${response.data.imdbRating}\nimdbVotes: ${response.data.imdbVotes}\nimdbID: ${response.data.imdbID}\nType: ${response.data.Type}\nDVD: ${response.data.DVD}\nBoxOffice: ${response.data.BoxOffice}\nProduction: ${response.data.Production}\nWebsite: ${response.data.Website}\nResponce: ${response.data.Responce} `
-                    undefined
+                    undefined,
                 ).catch((e) => {
                     console.log(`This error occurs when an image is sent via M.reply()\n Child Catch Block : \n${e}`)
                     // console.log('Failed')
