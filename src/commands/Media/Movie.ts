@@ -12,7 +12,7 @@ export default class Command extends BaseCommand {
             command: 'movie',
             aliases: ['movieinfo'],
             description: 'Gives you the info of the given movie name',
-            category: 'educative',
+            category: 'media',
             usage: `${client.config.prefix}movie`,
             baseXp: 50
         })
