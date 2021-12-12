@@ -6,10 +6,10 @@ import { ISimplifiedMessage } from '../../typings'
 export default class Command extends BaseCommand {
     constructor(client: WAClient, handler: MessageHandler) {
         super(client, handler, {
-            command: 'beautifulcheck',
-            description: 'Check anyone's beautifulness',
-            category: 'fun',
-            aliases: ['beautifulmeter', 'howbeautiful'],
+            command: "beautifulcheck",
+            description: "Check anyone's beautifulness",
+            category: "fun",
+            aliases: ["beautifulmeter", "howbeautiful"],
             usage: `${client.config.prefix}beautifulcheck [tag or quote] `,
             baseXp: 0
         })
