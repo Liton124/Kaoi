@@ -67,7 +67,7 @@
         "fs-extra": "^10.0.0",
         "g-i-s": "^2.1.6",
         "genius-lyrics": "^4.3.4",
-        "genshin-db": "^3.11.3",
+        "genshin-db": "^3.12.2",
         "get-urls": "^10.0.0",
         "gifencoder": "^2.0.1",
         "go-image-go": "^1.0.1",
