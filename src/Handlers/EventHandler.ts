@@ -51,24 +51,23 @@ export default class EventHandler {
 				: event.participants,
 		};
 		if (add) {
-			const welcome = await drawCard({
-				theme: "circuit",
-				text: {
-					title: "Annyeonghaseyo",
-					text: username,
-					subtitle: `This is ${group.subject}`,
-					color: `#00FFFF`,
-				},
-				avatar: {
-					image: pfp,
-					outlineWidth: 5,
-				},
-				background:
-					"https://images.unsplash.com/photo-1554050857-c84a8abdb5e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80",
-				blur: 1,
-				border: true,
-				rounded: true,
-			});
+			const welcome = await new Canvas.Welcome()
+				.setUsername(username)
+				.setDiscriminator(memberCount)
+				.setMemberCount(memberCount)
+				.setGuildName(group.subject)
+				.setAvatar(pfp)
+				.setColor("border", "#FFC0CB")
+				.setColor("username-box", "#FFFFFF")
+				.setColor("discriminator-box", "#FFFFFF")
+				.setColor("message-box", "#FFFFFF")
+				.setColor("title", "#FFFFFF")
+				.setColor("avatar", "#00FF00")
+				.setText("member-count", `- ${memberCount} member !`)
+				.setText("title", "hello")
+				.setText("message", `welcome to ${group.subject}`)
+				.setBackground("https://i.ibb.co/8B6Q84n/LTqHsfYS.jpg")
+				.toAttachment();
 			if (welcome)
 				return void (await this.client.sendMessage(
 					event.jid,
