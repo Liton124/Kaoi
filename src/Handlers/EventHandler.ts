@@ -1,9 +1,9 @@
 import { MessageType, WAParticipantAction } from '@adiwajshing/baileys'
-import chalk from 'chalk'
-import request from '../lib/request'
-import WAClient from '../lib/WAClient'
-import { drawCard } from "discord-welcome-card";
-
+import chalk from "chalk";
+//import { evaluate } from "mathjs";
+import WAClient from "../lib/WAClient";
+import Canvas from "discord-canvas";
+import ordinal from "ordinal";
 export default class EventHandler {
 	constructor(public client: WAClient) {}
 
@@ -21,7 +21,7 @@ export default class EventHandler {
 		const user = event.participants[0];
 		const contact = this.client.getContact(user);
 		const username =
-		                contact.notify || contact.vname || contact.name || user.split("@")[0];
+			contact.notify || contact.vname || contact.name || user.split("@")[0];
 		let pfp: string;
 		try {
 			pfp = await this.client.getProfilePicture(user);
@@ -29,22 +29,26 @@ export default class EventHandler {
 			pfp =
 				"https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg";
 		}
+		console.log(event.action);
+		const groupData = await this.client.groupMetadata(event.jid);
+		const memberCount = await ordinal(groupData.participants.length);
 		const add = event.action === "add";
-		const text = add
-			? `${
-					group.desc
-			  }\n\n*‣ ${event.participants
+		const bye = event.action === "remove";
+		const promote = event.action === "promote";
+		const demote = event.action === "demote";
+		/*const text = add
+			? `${group.desc}\n\n*‣ ${event.participants
 					.map((jid) => `@${jid.split("@")[0]}`)
 					.join(", ")}*`
 			: event.action === "remove"
-			? `*@${
+			? `Goodbye *@${
 					event.participants[0].split("@")[0]
-			  }* Bye bye 👋`
-			: `*@${
+			  }* Bye bye 👋.`
+			: `Looks like *@${
 					event.participants[0].split("@")[0]
 			  }* got ${this.client.util.capitalize(event.action)}d${
 					event.actor ? ` by *@${event.actor.split("@")[0]}*` : ""
-			  }`;
+			  }`;*/
 		const contextInfo = {
 			mentionedJid: event.actor
 				? [...event.participants, event.actor]
@@ -68,23 +72,40 @@ export default class EventHandler {
 				.setText("message", `welcome to ${group.subject}`)
 				.setBackground("https://i.ibb.co/8B6Q84n/LTqHsfYS.jpg")
 				.toAttachment();
-			if (welcome)
-				return void (await this.client.sendMessage(
-					event.jid,
-					welcome,
-					MessageType.image,
-					{
-						caption: text,
-						contextInfo,
-					}
-				));
+			return void (await this.client.sendMessage(
+				event.jid,
+				welcome.toBuffer(),
+				MessageType.image,
+				{
+					caption: `${group.desc}\n\n*‣ ${event.participants
+						.map((jid) => `@${jid.split("@")[0]}`)
+						.join(", ")}*`,
+					contextInfo,
+				}
+			));
 		}
-		return void this.client.sendMessage(
-			event.jid,
-			text,
-			MessageType.extendedText,
-			{ contextInfo }
-		);
+		if (promote) {
+			const text = `Congratulations *@${
+				event.participants[0].split("@")[0]
+			}*, you're now an admin.`;
+			return void this.client.sendMessage(
+				event.jid,
+				text,
+				MessageType.extendedText,
+				{ contextInfo }
+			);
+		}
+		if (demote) {
+			const text = ` Looks like *@${
+				event.participants[0].split("@")[0]
+			}* got demoted.`;
+			return void this.client.sendMessage(
+				event.jid,
+				text,
+				MessageType.extendedText,
+				{ contextInfo }
+			);
+		}
 	};
 }
 
