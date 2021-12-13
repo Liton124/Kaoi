@@ -2891,7 +2891,9 @@ genshin-db@^3.12.2:
   version "3.12.2"
   resolved "https://registry.yarnpkg.com/genshin-db/-/genshin-db-3.12.2.tgz#b34bc9de4e65f67330530813db0df19b36d4c011"
   integrity sha512-ShySeUcJ2UQUGIQm0qTh6IfMRGCBY5qLq2gw6q+9dYOq1YJRlviop/x5HnUvfq8ecUJo6DhBQfHxkwsIdM6kgQ==
- 
+  dependencies:
+    fuzzysort "^1.1.4"
+
 get-caller-file@^2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-2.0.5.tgz#4f94412a82db32f36e3b0b9741f8a97feb031f7e"
