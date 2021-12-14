@@ -68,7 +68,7 @@ export default class EventHandler {
 				.setColor("title", "#FFFFFF")
 				.setColor("avatar", "#00FF00")
 				.setText("member-count", `- ${memberCount} member !`)
-				.setText("title", "hello")
+				.setText("title", "annyeong")
 				.setText("message", `welcome to ${group.subject}`)
 				.setBackground("https://i.ibb.co/8B6Q84n/LTqHsfYS.jpg")
 				.toAttachment();
