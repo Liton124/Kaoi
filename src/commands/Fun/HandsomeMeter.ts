@@ -23,7 +23,7 @@ export default class Command extends BaseCommand {
             // const usr = this.client.contacts[user]
             // const username = usr.notify || usr.vname || usr.name || user.split('@')[0]
        
-            text += `_for_ *@${user.split('@')[0]}*\n\n*@${user.split('@')[0]}* _is_ *${Math.floor(Math.random() * 101)}%* _HANDSOME_ ✨`             
+            text += `_for_ *@${user.split('@')[0]}*\n\n*@${user.split('@')[0]}* _is_ *_${Math.floor(Math.random() * 101)}%_* _HANDSOME_ ✨`             
         })
         await M.reply(`${text}`, undefined, undefined, [...M.mentioned, M.sender.jid])
     }
