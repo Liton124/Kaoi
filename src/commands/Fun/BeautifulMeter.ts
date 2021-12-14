@@ -9,7 +9,7 @@ export default class Command extends BaseCommand {
             command: "beautifulcheck",
             description: "Check anyone's beautifulness",
             category: "fun",
-            aliases: ["beautifulmeter", "howbeautiful"],
+            aliases: ["beautifulmeter", "howbeautiful", "beautycheck"],
             usage: `${client.config.prefix}beautifulcheck [tag or quote] `,
             baseXp: 0
         })
@@ -23,7 +23,7 @@ export default class Command extends BaseCommand {
             // const usr = this.client.contacts[user]
             // const username = usr.notify || usr.vname || usr.name || user.split('@')[0]
        
-            text += `_for_ *@${user.split('@')[0]}*\n\n*@${user.split('@')[0]}* _is_ *${Math.floor(Math.random() * 101)}%* _BEAUTIFUL_ 🌸🦋`             
+            text += `_for_ *@${user.split('@')[0]}*\n\n*@${user.split('@')[0]}* _is_ *_${Math.floor(Math.random() * 101)}%_* _BEAUTIFUL_ 🌸🦋`             
         })
         await M.reply(`${text}`, undefined, undefined, [...M.mentioned, M.sender.jid])
     }
