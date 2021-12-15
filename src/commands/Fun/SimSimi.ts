@@ -18,7 +18,7 @@ export default class Command extends BaseCommand {
     run = async (M: ISimplifiedMessage, { joined }: IParsedArgs): Promise<void> => {
         if (!joined) return void M.reply(' *Annyeong!* ')
         const kaoi = joined.trim()
-        await axios.get(`https://api.simsimi.net/v2/?text=${kaoi}&lc=en&name=en`)
+        await axios.get(`https://api.simsimi.net/v2/?text=${kaoi}&lc=en&name=kaoi`)
         .then((response) => {
                 // console.log(response);
                 const text = ` ${response.data.success}`
