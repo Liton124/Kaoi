@@ -11,6 +11,7 @@ export default class Command extends BaseCommand {
         super(client, handler, {
             command: 'dare',
             description: 'Gives you random task',
+            aliases: ['d']
             category: 'games',
             usage: `${client.config.prefix}dare`,
             
