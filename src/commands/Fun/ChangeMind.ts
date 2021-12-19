@@ -20,7 +20,7 @@ export default class Command extends BaseCommand {
     }
 
     run = async (M: ISimplifiedMessage, { joined }: IParsedArgs): Promise<void> => {
-        if(!joined) 
+        if (!joined) return void (await M.reply(`Please Write some words.`))
         
         const term = joined.trim()
 
