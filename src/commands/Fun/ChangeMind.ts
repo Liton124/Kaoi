@@ -20,7 +20,7 @@ export default class Command extends BaseCommand {
     }
 
     run = async (M: ISimplifiedMessage, { joined }: IParsedArgs): Promise<void> => {
-        // consider neko and kitsune in furry
+        if(!joined) 
         
         const term = joined.trim()
 
