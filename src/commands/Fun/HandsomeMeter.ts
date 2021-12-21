@@ -16,7 +16,7 @@ export default class Command extends BaseCommand {
     }
 
     run = async (M: ISimplifiedMessage): Promise<void> => {
-        let text = '_HANDSOME2CHECK_ '
+        let text = '_HANDSOMECHECK_ '
         if (M.quoted?.sender) M.mentioned.push(M.quoted.sender)
         if (!M.mentioned.length) return void M.reply(`Please tag *user* or *user message* for checking handsomeness`)
         M.mentioned.forEach(async (user) => {
