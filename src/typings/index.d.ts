@@ -55,6 +55,9 @@ export interface IUser {
 export interface IFeature {
     feature: string
     state: boolean
+    jids: string[]
+    id: string
+
 }
 
 export interface IPackage {
