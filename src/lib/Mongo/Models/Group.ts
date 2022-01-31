@@ -43,7 +43,13 @@ const GroupSchema = new Schema({
         type: Boolean,
         required: false,
         default: false
-    }
+    },
+    // Will broadcast news
+        type: Boolean,
+        required: false,
+        default: false
+
+    },
 })
 
 export default model<IGroupModel>('groups', GroupSchema)
