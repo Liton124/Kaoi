@@ -45,6 +45,7 @@ const GroupSchema = new Schema({
         default: false
     },
     // Will broadcast news
+    news: {
         type: Boolean,
         required: false,
         default: false
