@@ -42,6 +42,7 @@ export interface IGroup {
     mod: boolean
     cmd: boolean
     invitelink: boolean
+    news: boolean
 }
 
 export interface IUser {
