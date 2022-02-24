@@ -72,6 +72,8 @@ export interface IUser {
       id: number;
     };
     married: boolean;
+ ​   ​lastQuizId​: ​number​; 
+ ​   ​quizPoints​: ​number​;
 }
 
 export interface ICountdown {
