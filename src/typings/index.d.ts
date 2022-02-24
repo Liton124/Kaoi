@@ -50,7 +50,19 @@ export interface IUser {
     ban: boolean
     warnings: number
     Xp: number
+    wallet: number;
+    bank: number;
+    coin: number;
+    lastDaily: number;
+    lastRob: number;
 }
+
+export interface ICountdown {
+  jid: string;
+  slot: number;
+  gamble: number;
+  rob: number;
+  claim: number;
 
 export interface IFeature {
     feature: string
