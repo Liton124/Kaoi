@@ -31,7 +31,7 @@ export default class Command extends BaseCommand {
       ).haigushaResponse.claimable
     )
       return void M.reply(
-        `There are no characters around to marry. Use ${this.client.config.prefix}haigusha to summon one.`
+        `There are no characters around to marry. Use ${this.client.config.prefix}partner to summon one.`
       );
     if (await (await this.client.getUser(M.sender.jid)).married)
       return void M.reply(`You are already married to *${l.name}*.`);
