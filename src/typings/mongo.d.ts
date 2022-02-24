@@ -1,9 +1,12 @@
 import { Document, Model } from 'mongoose'
-import { IFeature, IGroup, IUser } from './'
+import { IFeature, IGroup, IUser } from "./";
 
 export interface IGroupModel extends IGroup, Document {}
 
-export interface IUserModel extends IUser, Document {}
+export interface IUserModel extends IUser, Document {
+  haigusha: any;
+  married: any;
+}
 
 export interface IDisabledCommandModel extends Document {
     command: string
