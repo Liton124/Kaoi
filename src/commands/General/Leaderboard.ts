@@ -50,50 +50,62 @@ export default class Command extends BaseCommand {
     for (let i = 0; i < n; i++) {
       text += `\n\n${i + 1}\n\n`;
       const user = await this.client.getUser(users[i].jid);
-      const exp = user.Xp;
+      const xp = user.Xp;
       let role: string;
-      if (exp < 500) {
+      if (xp < 500) {
         role = "🌸 Citizen";
-      } else if (exp < 1000) {
+      } else if (xp < 1000) {
         role = "🔎 Cleric";
-      } else if (exp < 2000) {
+      } else if (xp < 2000) {
         role = "🔮 Wizard";
-      } else if (exp < 5000) {
+      } else if (xp < 5000) {
         role = "♦️ Mage";
-      } else if (exp < 10000) {
+      } else if (xp < 10000) {
         role = "🎯 Noble";
-      } else if (exp < 25000) {
+      } else if (xp < 25000) {
         role = "✨ Elite";
-      } else if (exp < 50000) {
+      } else if (xp < 50000) {
         role = "🔶️ Ace";
-      } else if (exp < 75000) {
+      } else if (xp < 75000) {
         role = "🌀 Hero";
-      } else if (exp < 100000) {
+      } else if (xp < 100000) {
+        role = "💥 Ultrahero";
+      } else if (xp < 150000) {
+        role = "☠️ Legend";
+      } else if (xp < 200000) {
+        role = "🎩 GrandMaster";
+      } else if (xp < 275000) {
         role = "💎 Supreme";
       } else {
         role = "❄️ Mystic";
       }
       let level: number;
-      if (exp < 500) {
+      if (xp < 500) {
         level = 1;
-      } else if (exp < 1000) {
+      } else if (xp < 1000) {
         level = 2;
-      } else if (exp < 2000) {
+      } else if (xp < 2000) {
         level = 3;
-      } else if (exp < 5000) {
+      } else if (xp < 5000) {
         level = 4;
-      } else if (exp < 10000) {
+      } else if (xp < 10000) {
         level = 5;
-      } else if (exp < 25000) {
+      } else if (xp < 25000) {
         level = 6;
-      } else if (exp < 50000) {
+      } else if (xp < 50000) {
         level = 7;
-      } else if (exp < 75000) {
+      } else if (xp < 75000) {
         level = 8;
-      } else if (exp < 100000) {
+      } else if (xp < 100000) {
         level = 9;
+      } else if (xp < 150000) {
+        level = 10
+      } else if (xp < 200000) {
+        level = 11
+      } else if ( xp < 275000) {
+        level = 12;
       } else {
-        level = 10;
+        level = 13;
       }
       const q = this.client.getContact(users[i].jid);
       const username = q.notify || q.vname || q.name || "User";
