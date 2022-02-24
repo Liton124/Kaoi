@@ -4920,6 +4920,11 @@ parse-headers@^2.0.0:
   resolved "https://registry.yarnpkg.com/parse-headers/-/parse-headers-2.0.4.tgz#9eaf2d02bed2d1eff494331ce3df36d7924760bf"
   integrity sha512-psZ9iZoCNFLrgRjZ1d8mn0h9WRqJwFxM9q3x7iUjN/YT2OksthDJ5TiPCu2F38kS4zutqfW+YdVVkBZZx3/1aw==
 
+parse-ms-js@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/parse-ms-js/-/parse-ms-js-1.2.0.tgz#01430929c32a2032718064d40f9708e25856c4ed"
+  integrity sha512-Gh74GTDbkZxfnXE+/HHsgVPQ1TwE8DQuMQXzwdik2LJcDAIaXpTI0MeY5WWVBoZK8A6bM2Pm/3yeNGVpuMvN5g==
+
 parse5-htmlparser2-tree-adapter@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/parse5-htmlparser2-tree-adapter/-/parse5-htmlparser2-tree-adapter-6.0.1.tgz#2cdf9ad823321140370d4dbf5d3e92c7c8ddc6e6"
