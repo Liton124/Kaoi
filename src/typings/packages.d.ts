@@ -27,3 +27,4 @@ declare module "shentai";
 declare module "vtuber-wiki";
 declare module "discord-welcome-card";
 declare module "discord-canvas";
+declare module "parse-ms-js";
