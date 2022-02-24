@@ -21,10 +21,6 @@ export default class Command extends BaseCommand {
     M: ISimplifiedMessage,
     { joined }: IParsedArgs
   ): Promise<void> => {
-    if (M.from !== "120363039941521242@g.us")
-      return void M.reply(
-        `You can't use this command here. Use ${this.client.config.prefix}support to get the quiz group link.`
-      );
     const term = joined.trim().split(" ");
     if (term[0] === "--ff" || term[0] === "--forfeit") {
       if (await (await this.client.getGroupData).quizResponse.ongoing) {
@@ -37,7 +33,6 @@ export default class Command extends BaseCommand {
         )
           return void M.reply(`You can't forfeit this quiz.`);
         await this.client.DB.group.updateOne(
-          { jid:  },
           { $set: { "quizResponse.ongoing": false } }
         );
         return void M.reply(`You forfeited the quiz.`);
@@ -57,7 +52,6 @@ export default class Command extends BaseCommand {
     text += `\n🧧 *Use ${this.client.config.prefix}answer <option_number> to answer this question.*\n\n`;
     text += `📒 *Note: You only have 60 seconds to answer.*`;
     await this.client.DB.group.updateMany(
-      { jid: },
       {
         $set: {
           "quizResponse.id": quiz.id,
@@ -91,10 +85,9 @@ export default class Command extends BaseCommand {
     setTimeout(async () => {
       if (await !(await this.client.getGroupData(M.from)).quizResponse.ongoing)
         return void null;
-      const id = await (await this.client.getGroupData(M.from)).quizResponse.id;
+      const id = await (await this.client.getGroupData).quizResponse.id;
       const g = await getQuizById(id);
       await this.client.DB.group.updateOne(
-        { jid: },
         { $set: { "quizResponse.ongoing": false } }
       );
       return void M.reply(
