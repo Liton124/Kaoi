@@ -17,6 +17,7 @@ import {
   ISession,
   ISimplifiedMessage,
   IUserModel,
+  ICountdown,
 } from "../typings";
 import Utils from "./Utils";
 import DatabaseHandler from "../Handlers/DatabaseHandler";
@@ -241,6 +242,33 @@ export default class WAClient extends Base {
         Xp,
       }).save();
   };
+
+  deposit = async (jid: string, amount: number): Promise<void> => {
+    const result = await this.DB.user.updateMany(
+      { jid },
+      { $inc: { wallet: -amount, bank: amount } }
+    );
+    if (!result.nModified)
+      await new this.DB.user({
+        jid,
+        wallet: -amount,
+        bank: amount,
+      }).save();
+  };
+
+  withdraw = async (jid: string, amount: number): Promise<void> => {
+    const result = await this.DB.user.updateMany(
+      { jid },
+      { $inc: { wallet: amount, bank: -amount } }
+    );
+    if (!result.nModified)
+      await new this.DB.user({
+        jid,
+        wallet: amount,
+        bank: -amount,
+      }).save();
+  };
+
 
   modifyAllChats = async (
     action:
