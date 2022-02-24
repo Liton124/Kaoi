@@ -43,6 +43,18 @@ export interface IGroup {
     cmd: boolean
     invitelink: boolean
     news: boolean
+    bot: string
+    haigushaResponse: {
+      name: string;
+      id: number;
+      claimable: boolean;
+    };
+    quizResponse: {
+      id: number;
+      answer: number;
+      ongoing: boolean;
+      startedBy: string;
+    };
 }
 
 export interface IUser {
@@ -55,6 +67,11 @@ export interface IUser {
     coin: number;
     lastDaily: number;
     lastRob: number;
+    haigusha: {
+      name: string;
+      id: number;
+    };
+    married: boolean;
 }
 
 export interface ICountdown {
@@ -62,6 +79,9 @@ export interface ICountdown {
   slot: number;
   gamble: number;
   rob: number;
+  haigusha: number;
+  marry: number;
+  divorce: number;
 }
 
 export interface IFeature {
