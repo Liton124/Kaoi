@@ -23,10 +23,6 @@ export default class Command extends BaseCommand {
     { joined }: IParsedArgs
   ): Promise<void> => {
     /*eslint-disable @typescript-eslint/no-explicit-any*/
-    if (M.from !== "120363037700352694@g.us")
-      return void M.reply(
-        `You can't gamble here. Use ${this.client.config.prefix}support to get casino group link.`
-      );
     const user = M.sender.jid;
     const time = 25000;
     const cd = await (await this.client.getCd(user)).gamble;
