@@ -24,6 +24,7 @@ export type TCategory =
     | 'anime'
     | 'bots'
     | 'dev'
+    | 'economy'
     | 'educative'
     | 'fun'
     | 'games'
