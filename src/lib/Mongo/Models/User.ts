@@ -38,5 +38,14 @@ const UserSchema = new Schema({
   lastRob: {
     type: Number,
   },
+  haigusha: {
+    name: String,
+    id: Number,
+  },
+  married: {
+    type: Boolean,
+    default: false,
+    required: false,
+  },
 })
 export default model<IUserModel>('users', UserSchema)
