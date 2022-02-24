@@ -62,7 +62,6 @@ export interface ICountdown {
   slot: number;
   gamble: number;
   rob: number;
-  claim: number;
 
 export interface IFeature {
     feature: string
