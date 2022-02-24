@@ -15,5 +15,13 @@ const cdSchema = new Schema({
   rob: {
     type: Number,
   },
+  haigusha: {
+    type: Number,
+  },
+  marry: {
+    type: Number,
+  },
+  divorce: {
+    type: Number,
 });
 export default model<ICountdown>("countdown", cdSchema);
