@@ -10,9 +10,9 @@ import marika from "@shineiichijo/marika";
 export default class Command extends BaseCommand {
   constructor(client: WAClient, handler: MessageHandler) {
     super(client, handler, {
-      command: "haigusha",
+      command: "partner",
       description: `Will summon a random character to marry.`,
-      aliases: ["haigusha"],
+      aliases: ["partner"],
       category: "weeb",
       usage: `${client.config.prefix}haigusha`,
       baseXp: 50,
