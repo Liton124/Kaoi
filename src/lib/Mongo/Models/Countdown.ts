@@ -23,5 +23,6 @@ const cdSchema = new Schema({
   },
   divorce: {
     type: Number,
+  },
 });
 export default model<ICountdown>("countdown", cdSchema);
