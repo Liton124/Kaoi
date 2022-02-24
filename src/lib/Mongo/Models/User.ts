@@ -47,5 +47,13 @@ const UserSchema = new Schema({
     default: false,
     required: false,
   },
+ ​ lastQuizId​: ​{ 
+ ​   type​: ​Number​, 
+ ​ }​, 
+ ​ quizPoints​: ​{ 
+ ​   type​: ​Number​, 
+ ​   ​default​: ​0​, 
+ ​   ​required​: ​false​,
+  },
 })
 export default model<IUserModel>('users', UserSchema)
