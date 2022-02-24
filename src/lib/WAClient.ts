@@ -204,6 +204,15 @@ export default class WAClient extends Base {
     return user;
   };
 
+  getCd = async (jid: string): Promise<ICountdown> => {
+    let user = await this.DB.cd.findOne({ jid });
+    if (!user)
+      user = await new this.DB.cd({
+        jid,
+      }).save();
+    return user;
+  };
+
   getBuffer = async (url: string): Promise<Buffer> =>
     (await axios.get<Buffer>(url, { responseType: "arraybuffer" })).data;
 
