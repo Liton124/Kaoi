@@ -15,35 +15,5 @@ const cdSchema = new Schema({
   rob: {
     type: Number,
   },
-  haigusha: {
-    type: Number,
-  },
-  marry: {
-    type: Number,
-  },
-  divorce: {
-    type: Number,
-  },
-  t2pc: {
-    type: Number,
-  },
-  t2party: {
-    type: Number,
-  },
-  catch: {
-    type: Number,
-  },
-  swap: {
-    type: Number,
-  },
-  claim: {
-    type: Number,
-  },
-  swapChara: {
-    type: Number,
-  },
-  sellChara: {
-    type: Number,
-  },
 });
 export default model<ICountdown>("countdown", cdSchema);
