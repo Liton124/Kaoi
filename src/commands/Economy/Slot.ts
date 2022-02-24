@@ -23,7 +23,7 @@ export default class Command extends BaseCommand {
   ): Promise<void> => {
     if (M.from !== "120363037700352694@g.us")
       return void M.reply(
-        `You can't bet here. Use ${this.client.config.prefix}support to get casino group link.`
+        `You can't bet here, Sorry.`
       );
     const user = M.sender.jid;
     const time = 45000;
