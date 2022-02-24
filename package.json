@@ -47,6 +47,7 @@
         "akaneko": "^5.2.2",
         "anilist-node": "^1.11.0",
         "anime-facts": "^4.3.12",
+ ​       ​"anime-quiz"​: ​"​^2.0.2​"​,
         "anime-wallpaper": "^1.0.2",
         "anime-wallpapers": "^1.0.1",
         "animequotes": "^2.0.0",
