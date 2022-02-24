@@ -102,15 +102,15 @@ export default class Command extends BaseCommand {
         level = 10
       } else if (xp < 200000) {
         level = 11
-      } else if ( xp < 275000) {
+      } else if (xp < 275000) {
         level = 12;
       } else {
         level = 13;
       }
       const q = this.client.getContact(users[i].jid);
       const username = q.notify || q.vname || q.name || "User";
-      text += `🏮 *Username: ${username}*\n\n〽️ *Level: ${level}*\n\n⭐ *Exp: ${
-        exp || 0
+      text += `🏮 *Username: ${username}*\n\n〽️ *Level: ${level}*\n\n⭐ *Xp: ${
+        xp || 0
       }*\n\n💫 *Role: ${role}*`;
     }
     return void M.reply(
