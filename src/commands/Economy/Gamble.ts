@@ -22,9 +22,11 @@ export default class Command extends BaseCommand {
     M: ISimplifiedMessage,
     { joined }: IParsedArgs
   ): Promise<void> => {
-    /*eslint-disable @typescript-eslint/no-explicit-any*/120363022488307199@g.us
-    if (M.from === "120363022488307199@g.us")
-      return void M.reply(`You can't bet here, Sorry.`);
+    /*eslint-disable @typescript-eslint/no-explicit-any*/
+    if (M.from !== "120363037700352694@g.us")
+      return void M.reply(
+        `You can't gamble here, Sorry.`
+      );
     const user = M.sender.jid;
     const time = 25000;
     const cd = await (await this.client.getCd(user)).gamble;
@@ -89,7 +91,7 @@ export default class Command extends BaseCommand {
       await M.reply(await sticker.build(), MessageType.sticker, Mimetype.webp);
       const buttonMessage: any = {
         contentText: `📉 You lost *${amount} gold*.`,
-        footerText: "kaoi🚀",
+        footerText: "Angela🚀",
         buttons: buttons,
         headerType: 1,
       };
@@ -112,7 +114,7 @@ export default class Command extends BaseCommand {
       await M.reply(await sticker.build(), MessageType.sticker, Mimetype.webp);
       const buttonMessage: any = {
         contentText: `📈 You won *${amount} gold*.`,
-        footerText: "Kaoi🚀",
+        footerText: "Angela🚀",
         buttons: buttons,
         headerType: 1,
       };
