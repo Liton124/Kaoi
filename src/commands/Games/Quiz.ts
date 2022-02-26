@@ -31,7 +31,6 @@ export default class Command extends BaseCommand {
         )
           return void M.reply(`You can't forfeit this quiz.`);
         await this.client.DB.group.updateOne(
-          { jid: string },
           { $set: { "quizResponse.ongoing": false } }
         );
         return void M.reply(`You forfeited the quiz.`);
@@ -51,7 +50,6 @@ export default class Command extends BaseCommand {
     text += `\n🧧 *Use ${this.client.config.prefix}answer <option_number> to answer this question.*\n\n`;
     text += `📒 *Note: You only have 60 seconds to answer.*`;
     await this.client.DB.group.updateMany(
-      { jid: string },
       {
         $set: {
           "quizResponse.id": quiz.id,
@@ -88,7 +86,6 @@ export default class Command extends BaseCommand {
       const id = await (await this.client.getGroupData).quizResponse.id;
       const g = await getQuizById(id);
       await this.client.DB.group.updateOne(
-        { jid: string },
         { $set: { "quizResponse.ongoing": false } }
       );
       return void M.reply(
