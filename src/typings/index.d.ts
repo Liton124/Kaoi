@@ -33,30 +33,69 @@ export interface ISession {
     encKey: string
     macKey: string
 }
-
 export interface IGroup {
-    jid: string
-    events: boolean
-    nsfw: boolean
-    safe: boolean
-    mod: boolean
-    cmd: boolean
-    invitelink: boolean
-    news: boolean
-    bot: string
-    haigushaResponse: {
+  jid: string;
+  events: boolean;
+  nsfw: boolean;
+  safe: boolean;
+  mod: boolean;
+  cmd: boolean;
+  invitelink: boolean;
+  news: boolean;
+  chara: boolean;
+  bot: string;
+  wild: boolean;
+  lastPokemon: string;
+  pId: number;
+  pLevel: number;
+  pImage: string;
+  catchable: boolean;
+  trade: boolean;
+  startedBy: string;
+  tOffer: {
+    name: string;
+    id: number;
+    level: number;
+    image: string;
+  };
+  tWant: string;
+  haigushaResponse: {
+    name: string;
+    id: number;
+    claimable: boolean;
+  };
+  quizResponse: {
+    id: number;
+    answer: number;
+    ongoing: boolean;
+    startedBy: string;
+  };
+  charaResponse: {
+    id: number;
+    name: string;
+    image: string;
+    claimable: boolean;
+    price: number;
+    about: string;
+    source: string;
+  };
+  charaTrade: {
+    ongoing: boolean;
+    startedBy: string;
+    for: {
+      id: number;
       name: string;
-      id: number;
-      claimable: boolean;
+      source: string;
     };
-    quizResponse: {
+    offer: {
       id: number;
-      answer: number;
-      ongoing: boolean;
-      startedBy: string;
+      name: string;
+      image: string;
+      about: string;
+      source: string;
     };
+  };
 }
-
 export interface IUser {
     jid: string
     ban: boolean
