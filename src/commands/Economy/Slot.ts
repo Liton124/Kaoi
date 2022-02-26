@@ -21,10 +21,6 @@ export default class Command extends BaseCommand {
     M: ISimplifiedMessage,
     { joined }: IParsedArgs
   ): Promise<void> => {
-    if (M.from !== "120363037700352694@g.us")
-      return void M.reply(
-        `You can't bet here, Sorry.`
-      );
     const user = M.sender.jid;
     const time = 45000;
     const cd = await (await this.client.getCd(user)).slot;
@@ -104,7 +100,7 @@ export default class Command extends BaseCommand {
       const text = `${head}\n\n${i}\n\n📉 You lost *${amount} gold*.`;
       const buttonMessage: any = {
         contentText: `${text}`,
-        footerText: "Angela🚀",
+        footerText: "Kaoi🚀",
         buttons: buttons,
         headerType: 1,
       };
@@ -121,7 +117,7 @@ export default class Command extends BaseCommand {
       const text = `${head}\n\n${o}\n\n📈 You won *${gold} gold*.`;
       const buttonMessage: any = {
         contentText: `${text}`,
-        footerText: "Angela🚀",
+        footerText: "Kaoi🚀",
         buttons: buttons,
         headerType: 1,
       };
@@ -137,7 +133,7 @@ export default class Command extends BaseCommand {
       const text = `${head}\n\n${p}\n\n🎊 *Jackpot!* You won *${gold} gold*.`;
       const buttonMessage: any = {
         contentText: `${text}`,
-        footerText: "Angela🚀",
+        footerText: "Kaoi🚀",
         buttons: buttons,
         headerType: 1,
       };
