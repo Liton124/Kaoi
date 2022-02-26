@@ -84,6 +84,17 @@ export default class EventHandler {
 				}
 			));
 		}
+                if (bye) {
+			const text = ` *@${
+				event.participants[0].split("@")[0]
+			}* 👋 Bye. We will miss you 🤧💜`;
+			return void this.client.sendMessage(
+				event.jid,
+				text,
+				MessageType.extendedText,
+				{ contextInfo }
+			);
+		}
 		if (promote) {
 			const text = `Congratulations *@${
 				event.participants[0].split("@")[0]
