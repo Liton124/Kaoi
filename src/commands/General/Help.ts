@@ -35,7 +35,7 @@ export default class Command extends BaseCommand {
                     categories[info.config.category].push(info)
                 }
             }
-            let text = `👋🏻 (💜ω💜) Konichiwa! *${M.sender.username}*\n\nI'm Kaoi 🤖\nMy prefix is "!"\n\n*━━❰･Notes📮Side･❱━━*\n\n 1| Use *these commands* only which are *listed* below\n 2| *Don't call* bot to avoid blocking\n 3| *Don't spam* in Group&dm to avoid blocking\n\n\n`		
+            let text = `👋🏻 (💜ω💜) Konichiwa! *${M.sender.username}*\n\nI'm Kaoi 🤖\nMy prefix is "!"\n\n*━━❰･Notes📮Side･❱━━*\n\n 1| Use *these commands* only which are *listed* below\n 2| *Don't call* bot to avoid blocking\n 3| *Don't spam* in Group&dm to avoid blocking\n 4| Use *${this.client.config.prefix}help <command_name>* to view the command info\n\n\n`		
             const keys = Object.keys(categories).sort((a, b) => a.localeCompare(b))
             for (const key of keys)
                 text += `*━━━❰ • ${this.client.util.capitalize(key
@@ -43,7 +43,7 @@ export default class Command extends BaseCommand {
                     .map((command) => command.config?.command)
                     .join(', ')}\`\`\`\n\n`
             return void M.reply(
-                `${text} 🗃️ *Note: Use ${this.client.config.prefix}help <command_name> to view the command info*`
+                `${text}`
             )
         }
         const key = parsedArgs.joined.toLowerCase()
