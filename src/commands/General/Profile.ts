@@ -33,6 +33,12 @@ export default class Command extends BaseCommand {
             pfp =
                 'https://wallpaperaccess.com/full/5304840.png'
         }
+        let haigusha;
+        if (await (await this.client.getUser(user)).married) {
+          haigusha = await (await this.client.getUser(user)).haigusha.name;
+        } else {
+          haigusha = "None";
+        }
         const xp = (await this.client.getUser(user)).Xp
         let role
         if (xp < 500) {
