@@ -8,7 +8,7 @@ export default class Command extends BaseCommand {
   constructor(client: WAClient, handler: MessageHandler) {
     super(client, handler, {
       command: "daily",
-      description: "Claims daily gold"
+      description: "Claims daily gold",
       aliases: ["claim"],
       category: "economy",
       usage: `${client.config.prefix}daily`,
