@@ -97,24 +97,43 @@ export interface IGroup {
   };
 }
 export interface IUser {
-    jid: string
-    ban: boolean
-    warnings: number
-    Xp: number
-    wallet: number;
-    bank: number;
-    coin: number;
-    lastDaily: number;
-    lastRob: number;
-    haigusha: {
-      name: string;
-      id: number;
-    };
-    married: boolean;
- ​   ​lastQuizId​: ​number​; 
- ​   ​quizPoints​: ​number​;
+  jid: string;
+  ban: boolean;
+  warnings: number;
+  Xp: number;
+  wallet: number;
+  bank: number;
+  coin: number;
+  lastDaily: number;
+  lastRob: number;
+  pokemons: string[];
+  party: {
+    id: number;
+    level: number;
+    name: string;
+    image: string;
+  }[];
+  pc: {
+    id: number;
+    level: number;
+    name: string;
+    image: string;
+  }[];
+  haigusha: {
+    name: string;
+    id: number;
+  };
+  married: boolean;
+  lastQuizId: number;
+  quizPoints: number;
+  gallery: {
+    id: number;
+    name: string;
+    image: string;
+    about: string;
+    source: string;
+  }[];
 }
-
 export interface ICountdown {
   jid: string;
   slot: number;
