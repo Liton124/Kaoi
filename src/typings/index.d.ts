@@ -142,6 +142,13 @@ export interface ICountdown {
   haigusha: number;
   marry: number;
   divorce: number;
+  t2pc: number;
+  t2party: number;
+  catch: number;
+  swap: number;
+  claim: number;
+  swapChara: number;
+  sellChara: number;
 }
 
 export interface IFeature {
