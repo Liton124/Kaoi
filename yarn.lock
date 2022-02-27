@@ -5855,6 +5855,11 @@ ssri@^8.0.0, ssri@^8.0.1:
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
   integrity sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
 
+string-capitalize-name@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/string-capitalize-name/-/string-capitalize-name-1.0.3.tgz#ebacdd5b079b48b3f371abe76ac5b44b90a7dd1d"
+  integrity sha1-66zdWwebSLPzcavnasW0S5Cn3R0=
+
 string-width@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-1.0.2.tgz#118bdf5b8cdc51a2a7e70d211e07e2b0b9b107d3"
