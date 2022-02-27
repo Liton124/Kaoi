@@ -36,7 +36,7 @@ const GroupSchema = new Schema({
   cmd: {
     type: Boolean,
     required: false,
-    default: true,
+    default: false,
   },
   // Can people ask for Invite link of this group?
   invitelink: {
