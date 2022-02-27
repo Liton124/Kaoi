@@ -29,6 +29,7 @@ export default class Command extends BaseCommand {
     const buttonMessage: any = {
       contentText: `🏦 *Bank | ${M.sender.username}*\n\n🪙 *Gold: ${result}*`,
       footerText: "Kaoi 🚀",
+      buttons: buttons,
       headerType: 1,
     };
     await M.reply(buttonMessage, MessageType.buttonsMessage);
