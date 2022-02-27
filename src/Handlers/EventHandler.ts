@@ -85,9 +85,9 @@ export default class EventHandler {
 			));
 		}
                 if (bye) {
-			const text = ` *@${
+			const text = ` *Bye 👋 @${
 				event.participants[0].split("@")[0]
-			}* 👋 Bye. We will miss you 🤧💜`;
+			}*  We will miss you 🤧💜`;
 			return void this.client.sendMessage(
 				event.jid,
 				text,
