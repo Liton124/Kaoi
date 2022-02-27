@@ -24,11 +24,26 @@ const cdSchema = new Schema({
   divorce: {
     type: Number,
   },
- ​ ​quizResponse​: ​{ 
- ​   id​: ​Number​, 
- ​   answer​: ​Number​, 
- ​   ​ongoing​: ​Boolean​, 
- ​   startedBy​: ​String​,
+  t2pc: {
+    type: Number,
+  },
+  t2party: {
+    type: Number,
+  },
+  catch: {
+    type: Number,
+  },
+  swap: {
+    type: Number,
+  },
+  claim: {
+    type: Number,
+  },
+  swapChara: {
+    type: Number,
+  },
+  sellChara: {
+    type: Number,
   },
 });
 export default model<ICountdown>("countdown", cdSchema);
