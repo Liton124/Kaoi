@@ -9,154 +9,205 @@ import cron from "node-cron";
 import marika from "@shineiichijo/marika";
 
 export default class MessageHandler {
-	commands = new Map<string, ICommand>();
-	aliases = new Map<string, ICommand>();
-	constructor(public client: WAClient) {}
+  commands = new Map<string, ICommand>();
+  aliases = new Map<string, ICommand>();
+  constructor(public client: WAClient) {}
 
-	handleMessage = async (M: ISimplifiedMessage): Promise<void> => {
-		if (
-			!(M.chat === "dm") &&
-			M.WAMessage.key.fromMe &&
-			M.WAMessage.status.toString() === "2"
-		) {
-			/*
+  handleMessage = async (M: ISimplifiedMessage): Promise<void> => {
+    if (M.WAMessage?.message?.buttonsResponseMessage) {
+      const res: any =
+        M.WAMessage?.message?.buttonsResponseMessage.selectedButtonId;
+      const command = this.commands.get(res);
+      const { args, groupMetadata, sender } = M;
+      if (
+        (await this.client.getGroupData(M.from)).bot !== this.client.user.name
+      )
+        return void null;
+      command?.run(M, this.parseArgs(args));
+    }
+    if (M.WAMessage?.message?.listResponseMessage) {
+      const key: any = M.WAMessage?.message?.listResponseMessage.title;
+      const comm = this.commands.get(key) || this.aliases.get(key);
+      console.log(comm?.config);
+      const state = await this.client.DB.disabledcommands.findOne({
+        command: comm?.config.command,
+      });
+      if (
+        comm?.config?.command === undefined ||
+        (await this.client.getGroupData(M.from)).bot !== this.client.user.name
+      )
+        return void null;
+      M.reply(
+        `🚀 *Command:* ${this.client.util.capitalize(
+          comm?.config?.command
+        )}\n📈 *Status:* ${state ? "Disabled" : "Available"}
+            \n⛩ *Category:* ${this.client.util.capitalize(
+              comm?.config?.category || ""
+            )}${
+          comm?.config.aliases && comm?.config.command !== "react"
+            ? `\n♦️ *Aliases:* ${comm?.config.aliases
+                .map(this.client.util.capitalize)
+                .join(", ")}`
+            : ""
+        }\n🎐 *Group Only:* ${this.client.util.capitalize(
+          JSON.stringify(!comm?.config.dm ?? true)
+        )}\n💎 *Usage:* ${comm?.config?.usage || ""}\n\n📒 *Description:* ${
+          comm?.config?.description || ""
+        }`
+      );
+    }
+    if (
+      !(M.chat === "dm") &&
+      M.WAMessage.key.fromMe &&
+      M.WAMessage.status.toString() === "2"
+    ) {
+      /*
             BUG : It receives message 2 times and processes it twice.
             https://github.com/adiwajshing/Baileys/blob/8ce486d/WAMessage/WAMessage.d.ts#L18529
             https://adiwajshing.github.io/Baileys/enums/proto.webmessageinfo.webmessageinfostatus.html#server_ack
             */
-			M.sender.jid = this.client.user.jid;
-			M.sender.username =
-				this.client.user.name ||
-				this.client.user.vname ||
-				this.client.user.short ||
-				"Chitoge";
-		} else if (M.WAMessage.key.fromMe) return void null;
+      M.sender.jid = this.client.user.jid;
+      M.sender.username =
+        this.client.user.name ||
+        this.client.user.vname ||
+        this.client.user.short ||
+        "Chitoge";
+    } else if (M.WAMessage.key.fromMe) return void null;
 
-		if (M.from.includes("status")) return void null;
-		const { args, groupMetadata, sender } = M;
-		if (M.chat === "dm" && this.client.isFeature("chatbot")) {
-			if (this.client.config.chatBotUrl) {
-				const myUrl = new URL(this.client.config.chatBotUrl);
-				const params = myUrl.searchParams;
-				await axios
-					.get(
-						`${encodeURI(
-							`http://api.brainshop.ai/get?bid=${params.get(
-								"bid"
-							)}&key=${params.get("key")}&uid=${M.sender.jid}&msg=${M.args}`
-						)}`
-					)
-					.then((res) => {
-						if (res.status !== 200)
-							return void M.reply(`🔍 Error: ${res.status}`);
-						return void M.reply(res.data.cnt);
-					})
-					.catch(() => {
-						M.reply(`Well...`);
-					});
-			}
-		}
-		if (!M.groupMetadata && !(M.chat === "dm")) return void null;
+    if (M.from.includes("status")) return void null;
+    const { args, groupMetadata, sender } = M;
+    if (M.chat === "dm" && this.client.isFeature("chatbot")) {
+      if (this.client.config.chatBotUrl) {
+        const myUrl = new URL(this.client.config.chatBotUrl);
+        const params = myUrl.searchParams;
+        await axios
+          .get(
+            `${encodeURI(
+              `http://api.brainshop.ai/get?bid=${params.get(
+                "bid"
+              )}&key=${params.get("key")}&uid=${M.sender.jid}&msg=${M.args}`
+            )}`
+          )
+          .then((res) => {
+            if (res.status !== 200)
+              return void M.reply(`🔍 Error: ${res.status}`);
+            return void M.reply(res.data.cnt);
+          })
+          .catch(() => {
+            M.reply(`Well...`);
+          });
+      }
+    }
+    if (!M.groupMetadata && !(M.chat === "dm")) return void null;
 
-		if (
-			(await this.client.getGroupData(M.from)).mod &&
-			M.groupMetadata?.admins?.includes(this.client.user.jid)
-		)
-			this.moderate(M);
-		if (!args[0] || !args[0].startsWith(this.client.config.prefix))
-			return void this.client.log(
-				`${chalk.blueBright("MSG")} from ${chalk.green(
-					sender.username
-				)} in ${chalk.cyanBright(groupMetadata?.subject || "")}`
-			);
-		const cmd = args[0].slice(this.client.config.prefix.length).toLowerCase();
-		// If the group is set to muted, don't do anything
-		const allowedCommands = ["activate", "deactivate", "act", "deact"];
-		if (
-			!(
-				allowedCommands.includes(cmd) ||
-				(await this.client.getGroupData(M.from)).cmd
-			)
-		)
-			return void this.client.log(
-				`${chalk.green("CMD")} ${chalk.yellow(
-					`${args[0]}[${args.length - 1}]`
-				)} from ${chalk.green(sender.username)} in ${chalk.cyanBright(
-					groupMetadata?.subject || "DM"
-				)}`
-			);
-		const command = this.commands.get(cmd) || this.aliases.get(cmd);
-		this.client.log(
-			`${chalk.green("CMD")} ${chalk.yellow(
-				`${args[0]}[${args.length - 1}]`
-			)} from ${chalk.green(sender.username)} in ${chalk.cyanBright(
-				groupMetadata?.subject || "DM"
-			)}`
-		);
-		if (!command)
-			return void M.reply(
-				`No command found, Baka!`
-			);
-		const user = await this.client.getUser(M.sender.jid);
-		if (user.ban) return void M.reply("You're Banned from using commands.");
-		const state = await this.client.DB.disabledcommands.findOne({
-			command: command.config.command,
-		});
-		if (state)
-			return void M.reply(
-				`✖ This command is disabled${
-					state.reason ? ` for ${state.reason}` : ""
-				}`
-			);
-		if (!command.config?.dm && M.chat === "dm")
-			return void M.reply("This command can only be used in GROUPS.");
-		if (
-			command.config?.modsOnly &&
-			!this.client.config.mods?.includes(M.sender.jid)
-		) {
-			return void M.reply(`Only MODS are allowed to use this command.`);
-		}
-		if (command.config?.adminOnly && !M.sender.isAdmin)
-			return void M.reply(
-				`This command is only for the ADMINS, Baka!`
-			);
-		try {
-			await command.run(M, this.parseArgs(args));
-			if (command.config.baseXp) {
-				await this.client.setXp(M.sender.jid, command.config.baseXp || 10, 50);
-			}
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		} catch (err: any) {
-			return void this.client.log(err.message, true);
-		}
-	};
+    if (
+      (await this.client.getGroupData(M.from)).mod &&
+      M.groupMetadata?.admins?.includes(this.client.user.jid)
+    )
+      this.moderate(M);
+    if (!args[0] || !args[0].startsWith(this.client.config.prefix))
+      return void this.client.log(
+        `${chalk.blueBright("MSG")} from ${chalk.green(
+          sender.username
+        )} in ${chalk.cyanBright(groupMetadata?.subject || "")}`
+      );
+    const cmd = args[0].slice(this.client.config.prefix.length).toLowerCase();
+    // If the group is set to muted, don't do anything
+    const allowedCommands = ["activate", "deactivate", "act", "deact"];
+    if (
+      !(
+        allowedCommands.includes(cmd) ||
+        (await this.client.getGroupData(M.from)).cmd
+      )
+    )
+      return void this.client.log(
+        `${chalk.green("CMD")} ${chalk.yellow(
+          `${args[0]}[${args.length - 1}]`
+        )} from ${chalk.green(sender.username)} in ${chalk.cyanBright(
+          groupMetadata?.subject || "DM"
+        )}`
+      );
+    const bot = await (await this.client.getGroupData(M.from)).bot;
+    const command = this.commands.get(cmd) || this.aliases.get(cmd);
+    const reservedCommands = ["switch", "hi"];
+    this.client.log(
+      `${chalk.green("CMD")} ${chalk.yellow(
+        `${args[0]}[${args.length - 1}]`
+      )} from ${chalk.green(sender.username)} in ${chalk.cyanBright(
+        groupMetadata?.subject || "DM"
+      )}`
+    );
+    if (
+      bot !== this.client.user.name &&
+      !reservedCommands.includes(cmd) &&
+      bot !== "all" &&
+      M.chat !== "dm"
+    )
+      return void null;
+    if (!command)
+      return void M.reply(
+        `No command found, Baka!`
+      );
+    const user = await this.client.getUser(M.sender.jid);
+    if (user.ban) return void M.reply("You're Banned from using commands.");
+    const state = await this.client.DB.disabledcommands.findOne({
+      command: command.config.command,
+    });
+    if (state)
+      return void M.reply(
+        `✖ This command is disabled${
+          state.reason ? ` for ${state.reason}` : ""
+        }`
+      );
+    if (!command.config?.dm && M.chat === "dm")
+      return void M.reply("This command can only be used in groups");
+    if (
+      command.config?.modsOnly &&
+      !this.client.config.mods?.includes(M.sender.jid)
+    ) {
+      return void M.reply(`Only MODS are allowed to use this command.`);
+    }
+    if (command.config?.adminOnly && !M.sender.isAdmin)
+      return void M.reply(
+        `This command is only meant for the group admins, Baka!`
+      );
+    try {
+      await command.run(M, this.parseArgs(args));
+      if (command.config.baseXp) {
+        await this.client.setXp(M.sender.jid, command.config.baseXp || 10, 50);
+      }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: any) {
+      return void this.client.log(err.message, true);
+    }
+  };
 
-	moderate = async (M: ISimplifiedMessage): Promise<void> => {
-		if (M.sender.isAdmin) return void null;
-		if (M.urls.length) {
-			const groupinvites = M.urls.filter((url) =>
-				url.includes("chat.whatsapp.com")
-			);
-			if (groupinvites.length) {
-				groupinvites.forEach(async (invite) => {
-					const splitInvite = invite.split("/");
-					const z = await this.client.groupInviteCode(M.from);
-					if (z !== splitInvite[splitInvite.length - 1]) {
-						this.client.log(
-							`${chalk.blueBright("MOD")} ${chalk.green(
-								"Group Invite"
-							)} by ${chalk.yellow(M.sender.username)} in ${
-								M.groupMetadata?.subject || ""
-							}`
-						);
-						return void (await this.client.groupRemove(M.from, [M.sender.jid]));
-					}
-				});
-			}
-		}
-	};
-    
-        spawnPokemon = async (): Promise<void> => {
+  moderate = async (M: ISimplifiedMessage): Promise<void> => {
+    if (M.sender.isAdmin) return void null;
+    if (M.urls.length) {
+      const groupinvites = M.urls.filter((url) =>
+        url.includes("chat.whatsapp.com")
+      );
+      if (groupinvites.length) {
+        groupinvites.forEach(async (invite) => {
+          const splitInvite = invite.split("/");
+          const z = await this.client.groupInviteCode(M.from);
+          if (z !== splitInvite[splitInvite.length - 1]) {
+            this.client.log(
+              `${chalk.blueBright("MOD")} ${chalk.green(
+                "Group Invite"
+              )} by ${chalk.yellow(M.sender.username)} in ${
+                M.groupMetadata?.subject || ""
+              }`
+            );
+            return void (await this.client.groupRemove(M.from, [M.sender.jid]));
+          }
+        });
+      }
+    }
+  };
+
+  spawnPokemon = async (): Promise<void> => {
     cron.schedule("*/2 * * * *", async () => {
       const Data = await await this.client.getFeatures("pokemon");
       if (Data.id === "000") return void null;
@@ -251,6 +302,7 @@ export default class MessageHandler {
       }, 120000);
     });
   };
+
   loadCommands = (): void => {
     this.client.log(chalk.green("Loading Commands..."));
     const path = join(__dirname, "..", "commands");
@@ -301,4 +353,3 @@ export default class MessageHandler {
     };
   };
 }
-	
