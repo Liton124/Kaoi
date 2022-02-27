@@ -302,6 +302,24 @@ export default class WAClient extends Base {
       }).save();
   };
 
+  addMod = async (userJid: string): Promise<void> => {
+    const result = await this.DB.feature.updateOne(
+      { feature: "mods" },
+      { $push: { jids: userJid } }
+    );
+    if (!result.nModified)
+      await new this.DB.feature({
+        feature: "mods",
+        mods: [userJid],
+      }).save();
+  };
+
+  removeMod = async (userJid: string): Promise<void> => {
+    await this.DB.feature.updateOne(
+      { feature: "mods" },
+      { $pull: { jids: userJid } }
+    );
+  };
 
   modifyAllChats = async (
     action:
@@ -361,4 +379,6 @@ export enum toggleableGroupActions {
   cmd = "cmd",
   invitelink = "invitelink",
   news = "news",
+  wild = "wild",
+  chara = "chara",
 }
