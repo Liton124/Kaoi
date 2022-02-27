@@ -4,7 +4,7 @@ import MessageHandler from "../../Handlers/MessageHandler";
 import BaseCommand from "../../lib/BaseCommand";
 import WAClient from "../../lib/WAClient";
 import { IParsedArgs, ISimplifiedMessage } from "../../typings";
-import { Character } from "@shineiichijo/marika";
+import axios from "axios";
 import request from "../../lib/request";
 import { MessageType } from "@adiwajshing/baileys";
 
@@ -27,28 +27,21 @@ export default class Command extends BaseCommand {
     /*eslint-disable @typescript-eslint/no-explicit-any*/
     /*eslint-disable @typescript-eslint/no-unused-vars*/
     if (!joined) return void (await M.reply(`Give me a character id, Baka!`));
-    const client = new Character();
-    const chitoge: any = joined;
-    let chara;
-    try {
-      chara = await client.getCharacterById(chitoge);
-    } catch (error) {
-      return void M.reply("Invalid id");
-    }
-    let source;
-    try {
-      source = await client.getCharacterAnime(chara.mal_id);
-    } catch (error) {
-      return void M.reply("✖ An error occurred. Please try again later");
-    }
+    const chitoge: any = joined.trim();
+    const chara = await axios
+      .get(`https://api.jikan.moe/v3/character/${chitoge}`)
+      .catch((err: any) => {
+        return void M.reply(`Couldn't find any character id.`);
+      });
+
     let text = "";
-    text += `💙 *Name: ${chara.name}*\n`;
-    if (chara.nicknames.length > 0)
-      text += `💚 *Nicknames: ${chara.nicknames.join(", ")}*\n`;
-    text += `💛 *Source: ${source.data[0].anime.title}*\n\n`;
-    text += `🌐 *URL: ${chara.url}*\n\n`;
-    if (chara.about !== null) text += `❤ *Description:* ${chara.about}`;
-    const buffer = await request.buffer(chara.images.jpg.image_url);
+    text += `💙 *Name: ${chara?.data.name}*\n`;
+    text += `🤍 *Kanji name: ${chara?.data.name_kanji}*\n`;
+    text += `💚 *Nicknames: ${chara?.data.nicknames.join(", ")}*\n`;
+    text += `💛 *Source: ${chara?.data.animeography[0].name}*\n\n`;
+    text += `🌐 *URL: ${chara?.data.url}*\n\n`;
+    text += `❤ *Description:* ${chara?.data.about}`;
+    const buffer = await request.buffer(chara?.data.image_url);
     await M.reply(
       buffer,
       MessageType.image,
