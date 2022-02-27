@@ -104,9 +104,9 @@
         "translate-google": "^1.5.0",
         "ultra-lyrics": "^1.0.3",
         "vtuber-wiki": "^1.1.5",
-        "wa-sticker-formatter": "^4.2.0",
+        "wa-sticker-formatter": "^4.3.2",
         "wikipedia": "^1.1.6",
         "yt-search": "^2.10.2",
-        "ytdl-core": "^4.9.1"
+        "ytdl-core": "^4.10.1"
     }
 }
