@@ -1,6 +1,5 @@
-import { Schema, model } from 'mongoose'
-import { IUserModel } from '../../../typings'
-
+import { Schema, model } from "mongoose";
+import { IUserModel } from "../../../typings";
 const UserSchema = new Schema({
   jid: {
     type: String,
@@ -38,6 +37,25 @@ const UserSchema = new Schema({
   lastRob: {
     type: Number,
   },
+  pokemons: {
+    type: [String],
+  },
+  party: [
+    {
+      id: Number,
+      level: Number,
+      name: String,
+      image: String,
+    },
+  ],
+  pc: [
+    {
+      id: Number,
+      level: Number,
+      name: String,
+      image: String,
+    },
+  ],
   haigusha: {
     name: String,
     id: Number,
@@ -47,13 +65,22 @@ const UserSchema = new Schema({
     default: false,
     required: false,
   },
- ​ lastQuizId​: ​{ 
- ​   type​: ​Number​, 
- ​ }​, 
- ​ quizPoints​: ​{ 
- ​   type​: ​Number​, 
- ​   ​default​: ​0​, 
- ​   ​required​: ​false​,
+  lastQuizId: {
+    type: Number,
   },
-})
+  quizPoints: {
+    type: Number,
+    default: 0,
+    required: false,
+  },
+  gallery: [
+    {
+      id: Number,
+      name: String,
+      image: String,
+      about: String,
+      source: String,
+    },
+  ],
+});
 export default model<IUserModel>('users', UserSchema)
