@@ -152,54 +152,150 @@ export default class MessageHandler {
 			}
 		}
 	};
+    
+        spawnPokemon = async (): Promise<void> => {
+    cron.schedule("*/2 * * * *", async () => {
+      const Data = await await this.client.getFeatures("pokemon");
+      if (Data.id === "000") return void null;
+      const p = Math.floor(Math.random() * Data.jids.length);
+      const q = await this.client.getGroupData(Data.jids[p]);
+      if (!q.wild || q.bot !== this.client.user.name) return void null;
+      const i = Math.floor(Math.random() * 898);
+      const y = Math.floor(Math.random() * 100);
+      const { data } = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon/${i}`
+      );
+      const buffer = await this.client.getBuffer(
+        `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`
+      );
+      await this.client.DB.group.updateMany(
+        { jid: Data.jids[p] },
+        {
+          $set: {
+            catchable: true,
+            lastPokemon: data.name,
+            pId: data.id,
+            pLevel: y,
+            pImage: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`,
+          },
+        }
+      );
+      await this.client.sendMessage(Data.jids[p], buffer, MessageType.image, {
+        caption: `A wild pokemon appeared! Use ${this.client.config.prefix}catch to catch this pokemon.`,
+      });
+      setTimeout(async () => {
+        await this.client.DB.group.updateOne(
+          { jid: Data.jids[p] },
+          { $set: { catchable: false } }
+        );
+      }, 500000);
+    });
+  };
 
-	loadCommands = (): void => {
-		this.client.log(chalk.green("Loading Commands..."));
-		const path = join(__dirname, "..", "commands");
-		const files = this.client.util.readdirRecursive(path);
-		files.map((file) => {
-			const filename = file.split("/");
-			if (!filename[filename.length - 1].startsWith("_")) {
-				//eslint-disable-next-line @typescript-eslint/no-var-requires
-				const command: BaseCommand = new (require(file).default)(
-					this.client,
-					this
-				);
-				this.commands.set(command.config.command, command);
-				if (command.config.aliases)
-					command.config.aliases.forEach((alias) =>
-						this.aliases.set(alias, command)
-					);
-				this.client.log(
-					`Loaded: ${chalk.green(command.config.command)} from ${chalk.green(
-						file
-					)}`
-				);
-				return command;
-			}
-		});
-		this.client.log(
-			`Successfully Loaded ${chalk.greenBright(this.commands.size)} Commands`
-		);
-	};
+  summonChara = async (): Promise<void> => {
+    cron.schedule("*/3 * * * *", async () => {
+      const data = await this.client.getFeatures("chara");
+      const p = Math.floor(Math.random() * data.jids.length);
+      const q = await this.client.getGroupData(data.jids[p]);
+      if (!q.chara || q.bot !== this.client.user.name) return void null;
+      const chara = await marika.getRandomCharacter();
+      const i = await this.client.getBuffer(chara.images.jpg.image_url);
+      const source = await marika.getCharacterAnime(chara.mal_id);
+      const price = Math.floor(Math.random() * (50000 - 25000) + 25000);
+      await this.client.DB.group.updateMany(
+        { jid: data.jids[p] },
+        {
+          $set: {
+            "charaResponse.id": chara.mal_id,
+            "charaResponse.name": chara.name,
+            "charaResponse.image": chara.images.jpg.image_url,
+            "charaResponse.about": chara.about,
+            "charaResponse.source": source[0].anime.title,
+            "charaResponse.claimable": true,
+            "charaResponse.price": price,
+          },
+        }
+      );
+      const media = await this.client.prepareMessage(
+        data.jids[p],
+        i,
+        MessageType.image
+      );
+      const buttons = [
+        {
+          buttonId: "claim",
+          buttonText: { displayText: `${this.client.config.prefix}claim` },
+          type: 1,
+        },
+      ];
+      const buttonMessage: any = {
+        contentText: `*A claimable character Appeared!*\n\n🎀 *Name: ${chara.name}*\n\n💬 *About:* ${chara.about}\n\n📛 *Source: ${source[0].anime.title}*\n\n💰 *Price: ${price}*\n\n*[Use ${this.client.config.prefix}claim to have this character in your gallery]*`,
+        footerText: "🌟 Kaoi 🌟",
+        buttons: buttons,
+        headerType: 4,
+        imageMessage: media?.message?.imageMessage,
+      };
+      await this.client.sendMessage(
+        data.jids[p],
+        buttonMessage,
+        MessageType.buttonsMessage
+      );
+      setTimeout(async () => {
+        await this.client.DB.group.updateOne(
+          { jid: data.jids[p] },
+          { $set: { "charaResponse.claimable": false } }
+        );
+      }, 120000);
+    });
+  };
+  loadCommands = (): void => {
+    this.client.log(chalk.green("Loading Commands..."));
+    const path = join(__dirname, "..", "commands");
+    const files = this.client.util.readdirRecursive(path);
+    files.map((file) => {
+      const filename = file.split("/");
+      if (!filename[filename.length - 1].startsWith("_")) {
+        //eslint-disable-next-line @typescript-eslint/no-var-requires
+        const command: BaseCommand = new (require(file).default)(
+          this.client,
+          this
+        );
+        this.commands.set(command.config.command, command);
+        if (command.config.aliases)
+          command.config.aliases.forEach((alias) =>
+            this.aliases.set(alias, command)
+          );
+        this.client.log(
+          `Loaded: ${chalk.green(command.config.command)} from ${chalk.green(
+            file
+          )}`
+        );
+        return command;
+      }
+    });
+    this.client.log(
+      `Successfully Loaded ${chalk.greenBright(this.commands.size)} Commands`
+    );
+  };
 
-	loadFeatures = (): void => {
-		this.client.log(chalk.green("Loading Features..."));
-		this.client.setFeatures().then(() => {
-			this.client.log(
-				`Successfully Loaded ${chalk.greenBright(
-					this.client.features.size
-				)} Features`
-			);
-		});
-	};
+  loadFeatures = (): void => {
+    this.client.log(chalk.green("Loading Features..."));
+    this.client.setFeatures().then(() => {
+      this.client.log(
+        `Successfully Loaded ${chalk.greenBright(
+          this.client.features.size
+        )} Features`
+      );
+    });
+  };
 
-	parseArgs = (args: string[]): IParsedArgs => {
-		const slicedArgs = args.slice(1);
-		return {
-			args: slicedArgs,
-			flags: slicedArgs.filter((arg) => arg.startsWith("--")),
-			joined: slicedArgs.join(" ").trim(),
-		};
-	};
+  parseArgs = (args: string[]): IParsedArgs => {
+    const slicedArgs = args.slice(1);
+    return {
+      args: slicedArgs,
+      flags: slicedArgs.filter((arg) => arg.startsWith("--")),
+      joined: slicedArgs.join(" ").trim(),
+    };
+  };
 }
+	
