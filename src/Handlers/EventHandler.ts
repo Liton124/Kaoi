@@ -35,11 +35,6 @@ export default class EventHandler {
           type: 1,
         },
         {
-          buttonId: "support",
-          buttonText: { displayText: `${this.client.config.prefix}support` },
-          type: 1,
-        },
-        {
           buttonId: "info",
           buttonText: { displayText: `${this.client.config.prefix}info` },
           type: 1,
@@ -53,7 +48,7 @@ export default class EventHandler {
       }
       const buttonMessage: any = {
         contentText: `${text}`,
-        footerText: "🎇 Beyond 🎇",
+        footerText: "🌟 Kaoi 🌟",
         buttons: buttons,
         headerType: 1,
       };
