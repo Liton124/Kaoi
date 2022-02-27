@@ -1,90 +1,141 @@
-import { MessageType, WAParticipantAction } from '@adiwajshing/baileys'
+import { MessageType, WAParticipantAction } from "@adiwajshing/baileys";
 import chalk from "chalk";
 //import { evaluate } from "mathjs";
 import WAClient from "../lib/WAClient";
 import Canvas from "discord-canvas";
 import ordinal from "ordinal";
 export default class EventHandler {
-	constructor(public client: WAClient) {}
+  constructor(public client: WAClient) {}
 
-	handle = async (event: IEvent): Promise<void> => {
-		const group = await this.client.fetchGroupMetadataFromWA(event.jid);
-		this.client.log(
-			`${chalk.blueBright("EVENT")} ${chalk.green(
-				`${this.client.util.capitalize(event.action)}[${
-					event.participants.length
-				}]`
-			)} in ${chalk.cyanBright(group?.subject || "Group")}`
-		);
-		const data = await this.client.getGroupData(event.jid);
-		if (!data.events) return void null;
-		const user = event.participants[0];
-		const contact = this.client.getContact(user);
-		const username =
-			contact.notify || contact.vname || contact.name || user.split("@")[0];
-		let pfp: string;
-		try {
-			pfp = await this.client.getProfilePicture(user);
-		} catch (err) {
-			pfp =
-				"https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg";
-		}
-		console.log(event.action);
-		const groupData = await this.client.groupMetadata(event.jid);
-		const memberCount = await ordinal(groupData.participants.length);
-		const add = event.action === "add";
-		const bye = event.action === "remove";
-		const promote = event.action === "promote";
-		const demote = event.action === "demote";
-		/*const text = add
-			? `${group.desc}\n\n*‣ ${event.participants
+  handle = async (event: IEvent): Promise<void> => {
+    const group = await this.client.fetchGroupMetadataFromWA(event.jid);
+    this.client.log(
+      `${chalk.blueBright("EVENT")} ${chalk.green(
+        `${this.client.util.capitalize(event.action)}[${
+          event.participants.length
+        }]`
+      )} in ${chalk.cyanBright(group?.subject || "Group")}`
+    );
+    if (
+      event.participants[0] === this.client.user.jid &&
+      event.action === "add"
+    ) {
+      const bot = await (await this.client.getGroupData(event.jid)).bot;
+      if (bot == undefined) {
+        await this.client.DB.group.updateOne(
+          { jid: event.jid },
+          { $set: { bot: this.client.user.name } }
+        );
+      }
+      const text = `Thanks for adding me. Please tap at one of the buttons to get started.`;
+      const buttons = [
+        {
+          buttonId: "help",
+          buttonText: { displayText: `${this.client.config.prefix}help` },
+          type: 1,
+        },
+        {
+          buttonId: "support",
+          buttonText: { displayText: `${this.client.config.prefix}support` },
+          type: 1,
+        },
+        {
+          buttonId: "info",
+          buttonText: { displayText: `${this.client.config.prefix}info` },
+          type: 1,
+        },
+      ];
+      interface buttonMessage {
+        contentText: string;
+        footerText: string;
+        buttons: string[];
+        headerType: number;
+      }
+      const buttonMessage: any = {
+        contentText: `${text}`,
+        footerText: "🎇 Beyond 🎇",
+        buttons: buttons,
+        headerType: 1,
+      };
+      return void (await this.client.sendMessage(
+        event.jid,
+        buttonMessage,
+        MessageType.buttonsMessage
+      ));
+    }
+    const data = await this.client.getGroupData(event.jid);
+    if (!data.events || data.bot !== this.client.user.name) return void null;
+    const user = event.participants[0];
+    const contact = this.client.getContact(user);
+    const username =
+      contact.notify || contact.vname || contact.name || user.split("@")[0];
+    let pfp: string;
+    try {
+      pfp = await this.client.getProfilePicture(user);
+    } catch (err) {
+      pfp =
+        "https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg";
+    }
+    console.log(event.action);
+    const groupData = await this.client.groupMetadata(event.jid);
+    const memberCount = await ordinal(groupData.participants.length);
+    const add = event.action === "add";
+    const bye = event.action === "remove";
+    const promote = event.action === "promote";
+    const demote = event.action === "demote";
+    /*const text = add
+			? `- ${group.subject || "___"} -\n\n💠 *Group Description:*\n${
+					group.desc
+			  }\n\nHope you follow the rules and have fun!\n\n*‣ ${event.participants
 					.map((jid) => `@${jid.split("@")[0]}`)
 					.join(", ")}*`
 			: event.action === "remove"
 			? `Goodbye *@${
 					event.participants[0].split("@")[0]
-			  }* Bye bye 👋.`
-			: `Looks like *@${
+			  }* 👋🏻, we're probably not gonna miss you.`
+			: `Ara Ara looks like *@${
 					event.participants[0].split("@")[0]
 			  }* got ${this.client.util.capitalize(event.action)}d${
 					event.actor ? ` by *@${event.actor.split("@")[0]}*` : ""
 			  }`;*/
-		const contextInfo = {
-			mentionedJid: event.actor
-				? [...event.participants, event.actor]
-				: event.participants,
-		};
-		if (add) {
-			const welcome = await new Canvas.Welcome()
-				.setUsername(username)
-				.setDiscriminator(memberCount)
-				.setMemberCount(memberCount)
-				.setGuildName(group.subject)
-				.setAvatar(pfp)
-				.setColor("border", "#FFC0CB")
-				.setColor("username-box", "#FFFFFF")
-				.setColor("discriminator-box", "#FFFFFF")
-				.setColor("message-box", "#FFFFFF")
-				.setColor("title", "#FFFFFF")
-				.setColor("avatar", "#00FF00")
-				.setText("member-count", `- ${memberCount} member !`)
-				.setText("title", "annyeong")
-				.setText("message", `welcome to ${group.subject}`)
-				.setBackground("https://i.ibb.co/8B6Q84n/LTqHsfYS.jpg")
-				.toAttachment();
-			return void (await this.client.sendMessage(
-				event.jid,
-				welcome.toBuffer(),
-				MessageType.image,
-				{
-					caption: `${group.desc}\n\n*‣ ${event.participants
-						.map((jid) => `@${jid.split("@")[0]}`)
-						.join(", ")}*`,
-					contextInfo,
-				}
-			));
-		}
-                if (bye) {
+    const contextInfo = {
+      mentionedJid: event.actor
+        ? [...event.participants, event.actor]
+        : event.participants,
+    };
+    if (add) {
+      const welcome = await new Canvas.Welcome()
+        .setUsername(username)
+        .setDiscriminator(memberCount)
+        .setMemberCount(memberCount)
+        .setGuildName(group.subject)
+        .setAvatar(pfp)
+        .setColor("border", "#FFC0CB")
+        .setColor("username-box", "#FFFFFF")
+        .setColor("discriminator-box", "#FFFFFF")
+        .setColor("message-box", "#FFFFFF")
+        .setColor("title", "#FFFFFF")
+        .setColor("avatar", "#00FF00")
+        .setText("member-count", `- ${memberCount} member !`)
+        .setText("title", "hello")
+        .setText("message", `welcome to ${group.subject}`)
+        .setBackground("https://i.ibb.co/8B6Q84n/LTqHsfYS.jpg")
+        .toAttachment();
+      return void (await this.client.sendMessage(
+        event.jid,
+        welcome.toBuffer(),
+        MessageType.image,
+        {
+          caption: `${
+            group.desc
+          }\n\n*‣ ${event.participants
+            .map((jid) => `@${jid.split("@")[0]}`)
+            .join(", ")}*`,
+          contextInfo,
+        }
+      ));
+    }
+    if (bye) {
 			const text = ` *Bye 👋 @${
 				event.participants[0].split("@")[0]
 			}*  We will miss you 🤧💜`;
@@ -94,35 +145,35 @@ export default class EventHandler {
 				MessageType.extendedText,
 				{ contextInfo }
 			);
-		}
-		if (promote) {
-			const text = `Congratulations *@${
-				event.participants[0].split("@")[0]
-			}*, you're now an admin.`;
-			return void this.client.sendMessage(
-				event.jid,
-				text,
-				MessageType.extendedText,
-				{ contextInfo }
-			);
-		}
-		if (demote) {
-			const text = ` Looks like *@${
-				event.participants[0].split("@")[0]
-			}* got demoted.`;
-			return void this.client.sendMessage(
-				event.jid,
-				text,
-				MessageType.extendedText,
-				{ contextInfo }
-			);
-		}
-	};
+    }
+    if (promote) {
+      const text = `Congratulations *@${
+        event.participants[0].split("@")[0]
+      }*, you're now an admin.`;
+      return void this.client.sendMessage(
+        event.jid,
+        text,
+        MessageType.extendedText,
+        { contextInfo }
+      );
+    }
+    if (demote) {
+      const text = `Ara Ara looks like *@${
+        event.participants[0].split("@")[0]
+      }* got demoted.`;
+      return void this.client.sendMessage(
+        event.jid,
+        text,
+        MessageType.extendedText,
+        { contextInfo }
+      );
+    }
+  };
 }
 
 interface IEvent {
-    jid: string
-    participants: string[]
-    actor?: string | undefined
-    action: WAParticipantAction
+  jid: string;
+  participants: string[];
+  actor?: string | undefined;
+  action: WAParticipantAction;
 }
