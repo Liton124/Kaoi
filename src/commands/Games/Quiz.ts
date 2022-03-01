@@ -20,6 +20,7 @@ export default class Command extends BaseCommand {
   run = async (
     M: ISimplifiedMessage,
     { joined }: IParsedArgs
+  ): Promise<void> => {
     const term = joined.trim().split(" ");
     if (term[0] === "--ff" || term[0] === "--forfeit") {
       if (await (await this.client.getGroupData).quizResponse.ongoing) {
